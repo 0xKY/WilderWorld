@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "wilderworld:block/bird_of_paradise_bottom"
+    },
+    "half=upper": {
+      "model": "wilderworld:block/bird_of_paradise_top"
+    }
+  }
+}

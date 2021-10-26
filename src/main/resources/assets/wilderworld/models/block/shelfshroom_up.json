@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "wilderworld:block/shelfshroom_up"
+  }
+}

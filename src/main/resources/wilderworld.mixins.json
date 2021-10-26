@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.kaloyankys.wilderworld.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "TreeDecoratorTypeRegisterInvoker"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

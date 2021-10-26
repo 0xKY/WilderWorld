@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "wilderworld",
+  "version": "${version}",
+  "name": "WilderWorld",
+  "description": "Making Minecraft's world even wilder!",
+  "authors": [
+    "KaloyanKYS"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/wilderworld/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "me.kaloyankys.wilderworld.client.WilderworldClient"
+    ],
+    "main": [
+      "me.kaloyankys.wilderworld.Wilderworld"
+    ]
+  },
+  "mixins": [
+    "wilderworld.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12.2",
+    "fabric": "*",
+    "minecraft": "1.17.1"
+  }
+}
