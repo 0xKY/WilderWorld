@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "wilderworld:wisteria_logs"
+    }
+  ],
+  "result": {
+    "item": "wilderworld:wisteria_planks",
+    "count": 4
+  }
+}

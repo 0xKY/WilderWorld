@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "wilderworld:block/wisteria_planks"
+  }
+}

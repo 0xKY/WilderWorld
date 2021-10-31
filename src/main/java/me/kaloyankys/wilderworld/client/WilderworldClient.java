@@ -1,5 +1,6 @@
 package me.kaloyankys.wilderworld.client;
 
+import me.andante.chord.util.CClientUtils;
 import me.kaloyankys.wilderworld.init.WWBlocks;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -13,6 +14,7 @@ public class WilderworldClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                WWBlocks.BIRD_OF_PARADISE, WWBlocks.EDELWEISS, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM);
+                WWBlocks.BIRD_OF_PARADISE, WWBlocks.EDELWEISS, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM, WWBlocks.PHOSPHOSHOOTS);
+        CClientUtils.registerWoodBlocks(WWBlocks.WISTERIA);
     }
 }

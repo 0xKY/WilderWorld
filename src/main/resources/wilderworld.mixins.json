@@ -4,7 +4,9 @@
   "package": "me.kaloyankys.wilderworld.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "TreeDecoratorTypeRegisterInvoker"
+    "BrewingRecipeRegistryInvoker",
+    "LivingEntityMixin",
+    "TreeDecoratorTypeInvoker"
   ],
   "client": [
   ],

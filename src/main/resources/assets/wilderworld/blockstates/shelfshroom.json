@@ -1,30 +1,30 @@
 {
   "variants": {
     "facing=east": {
-      "model": "wilderworld:block/shelfshroom_east",
-      "uvlock": true
+      "model": "wilderworld:block/shelfshroom_north",
+      "x": 90,
+      "y": 90
     },
     "facing=north": {
       "model": "wilderworld:block/shelfshroom_north",
-      "uvlock": true
+      "x": 90
     },
     "facing=south": {
-      "model": "wilderworld:block/shelfshroom_south",
-      "uvlock": true
+      "model": "wilderworld:block/shelfshroom_north",
+      "x": 90,
+      "y": 180
     },
     "facing=west": {
-      "model": "wilderworld:block/shelfshroom_west",
-      "uvlock": true
+      "model": "wilderworld:block/shelfshroom_north",
+      "x": 90,
+      "y": 270
     },
     "facing=down": {
       "model": "wilderworld:block/shelfshroom_north",
-      "x" : 90,
-      "y" : 180,
-      "uvlock": true
+      "x": 180
     },
     "facing=up": {
-      "model": "wilderworld:block/shelfshroom_up",
-      "uvlock": true
+      "model": "wilderworld:block/shelfshroom_up"
     }
   }
 }

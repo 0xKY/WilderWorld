@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "top": "wilderworld:block/wisteria_door_top",
+    "bottom": "wilderworld:block/wisteria_door_bottom"
+  }
+}

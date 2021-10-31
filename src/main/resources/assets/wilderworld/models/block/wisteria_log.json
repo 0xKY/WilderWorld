@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "wilderworld:block/wisteria_log_top",
+    "side": "wilderworld:block/wisteria_log"
+  }
+}

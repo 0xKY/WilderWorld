@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "wilderworld:block/wisteria_planks",
+    "top": "wilderworld:block/wisteria_planks",
+    "side": "wilderworld:block/wisteria_planks"
+  }
+}
