@@ -20,7 +20,7 @@ public class WWBlocks {
             .breakInstantly()
             .collidable(false)));
 
-        public static final Block EDELWEISS = registerDeco("edelweiss", new FlowerBlock(StatusEffects.LUCK, 400, FabricBlockSettings
+        public static final Block CHAMOMILE = registerDeco("chamomile", new FlowerBlock(StatusEffects.LUCK, 400, FabricBlockSettings
                 .of(Material.PLANT, MapColor.WHITE_GRAY)
                 .nonOpaque()
                 .breakInstantly()
@@ -57,6 +57,10 @@ public class WWBlocks {
 
     public static Block registerDeco(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(ItemGroup.DECORATIONS)));
+        return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
+    }
+
+    public static Block registerNoItem(String id, Block block) {
         return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
     }
 }

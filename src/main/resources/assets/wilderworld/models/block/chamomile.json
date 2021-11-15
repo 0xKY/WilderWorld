@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "wilderworld:block/edelweiss"
+    "cross": "wilderworld:block/chamomile"
   }
 }
