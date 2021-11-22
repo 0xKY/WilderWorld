@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "marbles:stripped_aspen_log"
+      "item": "wilderworld:stripped_wisteria_log"
     }
   },
   "result": {
-    "item": "marbles:stripped_aspen_wood",
+    "item": "wilderworld:wisteria_wood",
     "count": 3
   }
 }

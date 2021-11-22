@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "wilderworld:wisteria_log",
+    "wilderworld:stripped_wisteria_log",
+    "wilderworld:wisteria_wood",
+    "wilderworld:stripped_wisteria_wood"
+  ]
+}
