@@ -11,7 +11,7 @@
       "y": 90
     },
     "face=ceiling,facing=south,powered=false": {
-      "model": "wilderworld:block/wisteria_buttonn",
+      "model": "wilderworld:block/wisteria_button",
       "x": 180
     },
     "face=wall,facing=south,powered=true": {
