@@ -24,13 +24,13 @@ public abstract class LightmapTextureManagerMixin {
         if (this.client.player != null && this.client.player.world.getRegistryKey() == World.OVERWORLD) {
             if (this.client.player.getY() >= 62.0) {
                 cir.setReturnValue(cir.getReturnValueF());
-            } else if (this.client.player.getY() < 62.0 && this.client.player.getY() >= 61.0) {
+            } else if (this.client.player.getY() <= 62.0 && this.client.player.getY() >= 61.0) {
                 cir.setReturnValue(cir.getReturnValueF() - 0.02F);
-            } else if (this.client.player.getY() < 61.0 && this.client.player.getY() >= 60.0) {
+            } else if (this.client.player.getY() <= 61.0 && this.client.player.getY() >= 60.0) {
                 cir.setReturnValue(cir.getReturnValueF() - 0.03F);
-            } else if (this.client.player.getY() < 60.0 && this.client.player.getY() >= 59.0) {
+            } else if (this.client.player.getY() <= 60.0 && this.client.player.getY() >= 59.0) {
                 cir.setReturnValue(cir.getReturnValueF() - 0.04F);
-            } else if (this.client.player.getY() < 59.0 && this.client.player.getY() <= 58.0) {
+            } else if (this.client.player.getY() <= 59.0 && this.client.player.getY() <= 58.0) {
                 cir.setReturnValue(cir.getReturnValueF() - 0.05F);
             }
         }

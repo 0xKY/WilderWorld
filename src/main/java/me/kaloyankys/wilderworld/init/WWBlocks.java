@@ -1,6 +1,8 @@
 package me.kaloyankys.wilderworld.init;
 
 import me.andante.chord.block.helper.WoodBlocks;
+import me.kaloyankys.wilderworld.Wilderworld;
+import me.kaloyankys.wilderworld.block.MossCoverBlock;
 import me.kaloyankys.wilderworld.block.ShelfshroomBlock;
 import me.kaloyankys.wilderworld.world.WisteriaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -15,45 +17,54 @@ import net.minecraft.util.registry.Registry;
 
 public class WWBlocks {
 
-        public static final Block BIRD_OF_PARADISE = registerDeco("bird_of_paradise", new TallPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE)
+    public static final Block BIRD_OF_PARADISE = registerFF("bird_of_paradise", new TallPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE)
             .nonOpaque()
             .breakInstantly()
             .collidable(false)));
 
-        public static final Block CHAMOMILE = registerDeco("chamomile", new FlowerBlock(StatusEffects.LUCK, 400, FabricBlockSettings
-                .of(Material.PLANT, MapColor.WHITE_GRAY)
-                .nonOpaque()
-                .breakInstantly()
-                .collidable(false)));
-
-    public static final Block RAGING_VIOLET = registerDeco("raging_violet", new FlowerBlock(StatusEffects.STRENGTH, 400, FabricBlockSettings
+    public static final Block CHAMOMILE = registerFF("chamomile", new FlowerBlock(StatusEffects.LUCK, 400, FabricBlockSettings
             .of(Material.PLANT, MapColor.WHITE_GRAY)
             .nonOpaque()
             .breakInstantly()
             .collidable(false)));
 
-    public static final Block PHOSPHOSHOOTS = registerDeco("phosphoshoots", new FlowerBlock(StatusEffects.GLOWING, 400, FabricBlockSettings
+    public static final Block RAGING_VIOLET = registerFF("raging_violet", new FlowerBlock(StatusEffects.STRENGTH, 400, FabricBlockSettings
+            .of(Material.PLANT, MapColor.WHITE_GRAY)
+            .nonOpaque()
+            .breakInstantly()
+            .collidable(false)));
+
+    public static final Block PHOSPHOSHOOTS = registerFF("phosphoshoots", new FlowerBlock(StatusEffects.GLOWING, 400, FabricBlockSettings
             .of(Material.PLANT, MapColor.LIME)
             .nonOpaque()
             .breakInstantly()
             .luminance(state -> 12)
             .collidable(false)));
 
-    public static final Block SHELFSHROOM = registerDeco("shelfshroom", new ShelfshroomBlock(FabricBlockSettings
+    public static final Block SHELFSHROOM = registerFF("shelfshroom", new ShelfshroomBlock(FabricBlockSettings
             .of(Material.PLANT, MapColor.WHITE_GRAY)
             .nonOpaque()
             .breakInstantly()
             .collidable(false)));
 
-    public static final Block ASPEN_LEAVES = registerDeco("aspen_leaves", new LeavesBlock(FabricBlockSettings
+    public static final Block ASPEN_LEAVES = registerFF("aspen_leaves", new LeavesBlock(FabricBlockSettings
             .copy(Blocks.OAK_LEAVES)
             .nonOpaque()));
 
     public static final WoodBlocks WISTERIA = new WoodBlocks.Builder()
             .saplingGenerator(new WisteriaSaplingGenerator())
             .boatType(BoatEntity.Type.BIRCH)
-            .itemGroup(ItemGroup.DECORATIONS)
+            .itemGroup(Wilderworld.FF_ADDITIONS)
             .build("wilderworld", "wisteria");
+
+    public static final Block MOSS_COVER = registerDeco("moss_cover", new MossCoverBlock(FabricBlockSettings
+            .copy(Blocks.VINE)
+            .nonOpaque()));
+
+    public static Block registerFF(String id, Block block) {
+        Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.FF_ADDITIONS)));
+        return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
+    }
 
     public static Block registerDeco(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(ItemGroup.DECORATIONS)));

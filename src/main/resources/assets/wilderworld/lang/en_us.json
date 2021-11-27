@@ -1,6 +1,17 @@
 {
   "item.wilderworld.wisteria_boat": "Wisteria Boat",
-
+  "item.minecraft.potion.effect.shelf_sense": "Potion of Shelf Sense",
+  "item.minecraft.splash_potion.effect.shelf_sense": "Splash Potion of Shelf Sense",
+  "item.minecraft.lingering_potion.effect.shelf_sense": "Lingering Potion of Shelf Sense",
+  "item.minecraft.tipped_arrow.effect.shelf_sense": "Arrow of Shelf Sense",
+  "item.minecraft.potion.effect.rage": "Potion of Rage",
+  "item.minecraft.splash_potion.effect.rage": "Splash Potion of Rage",
+  "item.minecraft.lingering_potion.effect.rage": "Lingering Potion of Rage",
+  "item.minecraft.tipped_arrow.effect.rage": "Arrow of Rage",
+  "item.minecraft.potion.effect.glowing": "Potion of Glowing",
+  "item.minecraft.splash_potion.effect.glowing": "Splash Potion of Glowing",
+  "item.minecraft.lingering_potion.effect.glowing": "Lingering Potion of Glowing",
+  "item.minecraft.tipped_arrow.effect.glowing": "Arrow of Glowing",
   "block.wilderworld.aspen_leaves": "Aspen Leaves",
   "block.wilderworld.bird_of_paradise": "Bird Of Paradise",
   "block.wilderworld.chamomile": "Chamomile",
@@ -22,5 +33,9 @@
   "block.wilderworld.wisteria_slab": "Wisteria Slab",
   "block.wilderworld.wisteria_stairs": "Wisteria Stairs",
   "block.wilderworld.wisteria_trapdoor": "Wisteria Trapdoor",
-  "block.wilderworld.wisteria_wood": "Wisteria Wood"
+  "block.wilderworld.wisteria_wood": "Wisteria Wood",
+  "block.wilderworld.moss_cover": "Moss Cover",
+  "itemGroup.wilderworld.ff_additions": "Flower Forest Additions",
+  "effect.wilderworld.shelf_sense": "Shelf Sense",
+  "effect.wilderworld.rage": "Rage"
 }

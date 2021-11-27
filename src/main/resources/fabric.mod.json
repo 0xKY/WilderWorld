@@ -9,7 +9,7 @@
   ],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/wilderworld/icon.png",
+  "icon": "assets/wilderworld/ff_icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
