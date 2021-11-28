@@ -6,8 +6,12 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Wilderworld implements ModInitializer {
+
+    public static final Logger LOGGER = LogManager.getLogger("wilderworld");
 
     public static final ItemGroup FF_ADDITIONS = FabricItemGroupBuilder.create(
                     new Identifier("wilderworld", "ff_additions"))
@@ -21,5 +25,7 @@ public class Wilderworld implements ModInitializer {
         new WWEntities();
         new WWTags();
         WWPotions.init();
+
+        LOGGER.info("Things are gettin' wild!");
     }
 }

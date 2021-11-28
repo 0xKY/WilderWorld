@@ -11,6 +11,6 @@ public class WisteriaSaplingGenerator extends SaplingGenerator {
 
     @Override
     protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random random, boolean bees) {
-        return (ConfiguredFeature<TreeFeatureConfig, ?>) WWBiomeModifications.WISTERIA_TREE;
+        return WWBiomeModifications.WISTERIA_TREE;
     }
 }

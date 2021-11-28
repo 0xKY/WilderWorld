@@ -1,6 +1,5 @@
 package me.kaloyankys.wilderworld.entity;
 
-import me.kaloyankys.wilderworld.init.WWBlocks;
 import me.kaloyankys.wilderworld.init.WWEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityData;
@@ -25,11 +24,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
-import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;

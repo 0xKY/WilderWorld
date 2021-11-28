@@ -1,6 +1,5 @@
 package me.kaloyankys.wilderworld.client;
 
-import me.andante.chord.util.CClientUtils;
 import me.kaloyankys.wilderworld.client.particle.SteamParticle;
 import me.kaloyankys.wilderworld.entity.render.ButterflyEntityRenderer;
 import me.kaloyankys.wilderworld.entity.render.ButterflyModel;
@@ -33,8 +32,6 @@ public class WilderworldClient implements ClientModInitializer {
                 WWBlocks.BIRD_OF_PARADISE, WWBlocks.CHAMOMILE, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM, WWBlocks.PHOSPHOSHOOTS,
                 WWBlocks.WISTERIA.POTTED_SAPLING, WWBlocks.MOSS_COVER);
 
-        CClientUtils.registerWoodBlocks(WWBlocks.WISTERIA);
-
         ParticleFactoryRegistry.getInstance().register(WWParticles.STEAM, SteamParticle.SteamFactory::new);
 
         EntityRendererRegistry.register(WWEntities.BUTTERFLY, ButterflyEntityRenderer::new);
@@ -48,4 +45,3 @@ public class WilderworldClient implements ClientModInitializer {
                 WWBlocks.MOSS_COVER);
     }
 }
-

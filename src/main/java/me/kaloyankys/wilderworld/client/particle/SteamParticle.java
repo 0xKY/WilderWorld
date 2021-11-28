@@ -16,7 +16,7 @@ public class SteamParticle extends SpriteBillboardParticle {
 
     SteamParticle(ClientWorld clientWorld, double d, double e, double f, double g, double h, double i, SpriteProvider spriteProvider) {
         super(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D);
-        this.field_28786 = 0.96F;
+        this.velocityMultiplier = 0.96F;
         this.spriteProvider = spriteProvider;
         this.velocityX *= 0.10000000149011612D;
         this.velocityY *= 0.10000000149011612D;
