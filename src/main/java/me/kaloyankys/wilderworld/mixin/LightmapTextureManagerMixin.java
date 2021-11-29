@@ -21,18 +21,9 @@ public abstract class LightmapTextureManagerMixin {
 
     @Inject(method = "getBrightness", at = @At("RETURN"), cancellable = true)
     private void getBrightness(World world, int lightLevel, CallbackInfoReturnable<Float> cir) {
+        float light = cir.getReturnValueF() / 2;
         if (this.client.player != null && this.client.player.world.getRegistryKey() == World.OVERWORLD) {
-            if (this.client.player.getY() >= 62.0) {
-                cir.setReturnValue(cir.getReturnValueF());
-            } else if (this.client.player.getY() <= 62.0 && this.client.player.getY() >= 61.0) {
-                cir.setReturnValue(cir.getReturnValueF() - 0.02F);
-            } else if (this.client.player.getY() <= 61.0 && this.client.player.getY() >= 60.0) {
-                cir.setReturnValue(cir.getReturnValueF() - 0.03F);
-            } else if (this.client.player.getY() <= 60.0 && this.client.player.getY() >= 59.0) {
-                cir.setReturnValue(cir.getReturnValueF() - 0.04F);
-            } else if (this.client.player.getY() <= 59.0 && this.client.player.getY() <= 58.0) {
-                cir.setReturnValue(cir.getReturnValueF() - 0.05F);
-            }
+            cir.setReturnValue((float) (light + this.client.player.getY() / 2000));
         }
     }
 }
