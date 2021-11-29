@@ -1,3 +1,4 @@
+
 package me.kaloyankys.wilderworld.mixin;
 
 import net.fabricmc.api.EnvType;
