@@ -90,7 +90,7 @@ public class WWBiomeModifications {
                 RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("wilderworld", id)));
         Registry.register(BuiltinRegistries.PLACED_FEATURE, RegistryKey.of(Registry.PLACED_FEATURE_KEY,
                 new Identifier("wilderworld", id)).getValue(), configuredFeature.withPlacement(NoiseThresholdCountPlacementModifier
-                        .of(-0.1, 0, 1), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
+                        .of(-0.0, 1, 0), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
                 BiomePlacementModifier.of()));
         return null;
     }

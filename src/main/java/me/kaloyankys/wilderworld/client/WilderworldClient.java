@@ -17,6 +17,7 @@ import net.fabricmc.fabric.impl.client.rendering.ColorProviderRegistryImpl;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.GrassColors;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.BoatEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 
@@ -43,5 +44,7 @@ public class WilderworldClient implements ClientModInitializer {
 
         ColorProviderRegistryImpl.ITEM.register((stack, tintIndex) -> GrassColors.getColor(0.5D, 1.0D),
                 WWBlocks.MOSS_COVER);
+
+        EntityRendererRegistry.register(WWBlocks.WISTERIA.BOAT_ENTITY, BoatEntityRenderer::new);
     }
 }

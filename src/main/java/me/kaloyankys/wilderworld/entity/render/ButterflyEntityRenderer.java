@@ -29,4 +29,5 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
             return TEXTURE[entity.getVariant() % TEXTURE.length];
         }
     }
+
 }

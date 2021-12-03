@@ -8,7 +8,6 @@
     "GameRendererMixin",
     "LightmapTextureManagerMixin",
     "LivingEntityMixin",
-    "MobEntityRendererMixin",
     "TreeDecoratorTypeInvoker"
   ],
   "client": [
