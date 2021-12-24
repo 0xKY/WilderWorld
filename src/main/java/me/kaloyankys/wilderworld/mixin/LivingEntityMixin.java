@@ -5,8 +5,6 @@ import me.kaloyankys.wilderworld.init.WWPotions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -31,19 +29,22 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @Inject(at = @At("RETURN"), method = "applyClimbingSpeed", cancellable = true)
-    private void isClimbing(Vec3d motion, CallbackInfoReturnable<Vec3d> cir) {
-        if (((LivingEntity) ((Entity) this)).hasStatusEffect(WWPotions.SHELF_SENSE_EFFECT) && this.horizontalCollision) {
-            cir.setReturnValue(new Vec3d(0.0, 0.1, 0.0));
-            this.setNoGravity(true);
-        } else {
-            this.setNoGravity(false);
+    private void applyClimbingSpeed(Vec3d motion, CallbackInfoReturnable<Vec3d> cir) {
+        if (((LivingEntity) (Entity) this) instanceof PlayerEntity player) {
+            if (player.hasStatusEffect(WWPotions.SHELF_SENSE_EFFECT) && this.horizontalCollision) {
+                cir.setReturnValue(new Vec3d(0.0, 0.1, 0.0));
+                player.setNoGravity(true);
+            } else {
+                player.setNoGravity(false);
+            }
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "tick", cancellable = true)
+
+    @Inject(at = @At("HEAD"), method = "tick")
     private void tick(CallbackInfo ci) {
         Random random = new Random();
-        if (((Entity) this) instanceof PlayerEntity player && !player.isCreative()) {
+        if (((LivingEntity) (Entity) this) instanceof PlayerEntity player && !player.isCreative()) {
             if (player.getArmor() < 6) {
                 if (this.getEntityWorld().getBiome(this.getBlockPos()).getCategory() == Biome.Category.ICY) {
                     if (random.nextInt(25) == 0) {

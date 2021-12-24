@@ -2,8 +2,10 @@ package me.kaloyankys.wilderworld.init;
 
 import me.andante.chord.block.helper.WoodBlocks;
 import me.kaloyankys.wilderworld.Wilderworld;
+import me.kaloyankys.wilderworld.block.AspenBirchSaplingBlock;
 import me.kaloyankys.wilderworld.block.MossCoverBlock;
 import me.kaloyankys.wilderworld.block.ShelfshroomBlock;
+import me.kaloyankys.wilderworld.world.AspenSaplingGenerator;
 import me.kaloyankys.wilderworld.world.WisteriaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
@@ -59,6 +61,10 @@ public class WWBlocks {
 
     public static final Block MOSS_COVER = registerDeco("moss_cover", new MossCoverBlock(FabricBlockSettings
             .copy(Blocks.VINE)
+            .nonOpaque()));
+
+    public static final Block ASPEN_SAPLING = registerNoItem("aspen_sapling", new AspenBirchSaplingBlock(new AspenSaplingGenerator(), FabricBlockSettings
+            .copy(Blocks.BIRCH_SAPLING)
             .nonOpaque()));
 
     public static Block registerFF(String id, Block block) {

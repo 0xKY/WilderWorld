@@ -4,9 +4,8 @@
   "package": "me.kaloyankys.wilderworld.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "AbstractBlockMixin",
     "BrewingRecipeRegistryInvoker",
-    "GameRendererMixin",
-    "LightmapTextureManagerMixin",
     "LivingEntityMixin",
     "TreeDecoratorTypeInvoker"
   ],

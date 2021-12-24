@@ -71,13 +71,10 @@ public class WWBiomeModifications {
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> WISTERIA_TREE = registerFFTree("wisteria_tree", Feature.TREE.configure(new TreeFeatureConfig.Builder(
             BlockStateProvider.of(WWBlocks.WISTERIA.LOG), new LargeOakTrunkPlacer(3, 14, 0), BlockStateProvider.of(WWBlocks.WISTERIA.LEAVES),
-            new RandomSpreadFoliagePlacer(
-                    ConstantIntProvider.create(3),
-                    ConstantIntProvider.create(0),
-                    ConstantIntProvider.create(2), (50 + RANDOM.nextInt(5))),
-            new ThreeLayersFeatureSize(6, 6, 3, 4, 5, OptionalInt.empty()))
+            new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), RANDOM.nextInt(50) + 10),
+            new ThreeLayersFeatureSize(6, 6, 2, 5, 6, OptionalInt.empty()))
             .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.5f), new TrunkVineTreeDecorator()))
-            .ignoreVines()
+            .forceDirt()
             .build()));
 
     public WWBiomeModifications() {
@@ -92,7 +89,7 @@ public class WWBiomeModifications {
                 new Identifier("wilderworld", id)).getValue(), configuredFeature.withPlacement(NoiseThresholdCountPlacementModifier
                         .of(-0.0, 1, 0), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
                 BiomePlacementModifier.of()));
-        return null;
+        return configuredFeature;
     }
 
     private static <FC extends FeatureConfig> ConfiguredFeature<FC, ?> registerFFTree(String id, ConfiguredFeature<FC, ?> configuredFeature) {
@@ -103,7 +100,7 @@ public class WWBiomeModifications {
                         .of(), NOT_IN_SURFACE_WATER_MODIFIER, PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
                 BlockFilterPlacementModifier
                         .of(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN)), BiomePlacementModifier.of()));
-        return null;
+        return configuredFeature;
     }
 
     private static DataPool.Builder<BlockState> pool() {
