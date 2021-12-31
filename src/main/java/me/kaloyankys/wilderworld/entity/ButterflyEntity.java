@@ -40,7 +40,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 
-public class ButterflyEntity extends AnimalEntity implements Flutterer, EggLayer {
+public class ButterflyEntity extends AnimalEntity implements Flutterer {
     private static final TrackedData<Integer> VARIANT = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     public ButterflyEntity(World world) {

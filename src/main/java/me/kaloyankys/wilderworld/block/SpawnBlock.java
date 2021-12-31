@@ -1,6 +1,5 @@
 package me.kaloyankys.wilderworld.block;
 
-import me.kaloyankys.wilderworld.entity.EggLayer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FallingBlock;
 import net.minecraft.block.ShapeContext;
@@ -17,7 +16,7 @@ import java.util.Random;
 public class SpawnBlock extends FallingBlock {
     private final EntityType<AnimalEntity> parent;
 
-    public SpawnBlock(Settings settings, EggLayer entityType) {
+    public <E extends AnimalEntity> SpawnBlock(Settings settings, EntityType<E> entityType) {
         super(settings);
         parent = (EntityType<AnimalEntity>) entityType;
     }
