@@ -9,7 +9,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.intprovider.ClampedIntProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -17,10 +17,9 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
+import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
@@ -30,7 +29,6 @@ import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.MegaJungleTrunkPlacer;
 
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.Random;
 
 @SuppressWarnings("unused")
@@ -38,7 +36,7 @@ public class WWBiomeModifications {
     private static final Random RANDOM = new Random();
     public static final PlacementModifier NOT_IN_SURFACE_WATER_MODIFIER = SurfaceWaterDepthFilterPlacementModifier.of(0);
 
-    public static final ConfiguredFeature<?, ?> BIRD_OF_PARADISE_PATCH = registerFF("birds_of_paradise", Feature.RANDOM_PATCH.configure(
+    /* public static final ConfiguredFeature<?, ?> BIRD_OF_PARADISE_PATCH = registerFF("birds_of_paradise", Feature.RANDOM_PATCH.configure(
             ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
                     BlockStateProvider.of(WWBlocks.BIRD_OF_PARADISE))), List.of(Blocks.GRASS_BLOCK))));
 
@@ -56,7 +54,18 @@ public class WWBiomeModifications {
 
     public static final ConfiguredFeature<?, ?> SHELFSHROOMS = registerFF("shelfshrooms", Feature.RANDOM_PATCH.configure(
             ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                    BlockStateProvider.of(WWBlocks.SHELFSHROOM))), List.of(Blocks.GRASS_BLOCK))));
+                    BlockStateProvider.of(WWBlocks.SHELFSHROOM))), List.of(Blocks.GRASS_BLOCK)))); */
+
+    public static final ConfiguredFeature<SimpleRandomFeatureConfig, ?> FF_CUSTOM_FLOWERS = registerFF("ff_custom_flowers", Feature.SIMPLE_RANDOM_SELECTOR.configure(
+            new SimpleRandomFeatureConfig(List.of(() ->
+                    Feature.RANDOM_PATCH.configure(ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(
+                            new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.BIRD_OF_PARADISE))))).withPlacement(), () ->
+                    Feature.RANDOM_PATCH.configure(ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(
+                            new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.CHAMOMILE))))).withPlacement(), () ->
+                    Feature.RANDOM_PATCH.configure(ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(
+                            new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.RAGING_VIOLET))))).withPlacement(), () ->
+                    Feature.NO_BONEMEAL_FLOWER.configure(ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(
+                            new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.PHOSPHOSHOOTS))))).withPlacement()))));
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> ASPEN_BIRCH_TREE = registerFFTree("aspen_birch_tree", Feature.TREE.configure(new TreeFeatureConfig.Builder(
             BlockStateProvider.of(Blocks.BIRCH_LOG), new MegaJungleTrunkPlacer(11, 3, 12), BlockStateProvider.of(WWBlocks.ASPEN_LEAVES),
@@ -64,15 +73,15 @@ public class WWBiomeModifications {
                     UniformIntProvider.create(3, 4),
                     UniformIntProvider.create(3, 4),
                     6),
-            new ThreeLayersFeatureSize(12, 12, 4, 9, 12, OptionalInt.empty()))
+            new TwoLayersFeatureSize(1, 1, 2))
             .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.5f), new ShelfshroomTreeDecorator()))
             .ignoreVines()
             .build()));
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> WISTERIA_TREE = registerFFTree("wisteria_tree", Feature.TREE.configure(new TreeFeatureConfig.Builder(
-            BlockStateProvider.of(WWBlocks.WISTERIA.LOG), new LargeOakTrunkPlacer(3, 14, 0), BlockStateProvider.of(WWBlocks.WISTERIA.LEAVES),
-            new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), RANDOM.nextInt(50) + 10),
-            new ThreeLayersFeatureSize(6, 6, 2, 5, 6, OptionalInt.empty()))
+            BlockStateProvider.of(WWBlocks.WISTERIA.LOG), new LargeOakTrunkPlacer(4, 14, 0), BlockStateProvider.of(WWBlocks.WISTERIA.LEAVES),
+            new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), RANDOM.nextInt(50) + 30),
+            new TwoLayersFeatureSize(1, 1, 2))
             .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.5f), new TrunkVineTreeDecorator()))
             .forceDirt()
             .build()));
@@ -86,20 +95,18 @@ public class WWBiomeModifications {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST), GenerationStep.Feature.VEGETAL_DECORATION,
                 RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("wilderworld", id)));
         Registry.register(BuiltinRegistries.PLACED_FEATURE, RegistryKey.of(Registry.PLACED_FEATURE_KEY,
-                new Identifier("wilderworld", id)).getValue(), configuredFeature.withPlacement(NoiseThresholdCountPlacementModifier
-                        .of(-0.0, 1, 0), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
-                BiomePlacementModifier.of()));
+                new Identifier("wilderworld", id)).getValue(), configuredFeature.withPlacement(RarityFilterPlacementModifier.of(7),
+                SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, CountPlacementModifier
+                        .of(ClampedIntProvider.create(UniformIntProvider.create(-1, 5), 0, 5)), BiomePlacementModifier.of()));
         return configuredFeature;
     }
 
     private static <FC extends FeatureConfig> ConfiguredFeature<FC, ?> registerFFTree(String id, ConfiguredFeature<FC, ?> configuredFeature) {
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST), GenerationStep.Feature.VEGETAL_DECORATION,
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST), GenerationStep.Feature.TOP_LAYER_MODIFICATION,
                 RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("wilderworld", id)));
         Registry.register(BuiltinRegistries.PLACED_FEATURE, RegistryKey.of(Registry.PLACED_FEATURE_KEY,
-                new Identifier("wilderworld", id)).getValue(), configuredFeature.withPlacement(SquarePlacementModifier
-                        .of(), NOT_IN_SURFACE_WATER_MODIFIER, PlacedFeatures.OCEAN_FLOOR_HEIGHTMAP,
-                BlockFilterPlacementModifier
-                        .of(BlockPredicate.wouldSurvive(Blocks.OAK_SAPLING.getDefaultState(), BlockPos.ORIGIN)), BiomePlacementModifier.of()));
+                new Identifier("wilderworld", id)).getValue(), configuredFeature.withPlacement(VegetationPlacedFeatures
+                .modifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(0, 0.1f, 3), Blocks.OAK_SAPLING)));
         return configuredFeature;
     }
 

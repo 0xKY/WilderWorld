@@ -18,12 +18,18 @@ public class Wilderworld implements ModInitializer {
             .icon(() -> new ItemStack(WWBlocks.WISTERIA.SAPLING))
             .build();
 
+    public static final ItemGroup ICY_ADDITIONS = FabricItemGroupBuilder.create(
+                    new Identifier("wilderworld", "icy_additions"))
+            .icon(() -> new ItemStack(WWItems.COFFEE_MUG))
+            .build();
+
     @Override
     public void onInitialize() {
         new WWBiomeModifications();
         new WWBlocks();
         new WWEntities();
         new WWTags();
+        new WWItems();
         WWPotions.init();
 
         LOGGER.info("Things are gettin' wild!");

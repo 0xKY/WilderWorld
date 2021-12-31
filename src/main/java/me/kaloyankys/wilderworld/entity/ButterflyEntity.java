@@ -1,13 +1,16 @@
 package me.kaloyankys.wilderworld.entity;
 
 import me.kaloyankys.wilderworld.init.WWEntities;
+import me.kaloyankys.wilderworld.init.WWItems;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.Flutterer;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.ai.AboveGroundTargeting;
+import net.minecraft.entity.ai.NoWaterTargeting;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
@@ -15,32 +18,37 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.FlyingEntity;
+import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.predicate.NumberRange;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeKeys;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 
-public class ButterflyEntity extends FlyingEntity implements Flutterer {
+public class ButterflyEntity extends AnimalEntity implements Flutterer, EggLayer {
     private static final TrackedData<Integer> VARIANT = DataTracker.registerData(ButterflyEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final NumberRange.IntRange HORIZONTAL_RANGE = NumberRange.IntRange.between(-8, 12);
-    private static final NumberRange.IntRange VERTICAL_RANGE = NumberRange.IntRange.between(-2, 2);
 
     public ButterflyEntity(World world) {
         super(WWEntities.BUTTERFLY, world);
-        this.moveControl = new FlightMoveControl(this, 20, true);
+        this.moveControl = new FlightMoveControl(this, 5, true);
         this.setPathfindingPenalty(PathNodeType.DANGER_FIRE, -1.0F);
         this.setPathfindingPenalty(PathNodeType.WATER, -1.0F);
         this.setPathfindingPenalty(PathNodeType.WATER_BORDER, 16.0F);
-        this.setPathfindingPenalty(PathNodeType.COCOA, -1.0F);
         this.setPathfindingPenalty(PathNodeType.FENCE, -1.0F);
     }
 
@@ -53,9 +61,27 @@ public class ButterflyEntity extends FlyingEntity implements Flutterer {
 
 
     @Override
+    public void tick() {
+        super.tick();
+        if (random.nextInt(200) == 0) {
+            ItemScatterer.spawn(world, this.getX(), this.getY(), this.getZ(), new ItemStack(WWItems.COFFEE_MUG));
+        }
+    }
+
+    @Override
     protected void initGoals() {
-        this.goalSelector.add(8, new FlyRandomlyGoal());
-        this.goalSelector.add(10, new SwimGoal(this));
+        this.goalSelector.add(1, new FlyRandomlyGoal(this));
+    }
+
+    @Override
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        if (!this.world.isClient) {
+            if (player.getStackInHand(hand).isOf(Items.SUGAR)) {
+                world.setBlockState(this.getBlockPos(), Blocks.COBWEB.getDefaultState());
+                return ActionResult.CONSUME;
+            }
+        }
+        return super.interactMob(player, hand);
     }
 
     @Override
@@ -95,6 +121,12 @@ public class ButterflyEntity extends FlyingEntity implements Flutterer {
         dataTracker.set(VARIANT, variant);
 
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    @Nullable
+    @Override
+    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
+        return null;
     }
 
     @Override
@@ -138,39 +170,35 @@ public class ButterflyEntity extends FlyingEntity implements Flutterer {
         return SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS;
     }
 
-    private class FlyRandomlyGoal extends Goal {
+    static class FlyRandomlyGoal extends Goal {
+        private final PathAwareEntity entity;
 
-        private FlyRandomlyGoal() {
+        public FlyRandomlyGoal(PathAwareEntity pathAwareEntity) {
+            this.entity = pathAwareEntity;
             this.setControls(EnumSet.of(Goal.Control.MOVE));
         }
 
         public boolean canStart() {
-            return ButterflyEntity.this.random.nextInt(2) == 0;
+            return entity.getNavigation().isIdle();
         }
 
-        @Override
         public boolean shouldContinue() {
-            return false;
+            return entity.getNavigation().isFollowingPath();
         }
 
-        @Override
-        public void tick() {
-            BlockPos pos = getBlockPos();
-
-            for (int i = 0; i < 3; ++i) {
-                BlockPos randomTarget = pos.add(HORIZONTAL_RANGE.getMax() - random.nextInt(19),
-                        VERTICAL_RANGE.getMax() - random.nextInt(5), HORIZONTAL_RANGE.getMax() - random.nextInt(15));
-
-                if (ButterflyEntity.this.world.isAir(randomTarget) && ButterflyEntity.this.world.getBiomeKey(randomTarget).isPresent()) {
-                    if (ButterflyEntity.this.world.getBiomeKey(randomTarget).get().equals(BiomeKeys.FLOWER_FOREST)) {
-                        ButterflyEntity.this.moveControl.moveTo(randomTarget.getX() + 0.5D,
-                                randomTarget.getY() + 0.5D, randomTarget.getZ() + 0.5D, 0.75D);
-                    } else {
-                        ButterflyEntity.this.moveControl.moveTo(randomTarget.getX() + 0.2D,
-                                randomTarget.getY() + 0.2D, randomTarget.getZ() + 0.2D, 0.05D);
-                    }
-                }
+        public void start() {
+            Vec3d vec3d = this.getRandomLocation();
+            if (vec3d != null) {
+                entity.getNavigation().startMovingAlong(entity.getNavigation().findPathTo(new BlockPos(vec3d), 1), 1.0D);
             }
+
+        }
+
+        private Vec3d getRandomLocation() {
+            Vec3d vec3d3 = entity.getRotationVec(0.0F);
+            Vec3d vec3d4 = AboveGroundTargeting.find(entity, 8, 7,
+                    vec3d3.getX(), vec3d3.getZ(), 1.5707964F, 2, 1);
+            return vec3d4 != null ? vec3d4 : NoWaterTargeting.find(entity, 8, 4, -2, vec3d3, 1.5707963705062866D);
         }
     }
 }

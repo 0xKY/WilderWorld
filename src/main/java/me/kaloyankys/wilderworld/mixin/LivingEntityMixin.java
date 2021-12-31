@@ -44,22 +44,26 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(at = @At("HEAD"), method = "tick")
     private void tick(CallbackInfo ci) {
         Random random = new Random();
-        if (((LivingEntity) (Entity) this) instanceof PlayerEntity player && !player.isCreative()) {
-            if (player.getArmor() < 6) {
-                if (this.getEntityWorld().getBiome(this.getBlockPos()).getCategory() == Biome.Category.ICY) {
+        if (((LivingEntity) (Entity) this) instanceof PlayerEntity player) {
+            if (!player.isCreative()) {
+                if (player.getArmor() < 6 && this.getEntityWorld().getBiome(this.getBlockPos()).getCategory() == Biome.Category.ICY) {
                     if (random.nextInt(25) == 0) {
                         for (int i = (random.nextInt(8) + 1) - player.getArmor(); i < 12; i++) {
-                            world.addParticle(WWParticles.STEAM, true,
-                                    this.getX() - (double) (this.getWidth() + 0.5F) * 0.5D * (double) MathHelper.sin(this.bodyYaw * 0.017453292F),
-                                    this.getEyeY() - 0.10000000149011612D,
-                                    this.getZ() + (double) (this.getWidth() + 0.5F) * 0.5D * (double) MathHelper.cos(
-                                            this.bodyYaw * 0.017453292F), this.getVelocity().x, -0.00000001F, this.getVelocity().z);
+                            this.freezeParticles();
                             this.setFrozenTicks(this.getFrozenTicks() + i);
                         }
                     }
                 }
             }
         }
+    }
+
+    private void freezeParticles() {
+        world.addParticle(WWParticles.STEAM, true,
+                this.getX() - (double) (this.getWidth() + 0.5F) * 0.5D * (double) MathHelper.sin(this.bodyYaw * 0.017453292F),
+                this.getEyeY() - 0.10000000149011612D,
+                this.getZ() + (double) (this.getWidth() + 0.5F) * 0.5D * (double) MathHelper.cos(
+                        this.bodyYaw * 0.017453292F), this.getVelocity().x, -0.00000001F, this.getVelocity().z);
     }
 }
 

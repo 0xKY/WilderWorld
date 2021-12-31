@@ -5,6 +5,8 @@ import me.kaloyankys.wilderworld.Wilderworld;
 import me.kaloyankys.wilderworld.block.AspenBirchSaplingBlock;
 import me.kaloyankys.wilderworld.block.MossCoverBlock;
 import me.kaloyankys.wilderworld.block.ShelfshroomBlock;
+import me.kaloyankys.wilderworld.block.SpawnBlock;
+import me.kaloyankys.wilderworld.entity.EggLayer;
 import me.kaloyankys.wilderworld.world.AspenSaplingGenerator;
 import me.kaloyankys.wilderworld.world.WisteriaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -66,6 +68,13 @@ public class WWBlocks {
     public static final Block ASPEN_SAPLING = registerNoItem("aspen_sapling", new AspenBirchSaplingBlock(new AspenSaplingGenerator(), FabricBlockSettings
             .copy(Blocks.BIRCH_SAPLING)
             .nonOpaque()));
+
+    public static final Block BUTTERFLY_SPAWN = registerFF("butterfly_larvae", new SpawnBlock(FabricBlockSettings
+            .of(Material.EGG)
+            .collidable(false)
+            .nonOpaque()
+            .breakInstantly(),
+            (EggLayer) WWEntities.BUTTERFLY));
 
     public static Block registerFF(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.FF_ADDITIONS)));
