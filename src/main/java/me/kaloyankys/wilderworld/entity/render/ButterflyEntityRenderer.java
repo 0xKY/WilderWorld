@@ -2,8 +2,10 @@ package me.kaloyankys.wilderworld.entity.render;
 
 import me.kaloyankys.wilderworld.client.WilderworldClient;
 import me.kaloyankys.wilderworld.entity.ButterflyEntity;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, ButterflyModel> {
@@ -25,9 +27,22 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
     public Identifier getTexture(ButterflyEntity entity) {
         if (entity.getCustomName() != null && entity.getCustomName().asString().equals("Roxanne")) {
             return ROXANNE;
+        } else if (!entity.isBaby()) {
+            return TEXTURE[entity.getVariant() % TEXTURE.length];
         } else {
             return TEXTURE[entity.getVariant() % TEXTURE.length];
         }
     }
 
+    @Override
+    public void render(ButterflyEntity mobEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
+        shadowRadius = 0.5F;
+        matrixStack.push();
+        if (mobEntity.isBaby()) {
+            matrixStack.scale(0.3F, 0.3F, 0.3F);
+            shadowRadius = 0.25F;
+        }
+        super.render(mobEntity, f, g, matrixStack, vertexConsumerProvider, i);
+        matrixStack.pop();
+    }
 }

@@ -2,10 +2,7 @@ package me.kaloyankys.wilderworld.init;
 
 import me.andante.chord.block.helper.WoodBlocks;
 import me.kaloyankys.wilderworld.Wilderworld;
-import me.kaloyankys.wilderworld.block.AspenBirchSaplingBlock;
-import me.kaloyankys.wilderworld.block.MossCoverBlock;
-import me.kaloyankys.wilderworld.block.ShelfshroomBlock;
-import me.kaloyankys.wilderworld.block.SpawnBlock;
+import me.kaloyankys.wilderworld.block.*;
 import me.kaloyankys.wilderworld.world.AspenSaplingGenerator;
 import me.kaloyankys.wilderworld.world.WisteriaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -72,8 +69,11 @@ public class WWBlocks {
             .of(Material.EGG)
             .collidable(false)
             .nonOpaque()
-            .breakInstantly(),
-            WWEntities.BUTTERFLY));
+            .breakInstantly()));
+
+    public static final Block BUTTERFLY_WING_MEMBRANE_BLOCK = registerFF("butterfly_wing_membrane", new MembraneBlock(FabricBlockSettings
+            .of(Material.SOLID_ORGANIC)
+            .collidable(false)));
 
     public static Block registerFF(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.FF_ADDITIONS)));

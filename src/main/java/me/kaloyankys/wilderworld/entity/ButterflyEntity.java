@@ -52,7 +52,6 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
         this.setPathfindingPenalty(PathNodeType.FENCE, -1.0F);
     }
 
-
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
