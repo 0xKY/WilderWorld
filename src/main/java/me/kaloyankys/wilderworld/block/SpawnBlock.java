@@ -36,6 +36,6 @@ public class SpawnBlock extends FallingBlock {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.cuboid(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
+        return VoxelShapes.cuboid(0.0D, 0.0D, 0.0D, 1.0D, 0.1D, 1.0D);
     }
 }

@@ -21,11 +21,6 @@ public class MembraneBlock extends BlockWithEntity {
         ((MembraneBlockEntity) world.getBlockEntity(pos)).onCollision(entity);
     }
 
-    @Override
-    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        ((MembraneBlockEntity) world.getBlockEntity(pos)).onCollision(entity);
-    }
-
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {

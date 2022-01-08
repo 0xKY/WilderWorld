@@ -5,11 +5,7 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.math.MathHelper;
 
-import java.util.Random;
-
 public class ButterflyModel extends SinglePartEntityModel<ButterflyEntity> {
-	private int loop = 10000;
-
     private final ModelPart root;
 
     private final ModelPart body;
@@ -24,6 +20,7 @@ public class ButterflyModel extends SinglePartEntityModel<ButterflyEntity> {
 	private final ModelPart cube_r5;
 	private final ModelPart body3;
 	private final ModelPart cube_r6;
+	private float bodyPitch;
 
     public ButterflyModel(ModelPart root) {
         this.root = root;
@@ -149,14 +146,29 @@ public class ButterflyModel extends SinglePartEntityModel<ButterflyEntity> {
 
     @Override
     public void setAngles(ButterflyEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-		if(entity.age % 2 == 0) {
+		if (entity.age % 2 == 0) {
 			wing1.roll = MathHelper.cos(0.436332F) * 3.1415927F * 0.15F;
-			wing2.roll = MathHelper.cos(0.436332F) * 3.1415927F * 0.15F;;
+			wing2.roll = MathHelper.cos(0.436332F) * 3.1415927F * 0.15F;
 		} else {
-			wing1.roll = -MathHelper.cos(0.436332F) * 3.1415927F * 0.15F;;
-			wing2.roll = -MathHelper.cos(0.436332F) * 3.1415927F * 0.15F;;
+			wing1.roll = -MathHelper.cos(0.436332F) * 3.1415927F * 0.15F;
+			wing2.roll = -MathHelper.cos(0.436332F) * 3.1415927F * 0.15F;
 		}
-    }
+		this.body.pitch = 0.1F + MathHelper.cos(animationProgress * 0.18F) * 3.1415927F * 0.025F;
+		this.wing1.pitch = 0.1F + MathHelper.cos(animationProgress * 0.18F) * 3.1415927F * 0.025F;
+		this.wing2.pitch = 0.1F + MathHelper.cos(animationProgress * 0.18F) * 3.1415927F * 0.025F;
+		this.antennae.pitch = 0.1F + MathHelper.cos(animationProgress * 0.18F) * 3.1415927F * 0.025F;
+		this.body2.pitch = 0.1F + MathHelper.cos(animationProgress * 0.18F) * 3.1415927F * 0.025F;
+		this.body3.pitch = 0.1F + MathHelper.cos(animationProgress * 0.18F) * 3.1415927F * 0.025F;
+
+		if (this.bodyPitch > 0.0F) {
+			this.body.pitch = ModelUtil.interpolateAngle(this.body.pitch, 3.0915928F * 2, this.bodyPitch);
+			this.wing1.pitch = ModelUtil.interpolateAngle(this.wing1.pitch, 3.0915928F * 2, this.bodyPitch);
+			this.wing2.pitch = ModelUtil.interpolateAngle(this.wing2.pitch, 3.0915928F * 2, this.bodyPitch);
+			this.antennae.pitch = ModelUtil.interpolateAngle(this.antennae.pitch, 3.0915928F * 2, this.bodyPitch);
+			this.body2.pitch = ModelUtil.interpolateAngle(this.body2.pitch, 3.0915928F * 2, this.bodyPitch);
+			this.body3.pitch = ModelUtil.interpolateAngle(this.body3.pitch, 3.0915928F * 2, this.bodyPitch);
+		}
+	}
 
     @Override
     public ModelPart getPart() {

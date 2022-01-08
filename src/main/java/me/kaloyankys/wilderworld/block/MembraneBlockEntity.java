@@ -9,6 +9,7 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -34,10 +35,28 @@ public class MembraneBlockEntity extends LootableContainerBlockEntity {
         if (entity instanceof ItemEntity item) {
             Random random = new Random();
             if (this.getFilter() == ItemStack.EMPTY) {
+                for (int i = (random.nextInt(8) + 1); i < 12; i++) {
+                    if (random.nextInt(4) == 0) {
+                        world.addParticle(ParticleTypes.FALLING_NECTAR, true,
+                                pos.getX() - 0.1 + i / 7.0, pos.getY() + 0.1 + i / 7.0, pos.getZ() - 0.1 + i / 7.0,
+                                0.0F + i, -0.00000001F + i, 0.0F + i);
+                    } else if (random.nextInt(4) == 1) {
+                        world.addParticle(ParticleTypes.FALLING_NECTAR, true,
+                                pos.getX() - 0.1 + i / 7.0, pos.getY() + 0.1 + i / 7.0, pos.getZ() - 0.1 - i / 7.0,
+                                0.0F + i, -0.00000001F + i, 0.0F + i);
+                    } else if (random.nextInt(4) == 2) {
+                        world.addParticle(ParticleTypes.FALLING_NECTAR, true,
+                                pos.getX() - 0.1 + i / 7.0, pos.getY() + 0.1 + i / 7.0, pos.getZ() - 0.1 + i / 7.0,
+                                0.0F + i, -0.00000001F + i, 0.0F + i);
+                    } else if (random.nextInt(4) == 3) {
+                        world.addParticle(ParticleTypes.FALLING_NECTAR, true,
+                                pos.getX() - 0.1 - i / 7.0, pos.getY() + 0.1 + i / 7.0, pos.getZ() - 0.1 + i / 7.0,
+                                0.0F + i, -0.00000001F + i, 0.0F + i);
+                    }
+                }
                 this.setFilter(item.getStack());
             } else if (this.getFilter().getItem() != item.getStack().getItem()) {
                 entity.addVelocity(entity.getVelocity().x, (random.nextInt(2) + 1) / 10.0, entity.getVelocity().z);
-                entity.teleport(entity.getX(), pos.up().getY(), entity.getZ());
             }
         }
     }

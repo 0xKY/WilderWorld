@@ -1,9 +1,9 @@
 package me.kaloyankys.wilderworld.entity;
 
+import me.kaloyankys.wilderworld.init.WWBlocks;
 import me.kaloyankys.wilderworld.init.WWEntities;
 import me.kaloyankys.wilderworld.init.WWItems;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.Flutterer;
 import net.minecraft.entity.SpawnReason;
@@ -55,15 +55,16 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(VARIANT, 2);
+        this.dataTracker.startTracking(VARIANT, random.nextInt(4));
     }
 
 
     @Override
     public void tick() {
         super.tick();
-        if (random.nextInt(200) == 0) {
-            ItemScatterer.spawn(world, this.getX(), this.getY(), this.getZ(), new ItemStack(WWItems.COFFEE_MUG));
+        System.out.println(this.age);
+        if (random.nextInt(200) == 0 && this.age > 2000) {
+            ItemScatterer.spawn(world, this.getX(), this.getY(), this.getZ(), new ItemStack(WWItems.BUTTEFLY_WING));
         }
     }
 
@@ -76,7 +77,7 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         if (!this.world.isClient) {
             if (player.getStackInHand(hand).isOf(Items.SUGAR)) {
-                world.setBlockState(this.getBlockPos(), Blocks.COBWEB.getDefaultState());
+                world.setBlockState(this.getBlockPos(), WWBlocks.BUTTERFLY_SPAWN.getDefaultState());
                 return ActionResult.CONSUME;
             }
         }

@@ -65,13 +65,13 @@ public class WWBlocks {
             .copy(Blocks.BIRCH_SAPLING)
             .nonOpaque()));
 
-    public static final Block BUTTERFLY_SPAWN = registerFF("butterfly_larvae", new SpawnBlock(FabricBlockSettings
+    public static final Block BUTTERFLY_SPAWN = registerFF("larvae", new SpawnBlock(FabricBlockSettings
             .of(Material.EGG)
             .collidable(false)
             .nonOpaque()
             .breakInstantly()));
 
-    public static final Block BUTTERFLY_WING_MEMBRANE_BLOCK = registerFF("butterfly_wing_membrane", new MembraneBlock(FabricBlockSettings
+    public static final Block BUTTERFLY_WING_MEMBRANE_BLOCK = registerFF("butterfly_wing_membrane_block", new MembraneBlock(FabricBlockSettings
             .of(Material.SOLID_ORGANIC)
             .collidable(false)));
 
