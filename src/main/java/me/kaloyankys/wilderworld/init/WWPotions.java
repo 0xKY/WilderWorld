@@ -20,29 +20,47 @@ public class WWPotions {
 
     public static final StatusEffect RAGE_EFFECT = new RageEffect(StatusEffectCategory.BENEFICIAL, 0x15031c)
             .addAttributeModifier(
-                    EntityAttributes.GENERIC_ATTACK_SPEED, "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3", 0.4D, EntityAttributeModifier.Operation.MULTIPLY_TOTAL)
+                    EntityAttributes.GENERIC_ATTACK_SPEED, "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3", 0.4D,
+                    EntityAttributeModifier.Operation.MULTIPLY_TOTAL)
             .addAttributeModifier(
-                    EntityAttributes.GENERIC_MOVEMENT_SPEED, "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3", 0.4D, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+                    EntityAttributes.GENERIC_MOVEMENT_SPEED, "AF8B6E3F-3328-4C0A-AA36-5BA2BB9DBEF3", 0.4D,
+                    EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
 
-    public static final Potion SHELF_SENSE = new Potion("shelf_sense", new StatusEffectInstance(SHELF_SENSE_EFFECT, 2400, 1));
-    public static final Potion RAGE = new Potion("rage", new StatusEffectInstance(RAGE_EFFECT, 2400, 1));
-    public static final Potion GLOWING = new Potion("glowing", new StatusEffectInstance(StatusEffects.GLOWING, 2400, 1));
+    public static final StatusEffect COFFEE_EFFECT = new ShelfSenseEffect(StatusEffectCategory.BENEFICIAL, 0x421c15);
+
+
+    public static final Potion SHELF_SENSE = registerPotion("shelf_sense", SHELF_SENSE_EFFECT, new Potion("shelf_sense", new StatusEffectInstance(
+            SHELF_SENSE_EFFECT, 2400, 0)));
+
+    public static final Potion RAGE = registerPotion("rage", RAGE_EFFECT, new Potion("rage", new StatusEffectInstance(
+            RAGE_EFFECT, 2400, 0)));
+
+    public static final Potion GLOWING = registerPotionWithExistingEffect("glowing", new Potion("glowing", new StatusEffectInstance(
+            StatusEffects.GLOWING, 2400, 0)));
+
+    public static final Potion COFFEE = registerPotion("coffee", COFFEE_EFFECT, new Potion("coffee", new StatusEffectInstance(
+            COFFEE_EFFECT, 2400, 0)));
+
 
     public static void init() {
         BrewingRecipeRegistryInvoker.registerPotionRecipe(Potions.AWKWARD, WWBlocks.SHELFSHROOM.asItem(), SHELF_SENSE);
-        registerPotion("shelf_sense", SHELF_SENSE_EFFECT, SHELF_SENSE);
         BrewingRecipeRegistryInvoker.registerPotionRecipe(Potions.AWKWARD, WWBlocks.RAGING_VIOLET.asItem(), RAGE);
-        registerPotion("rage", RAGE_EFFECT, RAGE);
         BrewingRecipeRegistryInvoker.registerPotionRecipe(Potions.AWKWARD, WWBlocks.PHOSPHOSHOOTS.asItem(), GLOWING);
-        registerPotionWithExistingEffect("glowing", GLOWING);
     }
 
-    private static void registerPotion(String id, StatusEffect statusEffect, Potion potion) {
+    private static Potion registerPotion(String id, StatusEffect statusEffect, Potion potion) {
         Registry.register(Registry.STATUS_EFFECT, new Identifier("wilderworld", id), statusEffect);
         Registry.register(Registry.POTION, new Identifier("wilderworld", id), potion);
+        return potion;
     }
 
-    private static void registerPotionWithExistingEffect(String id, Potion potion) {
+    private static Potion registerPotionWithExistingEffect(String id, Potion potion) {
+        Registry.register(Registry.POTION, new Identifier("wilderworld", id), potion);
+        return potion;
+    }
+
+    private static void registerEffect(String id, StatusEffect statusEffect, Potion potion) {
+        Registry.register(Registry.STATUS_EFFECT, new Identifier("wilderworld", id), statusEffect);
         Registry.register(Registry.POTION, new Identifier("wilderworld", id), potion);
     }
 }

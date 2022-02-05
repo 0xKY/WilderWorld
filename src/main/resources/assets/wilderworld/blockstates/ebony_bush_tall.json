@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "half=lower,snowy=false": {
+      "model": "wilderworld:block/ebony_bush_bottom"
+    },
+    "half=upper,snowy=false": {
+      "model": "wilderworld:block/ebony_bush_top"
+    },
+    "half=lower,snowy=true": {
+      "model": "wilderworld:block/ebony_bush_snowy"
+    },
+    "half=upper,snowy=true": {
+      "model": "wilderworld:block/ebony_bush_top"
+    }
+  }
+}

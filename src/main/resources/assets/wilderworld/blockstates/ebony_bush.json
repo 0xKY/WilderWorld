@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "snowy=false": {
+      "model": "wilderworld:block/ebony_bush_top"
+    },
+    "snowy=true": {
+      "model": "wilderworld:block/ebony_bush_top_snowy"
+    }
+  }
+}

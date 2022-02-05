@@ -6,6 +6,7 @@
   "mixins": [
     "AbstractBlockMixin",
     "BrewingRecipeRegistryInvoker",
+    "LeavesBlockMixin",
     "LivingEntityMixin",
     "TreeDecoratorTypeInvoker"
   ],

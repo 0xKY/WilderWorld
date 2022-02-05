@@ -36,26 +36,6 @@ public class WWBiomeModifications {
     private static final Random RANDOM = new Random();
     public static final PlacementModifier NOT_IN_SURFACE_WATER_MODIFIER = SurfaceWaterDepthFilterPlacementModifier.of(0);
 
-    /* public static final ConfiguredFeature<?, ?> BIRD_OF_PARADISE_PATCH = registerFF("birds_of_paradise", Feature.RANDOM_PATCH.configure(
-            ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                    BlockStateProvider.of(WWBlocks.BIRD_OF_PARADISE))), List.of(Blocks.GRASS_BLOCK))));
-
-    public static final ConfiguredFeature<?, ?> CHAMOMILE_PATCH = registerFF("chamomiles", Feature.RANDOM_PATCH.configure(
-            ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                    BlockStateProvider.of(WWBlocks.CHAMOMILE))), List.of(Blocks.GRASS_BLOCK))));
-
-    public static final ConfiguredFeature<?, ?> RAGING_VIOLET_PATCH = registerFF("raging_violets", Feature.RANDOM_PATCH.configure(
-            ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                    BlockStateProvider.of(WWBlocks.RAGING_VIOLET))), List.of(Blocks.GRASS_BLOCK))));
-
-    public static final ConfiguredFeature<?, ?> PHOSPHOSHOOT_PATCH = registerFF("phosphoshoots", Feature.RANDOM_PATCH.configure(
-            ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                    BlockStateProvider.of(WWBlocks.PHOSPHOSHOOTS))), List.of(Blocks.GRASS_BLOCK))));
-
-    public static final ConfiguredFeature<?, ?> SHELFSHROOMS = registerFF("shelfshrooms", Feature.RANDOM_PATCH.configure(
-            ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(new SimpleBlockFeatureConfig(
-                    BlockStateProvider.of(WWBlocks.SHELFSHROOM))), List.of(Blocks.GRASS_BLOCK)))); */
-
     public static final ConfiguredFeature<SimpleRandomFeatureConfig, ?> FF_CUSTOM_FLOWERS = registerFF("ff_custom_flowers", Feature.SIMPLE_RANDOM_SELECTOR.configure(
             new SimpleRandomFeatureConfig(List.of(() ->
                     Feature.RANDOM_PATCH.configure(ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(
@@ -86,9 +66,20 @@ public class WWBiomeModifications {
             .forceDirt()
             .build()));
 
+    public static final ConfiguredFeature<?, ?> HOT_SPRING = registerIcy("hotspring",
+            Feature.DELTA_FEATURE.configure(new DeltaFeatureConfig(
+                    Blocks.WATER.getDefaultState(), Blocks.MAGMA_BLOCK.getDefaultState(), UniformIntProvider.create(3, 7), UniformIntProvider.create(0, 2))));
+
+    public static final ConfiguredFeature<SimpleRandomFeatureConfig, ?> EBONY_BUSHES = registerIcy("ebony_bushes", Feature.SIMPLE_RANDOM_SELECTOR.configure(
+            new SimpleRandomFeatureConfig(List.of(() ->
+                    Feature.RANDOM_PATCH.configure(ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(
+                            new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.EBONY_BUSH))))).withPlacement(), () ->
+                    Feature.RANDOM_PATCH.configure(ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(
+                            new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.EBONY_BUSH_TALL))))).withPlacement()))));
+
     public WWBiomeModifications() {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST), SpawnGroup.AMBIENT, WWEntities.BUTTERFLY,
-                20, 1, 4);
+                30, 3, 6);
     }
 
     private static <FC extends FeatureConfig> ConfiguredFeature<FC, ?> registerFF(String id, ConfiguredFeature<FC, ?> configuredFeature) {
@@ -107,6 +98,16 @@ public class WWBiomeModifications {
         Registry.register(BuiltinRegistries.PLACED_FEATURE, RegistryKey.of(Registry.PLACED_FEATURE_KEY,
                 new Identifier("wilderworld", id)).getValue(), configuredFeature.withPlacement(VegetationPlacedFeatures
                 .modifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(0, 0.1f, 3), Blocks.OAK_SAPLING)));
+        return configuredFeature;
+    }
+
+    private static <FC extends FeatureConfig> ConfiguredFeature<FC, ?> registerIcy(String id, ConfiguredFeature<FC, ?> configuredFeature) {
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SNOWY_PLAINS), GenerationStep.Feature.VEGETAL_DECORATION,
+                RegistryKey.of(Registry.PLACED_FEATURE_KEY, new Identifier("wilderworld", id)));
+        Registry.register(BuiltinRegistries.PLACED_FEATURE, RegistryKey.of(Registry.PLACED_FEATURE_KEY,
+                new Identifier("wilderworld", id)).getValue(), configuredFeature.withPlacement(RarityFilterPlacementModifier.of(7),
+                SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, CountPlacementModifier
+                        .of(ClampedIntProvider.create(UniformIntProvider.create(-1, 5), 0, 5)), BiomePlacementModifier.of()));
         return configuredFeature;
     }
 

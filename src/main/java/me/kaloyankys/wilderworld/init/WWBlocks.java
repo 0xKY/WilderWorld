@@ -75,8 +75,23 @@ public class WWBlocks {
             .of(Material.SOLID_ORGANIC)
             .collidable(false)));
 
+    public static final Block SLUSH_ICE = registerIcy("slush_ice", new IceBlock(FabricBlockSettings.copy(Blocks.ICE)));
+
+    public static final Block EBONY_BUSH_TALL = registerIcy("ebony_bush_tall", new SnowyBushBlock(FabricBlockSettings.copy(Blocks.GRASS)));
+
+    public static final Block EBONY_BUSH = registerIcy("ebony_bush", new SnowyPlantBlock(FabricBlockSettings.copy(Blocks.GRASS)));
+
+    public static final Block COFFEE_POD = registerIcy("coffee_pod", new Block(FabricBlockSettings.copy(Blocks.PUMPKIN)));
+
+    public static final Block LEAVES_PILE = registerFF("leaves_pile", new LeavesPileBlock(2, FabricBlockSettings.copy(Blocks.GRASS)));
+
     public static Block registerFF(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.FF_ADDITIONS)));
+        return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
+    }
+
+    public static Block registerIcy(String id, Block block) {
+        Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
         return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
     }
 

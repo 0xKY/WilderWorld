@@ -62,9 +62,8 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
     @Override
     public void tick() {
         super.tick();
-        System.out.println(this.age);
         if (random.nextInt(200) == 0 && this.age > 2000) {
-            ItemScatterer.spawn(world, this.getX(), this.getY(), this.getZ(), new ItemStack(WWItems.BUTTEFLY_WING));
+            ItemScatterer.spawn(world, this.getX(), this.getY(), this.getZ(), new ItemStack(WWItems.BUTTERFLY_WING));
         }
     }
 

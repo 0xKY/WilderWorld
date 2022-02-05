@@ -13,11 +13,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AbstractBlock.class)
 public abstract class AbstractBlockMixin {
-
     @Inject(at = @At("HEAD"), method = "onBlockAdded")
-    private void generate(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify, CallbackInfo ci) {
+    private void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify, CallbackInfo ci) {
         if (world.getBlockState(pos).isOf(Blocks.BIRCH_SAPLING)) {
             world.setBlockState(pos, WWBlocks.ASPEN_SAPLING.getDefaultState());
         }
     }
 }
+
