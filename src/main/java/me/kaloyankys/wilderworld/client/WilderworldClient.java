@@ -1,5 +1,6 @@
 package me.kaloyankys.wilderworld.client;
 
+import me.kaloyankys.wilderworld.client.particle.CustomBlockLeakParticle;
 import me.kaloyankys.wilderworld.client.particle.LeafParticle;
 import me.kaloyankys.wilderworld.client.particle.SteamParticle;
 import me.kaloyankys.wilderworld.entity.render.ButterflyEntityRenderer;
@@ -26,7 +27,6 @@ import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
 public class WilderworldClient implements ClientModInitializer {
-
     public static final EntityModelLayer BUTTERFLY_RENDER_LAYER = new EntityModelLayer(
             new Identifier("wilderworld", "butterfly"), "butterfly_render_layer");
 
@@ -35,10 +35,11 @@ public class WilderworldClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 WWBlocks.BIRD_OF_PARADISE, WWBlocks.CHAMOMILE, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM, WWBlocks.PHOSPHOSHOOTS,
                 WWBlocks.WISTERIA.POTTED_SAPLING, WWBlocks.WISTERIA.SAPLING, WWBlocks.MOSS_COVER, WWBlocks.ASPEN_SAPLING, WWBlocks.BUTTERFLY_SPAWN,
-                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL, WWBlocks.LEAVES_PILE);
+                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL, WWBlocks.LEAVES_PILE, WWBlocks.COCOA_ICECREAM);
 
         ParticleFactoryRegistry.getInstance().register(WWParticles.STEAM, SteamParticle.SteamFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.LEAF, LeafParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_DRIP, CustomBlockLeakParticle.DrippingChocolateFactory::new);
 
         EntityRendererRegistry.register(WWEntities.BUTTERFLY, ButterflyEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(BUTTERFLY_RENDER_LAYER, ButterflyModel::getTexturedModelData);

@@ -3,6 +3,7 @@ package me.kaloyankys.wilderworld.init;
 import me.andante.chord.block.helper.WoodBlocks;
 import me.kaloyankys.wilderworld.Wilderworld;
 import me.kaloyankys.wilderworld.block.*;
+import me.kaloyankys.wilderworld.util.enums.Flavours;
 import me.kaloyankys.wilderworld.world.AspenSaplingGenerator;
 import me.kaloyankys.wilderworld.world.WisteriaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -83,7 +84,15 @@ public class WWBlocks {
 
     public static final Block COFFEE_POD = registerIcy("coffee_pod", new Block(FabricBlockSettings.copy(Blocks.PUMPKIN)));
 
-    public static final Block LEAVES_PILE = registerFF("leaves_pile", new LeavesPileBlock(2, FabricBlockSettings.copy(Blocks.GRASS)));
+    public static final Block LEAVES_PILE = registerDeco("leaves_pile", new LeavesPileBlock(2, FabricBlockSettings.copy(Blocks.GRASS)));
+
+    public static final Block COCOA_ICECREAM = registerNoItem("cocoa_icecream_block", new IceCreamBlock(
+            FabricBlockSettings.copy(Blocks.SNOW).nonOpaque(), Flavours.CHOCOLATE));
+
+    public static final Block SWEETBERRY_ICECREAM = registerIcy("sweetberry_icecream_block", new IceCreamBlock(FabricBlockSettings.copy(Blocks.POWDER_SNOW), Flavours.SWEET_BERRY));
+
+    public static final Block MINT_ICECREAM = registerIcy("mint_icecream_block", new IceCreamBlock(FabricBlockSettings.copy(Blocks.POWDER_SNOW), Flavours.MINT));
+
 
     public static Block registerFF(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.FF_ADDITIONS)));
@@ -92,6 +101,11 @@ public class WWBlocks {
 
     public static Block registerIcy(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
+        return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
+    }
+
+    public static Block registerIcySpecial(String id, Block block, BlockItem blockItem) {
+        Registry.register(Registry.ITEM, new Identifier("wilderworld", id), blockItem);
         return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
     }
 

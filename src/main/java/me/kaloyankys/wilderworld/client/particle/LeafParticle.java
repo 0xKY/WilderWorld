@@ -25,7 +25,7 @@ public class LeafParticle extends SpriteBillboardParticle {
         this.setSpriteForAge(spriteProvider);
         this.rotationSpeed = ((float) Math.random() - 0.5f) * 0.1f;
         this.angle = (float) Math.random() * ((float) Math.PI * 2);
-        this.scale *= 1.5;
+        this.scale *= 1.5 + random.nextFloat() * 1.5f;
         this.gravityStrength /= 2;
     }
 
