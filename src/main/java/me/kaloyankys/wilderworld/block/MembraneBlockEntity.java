@@ -56,7 +56,7 @@ public class MembraneBlockEntity extends LootableContainerBlockEntity {
                 }
                 this.setFilter(item.getStack());
             } else if (this.getFilter().getItem() != item.getStack().getItem()) {
-                entity.addVelocity(entity.getVelocity().x, (random.nextInt(2) + 1) / 10.0, entity.getVelocity().z);
+                entity.addVelocity(0, (random.nextInt(2) + 1) / 2.0, 0);
             }
         }
     }

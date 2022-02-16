@@ -25,7 +25,7 @@ public class WWEntities {
         return Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("wilderworld", id), type);
     }
 
-    public static BlockEntityType<MembraneBlockEntity> MEMBRANE = register("oven_block_entity",
+    public static BlockEntityType<MembraneBlockEntity> MEMBRANE = register("membrane_block",
             FabricBlockEntityTypeBuilder.create(MembraneBlockEntity::new, WWBlocks.BUTTERFLY_WING_MEMBRANE_BLOCK).build(null));
 
 

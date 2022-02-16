@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "wilderworld:cocoa_icecream",
-    "sweetberry_icecream",
-    "mint_icecream"
+    "wilderworld:cocoa_icecream_block",
+    "sweetberry_icecream_block",
+    "mint_icecream_block"
   ]
 }
