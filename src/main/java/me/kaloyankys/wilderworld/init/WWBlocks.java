@@ -17,7 +17,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class WWBlocks {
-
     public static final Block BIRD_OF_PARADISE = registerFF("bird_of_paradise", new TallPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE)
             .nonOpaque()
             .breakInstantly()
@@ -89,10 +88,11 @@ public class WWBlocks {
     public static final Block COCOA_ICECREAM = registerNoItem("cocoa_icecream_block", new IceCreamBlock(
             FabricBlockSettings.copy(Blocks.SNOW).nonOpaque(), Flavours.CHOCOLATE));
 
-    public static final Block SWEETBERRY_ICECREAM = registerIcy("sweetberry_icecream_block", new IceCreamBlock(FabricBlockSettings.copy(Blocks.POWDER_SNOW), Flavours.SWEET_BERRY));
+    public static final Block SWEETBERRY_ICECREAM = registerNoItem("sweetberry_icecream_block", new IceCreamBlock(
+            FabricBlockSettings.copy(Blocks.SNOW).nonOpaque(), Flavours.SWEET_BERRY));
 
-    public static final Block MINT_ICECREAM = registerIcy("mint_icecream_block", new IceCreamBlock(FabricBlockSettings.copy(Blocks.POWDER_SNOW), Flavours.MINT));
-
+    public static final Block MINT_ICECREAM = registerNoItem("mint_icecream_block", new IceCreamBlock(
+            FabricBlockSettings.copy(Blocks.SNOW).nonOpaque(), Flavours.MINT));
 
     public static Block registerFF(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.FF_ADDITIONS)));
@@ -101,11 +101,6 @@ public class WWBlocks {
 
     public static Block registerIcy(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
-        return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
-    }
-
-    public static Block registerIcySpecial(String id, Block block, BlockItem blockItem) {
-        Registry.register(Registry.ITEM, new Identifier("wilderworld", id), blockItem);
         return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
     }
 

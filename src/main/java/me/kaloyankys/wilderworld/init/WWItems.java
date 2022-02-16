@@ -31,6 +31,15 @@ public class WWItems {
             new Item.Settings().group(Wilderworld.ICY_ADDITIONS).food(
                     new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
 
+    public static final Item SWEETBERRY_ICECREAM = register("sweetberry_icecream", new IceCreamItem(Flavours.SWEET_BERRY, WWBlocks.SWEETBERRY_ICECREAM,
+            new Item.Settings().group(Wilderworld.ICY_ADDITIONS).food(
+                    new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
+
+    public static final Item MINT_ICECREAM = register("mint_icecream", new IceCreamItem(Flavours.MINT, WWBlocks.MINT_ICECREAM,
+            new Item.Settings().group(Wilderworld.ICY_ADDITIONS).food(
+                    new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
+
+
     private static Item register(String id, Item item) {
         return Registry.register(Registry.ITEM, new Identifier("wilderworld", id), item);
     }

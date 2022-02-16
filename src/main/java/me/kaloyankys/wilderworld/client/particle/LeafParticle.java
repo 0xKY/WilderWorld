@@ -20,13 +20,12 @@ public class LeafParticle extends SpriteBillboardParticle {
         this.colorRed = colorRed;
         this.colorGreen = colorGreen;
         this.colorBlue = colorBlue;
-        int i = (int) (32.0 / (Math.random() * 0.8 + 0.2));
         this.maxAge = 800;
         this.setSpriteForAge(spriteProvider);
         this.rotationSpeed = ((float) Math.random() - 0.5f) * 0.1f;
         this.angle = (float) Math.random() * ((float) Math.PI * 2);
-        this.scale *= 1.5 + random.nextFloat() * 1.5f;
-        this.gravityStrength /= 2;
+        this.scale *= random.nextFloat() / 1.5f;
+        this.gravityStrength /= 6;
     }
 
     @Override
@@ -52,7 +51,7 @@ public class LeafParticle extends SpriteBillboardParticle {
         this.prevAngle = this.angle;
         this.angle += (float) Math.PI * this.rotationSpeed * 2.0f;
         this.move(this.velocityX, this.velocityY, this.velocityZ);
-        this.velocityY -= 0.003f;
+        this.velocityY -= 0.000003f;
         this.velocityY = Math.max(this.velocityY, -0.14f);
         this.velocityX += 0.001f;
         this.velocityZ += 0.001f;
@@ -67,6 +66,7 @@ public class LeafParticle extends SpriteBillboardParticle {
         } else {
             this.angle = this.prevAngle;
         }
+        this.gravityStrength /= 3 + random.nextFloat() * 1.5f;
     }
 
     @Environment(value = EnvType.CLIENT)

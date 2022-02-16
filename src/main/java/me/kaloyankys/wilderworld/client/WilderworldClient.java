@@ -35,11 +35,19 @@ public class WilderworldClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 WWBlocks.BIRD_OF_PARADISE, WWBlocks.CHAMOMILE, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM, WWBlocks.PHOSPHOSHOOTS,
                 WWBlocks.WISTERIA.POTTED_SAPLING, WWBlocks.WISTERIA.SAPLING, WWBlocks.MOSS_COVER, WWBlocks.ASPEN_SAPLING, WWBlocks.BUTTERFLY_SPAWN,
-                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL, WWBlocks.LEAVES_PILE, WWBlocks.COCOA_ICECREAM);
+                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL, WWBlocks.LEAVES_PILE);
 
         ParticleFactoryRegistry.getInstance().register(WWParticles.STEAM, SteamParticle.SteamFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.LEAF, LeafParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_DRIP, CustomBlockLeakParticle.DrippingChocolateFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_DRIP, CustomBlockLeakParticle.ChocolateDripFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_FALL, CustomBlockLeakParticle.ChocolateFallFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_LAND, CustomBlockLeakParticle.ChocolateLandFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.SWEETBERRY_DRIP, CustomBlockLeakParticle.SweetBerryDripFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.SWEETBERRY_FALL, CustomBlockLeakParticle.SweetBerryFallFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.SWEETBERRY_LAND, CustomBlockLeakParticle.SweetBerryLandFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.MINT_DRIP, CustomBlockLeakParticle.MintDripFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.MINT_FALL, CustomBlockLeakParticle.MintFallFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.MINT_LAND, CustomBlockLeakParticle.MintLandFactory::new);
 
         EntityRendererRegistry.register(WWEntities.BUTTERFLY, ButterflyEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(BUTTERFLY_RENDER_LAYER, ButterflyModel::getTexturedModelData);
