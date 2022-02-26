@@ -46,7 +46,7 @@ public class IceCreamBlock extends SnowBlock {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         int i = world.getBlockState(pos).get(IceCreamBlock.LAYERS);
-        if (random.nextInt(3) == 0) {
+        if (random.nextInt(2) == 0) {
             Direction direction = Direction.random(random);
             if (direction != Direction.UP) {
                 BlockPos blockPos = pos.offset(direction);

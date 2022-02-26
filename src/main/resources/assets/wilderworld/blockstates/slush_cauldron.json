@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "level_1_7=1": {
+      "model": "wilderworld:block/slush_cauldron_1"
+    },
+    "level_1_7=2": {
+      "model": "wilderworld:block/slush_cauldron_2"
+    },
+    "level_1_7=3": {
+      "model": "wilderworld:block/slush_cauldron_3"
+    },
+    "level_1_7=4": {
+      "model": "wilderworld:block/slush_cauldron_4"
+    },
+    "level_1_7=5": {
+      "model": "wilderworld:block/slush_cauldron_5"
+    },
+    "level_1_7=6": {
+      "model": "wilderworld:block/slush_cauldron_6"
+    },
+    "level_1_7=7": {
+      "model": "wilderworld:block/slush_cauldron_7"
+    }
+  }
+}

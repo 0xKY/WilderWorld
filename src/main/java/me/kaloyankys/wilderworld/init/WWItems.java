@@ -39,6 +39,7 @@ public class WWItems {
             new Item.Settings().group(Wilderworld.ICY_ADDITIONS).food(
                     new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
 
+    public static final Item ICE_CUBE = register("ice_cube", new Item(new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
 
     private static Item register(String id, Item item) {
         return Registry.register(Registry.ITEM, new Identifier("wilderworld", id), item);

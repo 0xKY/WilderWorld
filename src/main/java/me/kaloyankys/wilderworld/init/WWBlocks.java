@@ -8,6 +8,7 @@ import me.kaloyankys.wilderworld.world.AspenSaplingGenerator;
 import me.kaloyankys.wilderworld.world.WisteriaSaplingGenerator;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.BlockItem;
@@ -75,13 +76,11 @@ public class WWBlocks {
             .of(Material.SOLID_ORGANIC)
             .collidable(false)));
 
-    public static final Block SLUSH_ICE = registerIcy("slush_ice", new IceBlock(FabricBlockSettings.copy(Blocks.ICE)));
+    public static final Block SLUSH = registerIcy("slush_ice", new IceBlock(FabricBlockSettings.copy(Blocks.ICE)));
 
     public static final Block EBONY_BUSH_TALL = registerIcy("ebony_bush_tall", new SnowyBushBlock(FabricBlockSettings.copy(Blocks.GRASS)));
 
     public static final Block EBONY_BUSH = registerIcy("ebony_bush", new SnowyPlantBlock(FabricBlockSettings.copy(Blocks.GRASS)));
-
-    public static final Block COFFEE_POD = registerIcy("coffee_pod", new Block(FabricBlockSettings.copy(Blocks.PUMPKIN)));
 
     public static final Block LEAVES_PILE = registerDeco("leaves_pile", new LeavesPileBlock(2, FabricBlockSettings.copy(Blocks.GRASS)));
 
@@ -93,6 +92,10 @@ public class WWBlocks {
 
     public static final Block MINT_ICECREAM = registerNoItem("mint_icecream_block", new IceCreamBlock(
             FabricBlockSettings.copy(Blocks.SNOW).nonOpaque(), Flavours.MINT));
+
+    public static final Block SLUSH_CAULDRON = registerNoItem("slush_cauldron", new SlushCauldronBlock(
+            FabricBlockSettings.copy(Blocks.CAULDRON), LeveledCauldronBlock.RAIN_PREDICATE, CauldronBehavior.WATER_CAULDRON_BEHAVIOR));
+
 
     public static Block registerFF(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.FF_ADDITIONS)));
