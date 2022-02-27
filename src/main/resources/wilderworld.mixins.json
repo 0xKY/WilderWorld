@@ -7,7 +7,6 @@
     "AbstractBlockMixin",
     "BrewingRecipeRegistryInvoker",
     "ItemMixin",
-    "LeavesBlockMixin",
     "LivingEntityMixin",
     "TreeDecoratorTypeInvoker"
   ],

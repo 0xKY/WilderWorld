@@ -82,8 +82,6 @@ public class WWBlocks {
 
     public static final Block EBONY_BUSH = registerIcy("ebony_bush", new SnowyPlantBlock(FabricBlockSettings.copy(Blocks.GRASS)));
 
-    public static final Block LEAVES_PILE = registerDeco("leaves_pile", new LeavesPileBlock(2, FabricBlockSettings.copy(Blocks.GRASS)));
-
     public static final Block COCOA_ICECREAM = registerNoItem("cocoa_icecream_block", new IceCreamBlock(
             FabricBlockSettings.copy(Blocks.SNOW).nonOpaque(), Flavours.CHOCOLATE));
 

@@ -20,7 +20,7 @@ public class Wilderworld implements ModInitializer {
 
     public static final ItemGroup ICY_ADDITIONS = FabricItemGroupBuilder.create(
                     new Identifier("wilderworld", "icy_additions"))
-            .icon(() -> new ItemStack(WWItems.COFFEE_MUG))
+            .icon(() -> new ItemStack(WWItems.ICE_CUBE))
             .build();
 
     @Override

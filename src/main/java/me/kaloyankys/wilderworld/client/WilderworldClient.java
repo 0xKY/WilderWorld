@@ -1,7 +1,6 @@
 package me.kaloyankys.wilderworld.client;
 
 import me.kaloyankys.wilderworld.client.particle.CustomBlockLeakParticle;
-import me.kaloyankys.wilderworld.client.particle.LeafParticle;
 import me.kaloyankys.wilderworld.client.particle.SteamParticle;
 import me.kaloyankys.wilderworld.entity.render.ButterflyEntityRenderer;
 import me.kaloyankys.wilderworld.entity.render.ButterflyModel;
@@ -35,10 +34,9 @@ public class WilderworldClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 WWBlocks.BIRD_OF_PARADISE, WWBlocks.CHAMOMILE, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM, WWBlocks.PHOSPHOSHOOTS,
                 WWBlocks.WISTERIA.POTTED_SAPLING, WWBlocks.WISTERIA.SAPLING, WWBlocks.MOSS_COVER, WWBlocks.ASPEN_SAPLING, WWBlocks.BUTTERFLY_SPAWN,
-                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL, WWBlocks.LEAVES_PILE);
+                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL);
 
         ParticleFactoryRegistry.getInstance().register(WWParticles.STEAM, SteamParticle.SteamFactory::new);
-        ParticleFactoryRegistry.getInstance().register(WWParticles.LEAF, LeafParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_DRIP, CustomBlockLeakParticle.ChocolateDripFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_FALL, CustomBlockLeakParticle.ChocolateFallFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_LAND, CustomBlockLeakParticle.ChocolateLandFactory::new);
@@ -54,10 +52,10 @@ public class WilderworldClient implements ClientModInitializer {
 
         ColorProviderRegistryImpl.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ?
                         BiomeColors.getFoliageColor(world, pos) : FoliageColors.getColor(0.5D, 1.0D),
-                WWBlocks.MOSS_COVER, WWBlocks.LEAVES_PILE);
+                WWBlocks.MOSS_COVER);
 
         ColorProviderRegistryImpl.ITEM.register((stack, tintIndex) -> FoliageColors.getColor(0.5D, 1.0D),
-                WWBlocks.MOSS_COVER, WWBlocks.LEAVES_PILE);
+                WWBlocks.MOSS_COVER);
 
         EntityRendererRegistry.register(WWBlocks.WISTERIA.BOAT_ENTITY, BoatEntityRenderer::new);
 
