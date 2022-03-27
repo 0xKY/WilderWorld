@@ -34,8 +34,13 @@
   "block.wilderworld.wisteria_stairs": "Wisteria Stairs",
   "block.wilderworld.wisteria_trapdoor": "Wisteria Trapdoor",
   "block.wilderworld.wisteria_wood": "Wisteria Wood",
-  "block.wilderworld.moss_cover": "Moss Cover",
+  "block.wilderworld.ebony_bush": "Ebony Bush",
+  "block.wilderworld.ebony_bush_tall": "Tall Ebony Bush",
+  "block.wilderworld.cocoa_icecream_block": "Chocolate Icecream Block",
+  "block.wilderworld.mint_icecream_block": "Mint Icecream Block",
+  "block.wilderworld.sweetberry_icecream_block": "Sweet Berry Icecream Block",
   "itemGroup.wilderworld.ff_additions": "Flower Forest Additions",
+  "itemGroup.wilderworld.icy_additions": "Icy Additions",
   "effect.wilderworld.shelf_sense": "Shelf Sense",
   "effect.wilderworld.rage": "Rage"
 }

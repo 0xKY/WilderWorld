@@ -2,7 +2,7 @@
   "credit": "Made with Blockbench",
   "textures": {
     "0": "wilderworld:block/ebony_shrubs_bottom",
-    "1": "wilderworld:block/snow",
+    "1": "minecraft:block/snow",
     "particle": "wilderworld:block/ebony_shrubs_bottom"
   },
   "elements": [

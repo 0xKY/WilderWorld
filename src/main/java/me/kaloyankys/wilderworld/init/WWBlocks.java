@@ -58,10 +58,6 @@ public class WWBlocks {
             .itemGroup(Wilderworld.FF_ADDITIONS)
             .build("wilderworld", "wisteria");
 
-    public static final Block MOSS_COVER = registerDeco("moss_cover", new MossCoverBlock(FabricBlockSettings
-            .copy(Blocks.VINE)
-            .nonOpaque()));
-
     public static final Block ASPEN_SAPLING = registerNoItem("aspen_sapling", new AspenBirchSaplingBlock(new AspenSaplingGenerator(), FabricBlockSettings
             .copy(Blocks.BIRCH_SAPLING)
             .nonOpaque()));
@@ -75,8 +71,6 @@ public class WWBlocks {
     public static final Block BUTTERFLY_WING_MEMBRANE_BLOCK = registerFF("butterfly_wing_membrane_block", new MembraneBlock(FabricBlockSettings
             .of(Material.SOLID_ORGANIC)
             .collidable(false)));
-
-    public static final Block SLUSH = registerIcy("slush_ice", new IceBlock(FabricBlockSettings.copy(Blocks.ICE)));
 
     public static final Block EBONY_BUSH_TALL = registerIcy("ebony_bush_tall", new SnowyBushBlock(FabricBlockSettings.copy(Blocks.GRASS)));
 

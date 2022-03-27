@@ -14,9 +14,6 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.impl.client.rendering.ColorProviderRegistryImpl;
-import net.minecraft.client.color.world.BiomeColors;
-import net.minecraft.client.color.world.FoliageColors;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.entity.BoatEntityRenderer;
@@ -33,7 +30,7 @@ public class WilderworldClient implements ClientModInitializer {
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 WWBlocks.BIRD_OF_PARADISE, WWBlocks.CHAMOMILE, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM, WWBlocks.PHOSPHOSHOOTS,
-                WWBlocks.WISTERIA.POTTED_SAPLING, WWBlocks.WISTERIA.SAPLING, WWBlocks.MOSS_COVER, WWBlocks.ASPEN_SAPLING, WWBlocks.BUTTERFLY_SPAWN,
+                WWBlocks.WISTERIA.POTTED_SAPLING, WWBlocks.WISTERIA.SAPLING, WWBlocks.ASPEN_SAPLING, WWBlocks.BUTTERFLY_SPAWN,
                 WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL);
 
         ParticleFactoryRegistry.getInstance().register(WWParticles.STEAM, SteamParticle.SteamFactory::new);
@@ -49,13 +46,6 @@ public class WilderworldClient implements ClientModInitializer {
 
         EntityRendererRegistry.register(WWEntities.BUTTERFLY, ButterflyEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(BUTTERFLY_RENDER_LAYER, ButterflyModel::getTexturedModelData);
-
-        ColorProviderRegistryImpl.BLOCK.register((state, world, pos, tintIndex) -> world != null && pos != null ?
-                        BiomeColors.getFoliageColor(world, pos) : FoliageColors.getColor(0.5D, 1.0D),
-                WWBlocks.MOSS_COVER);
-
-        ColorProviderRegistryImpl.ITEM.register((stack, tintIndex) -> FoliageColors.getColor(0.5D, 1.0D),
-                WWBlocks.MOSS_COVER);
 
         EntityRendererRegistry.register(WWBlocks.WISTERIA.BOAT_ENTITY, BoatEntityRenderer::new);
 
