@@ -25,6 +25,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -77,6 +78,10 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
         if (!this.world.isClient) {
             if (player.getStackInHand(hand).isOf(Items.SUGAR)) {
                 world.setBlockState(this.getBlockPos(), WWBlocks.BUTTERFLY_SPAWN.getDefaultState());
+                if (!player.isCreative()) {
+                    player.getStackInHand(hand).decrement(1);
+                }
+                world.addParticle(ParticleTypes.HEART, true, this.getX(), this.getY(), this.getZ(), 0.0, 0.1, 0.0);
                 return ActionResult.CONSUME;
             }
         }

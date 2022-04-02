@@ -3,8 +3,10 @@ package me.kaloyankys.wilderworld.block;
 import me.kaloyankys.wilderworld.util.interfaces.FlavourSet;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SnowBlock;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.sound.SoundCategory;
@@ -14,6 +16,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
@@ -29,7 +32,7 @@ public class IceCreamBlock extends SnowBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (player.getStackInHand(hand).isEmpty()) {
+        if (!player.getStackInHand(hand).isOf(Items.BOWL) && player.isSneaking()) {
             this.spawnBreakParticles(world, player, pos, state);
             player.playSound(player.getEatSound(Items.MUSHROOM_STEW.getDefaultStack()), SoundCategory.PLAYERS, 1.0f, 1.0f);
             player.addStatusEffect(new StatusEffectInstance(flavour.getEffect(), 400, 0));
@@ -59,6 +62,12 @@ public class IceCreamBlock extends SnowBlock {
                 }
             }
         }
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        if (placer instanceof PlayerEntity player) player.giveItemStack(new ItemStack(Items.BOWL));
+        super.onPlaced(world, pos, state, placer, itemStack);
     }
 
     public void changeLayers(World world, BlockPos pos, int amount) {

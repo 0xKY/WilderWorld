@@ -13,17 +13,16 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class MembraneBlock extends BlockWithEntity {
-
-    public MembraneBlock(Settings settings) {
-        super(settings);
-    }
+   public MembraneBlock(Settings settings) {
+       super(settings);
+   }
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity instanceof ItemEntity itemEntity) {
-            ItemStack stack = itemEntity.getStack();
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof MembraneBlockEntity membrane) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof MembraneBlockEntity membrane) {
+            if (entity instanceof ItemEntity itemEntity) {
+                ItemStack stack = itemEntity.getStack();
                 ItemStack filter = membrane.getStack(0);
                 if (filter.getItem() == Items.AIR) {
                     membrane.setStack(0, stack);

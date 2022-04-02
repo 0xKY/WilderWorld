@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "animated=false": {
       "model": "wilderworld:block/butterfly_wing_membrane_block"
+    },
+    "animated=true": {
+      "model": "wilderworld:block/butterfly_wing_membrane_block_animated"
     }
   }
 }
