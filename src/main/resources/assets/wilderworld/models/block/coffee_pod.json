@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "wilderworld:block/coffee_pod_top",
-    "side": "wilderworld:block/coffee_pod"
-  }
-}
