@@ -1,6 +1,7 @@
 package me.kaloyankys.wilderworld.client;
 
 import me.kaloyankys.wilderworld.client.particle.CustomBlockLeakParticle;
+import me.kaloyankys.wilderworld.client.particle.CustomGlowParticle;
 import me.kaloyankys.wilderworld.client.particle.SteamParticle;
 import me.kaloyankys.wilderworld.entity.render.ButterflyEntityRenderer;
 import me.kaloyankys.wilderworld.entity.render.ButterflyModel;
@@ -43,6 +44,7 @@ public class WilderworldClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(WWParticles.MINT_DRIP, CustomBlockLeakParticle.MintDripFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.MINT_FALL, CustomBlockLeakParticle.MintFallFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.MINT_LAND, CustomBlockLeakParticle.MintLandFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.SPELUNKING_GLOW, CustomGlowParticle.SpelunkingGlowFactory::new);
 
         EntityRendererRegistry.register(WWEntities.BUTTERFLY, ButterflyEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(BUTTERFLY_RENDER_LAYER, ButterflyModel::getTexturedModelData);

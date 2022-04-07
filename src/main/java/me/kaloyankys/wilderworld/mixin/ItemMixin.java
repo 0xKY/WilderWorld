@@ -1,6 +1,7 @@
 package me.kaloyankys.wilderworld.mixin;
 
 import me.kaloyankys.wilderworld.block.IceCreamBlock;
+import me.kaloyankys.wilderworld.util.classes.IceCreamUtil;
 import net.minecraft.item.*;
 import net.minecraft.util.ActionResult;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,7 +22,7 @@ public abstract class ItemMixin implements ItemConvertible {
                 context.getPlayer().dropItem(iceCreamBlock.asItem().getDefaultStack(), false, true);
             }
             if ((context.getWorld().getBlockState(context.getBlockPos()).get(IceCreamBlock.LAYERS) > 1)) {
-                iceCreamBlock.changeLayers(context.getWorld(), context.getBlockPos(), -1);
+                IceCreamUtil.changeLayers(context.getWorld(), context.getBlockPos(), iceCreamBlock, -1);
             } else {
                 context.getWorld().breakBlock(context.getBlockPos(), false);
             }

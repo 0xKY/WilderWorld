@@ -23,7 +23,7 @@ public class IceCreamItem extends BlockItem {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        user.addStatusEffect(new StatusEffectInstance(flavour.getEffect(), 400, 1));
+        user.addStatusEffect(new StatusEffectInstance(flavour.getEffect(), 400, 0));
         if (user instanceof PlayerEntity player) {
             if (!player.isCreative()) {
                 stack.decrement(1);

@@ -4,6 +4,7 @@ import me.kaloyankys.wilderworld.init.WWBlocks;
 import me.kaloyankys.wilderworld.init.WWEntities;
 import me.kaloyankys.wilderworld.init.WWItems;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.Flutterer;
 import net.minecraft.entity.SpawnReason;
@@ -34,6 +35,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -75,15 +77,14 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
 
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        if (!this.world.isClient) {
-            if (player.getStackInHand(hand).isOf(Items.SUGAR)) {
+        if (player.getStackInHand(hand).isOf(Items.SUGAR) && player.getStackInHand(hand).getCount() >= 16) {
+            if (!this.world.isClient) {
                 world.setBlockState(this.getBlockPos(), WWBlocks.BUTTERFLY_SPAWN.getDefaultState());
-                if (!player.isCreative()) {
-                    player.getStackInHand(hand).decrement(1);
-                }
-                world.addParticle(ParticleTypes.HEART, true, this.getX(), this.getY(), this.getZ(), 0.0, 0.1, 0.0);
-                return ActionResult.CONSUME;
+                if (!player.isCreative()) player.getStackInHand(hand).decrement(16);
+            } else {
+                ParticleUtil.spawnParticle(world, this.getBlockPos(), ParticleTypes.HEART, UniformIntProvider.create(1, 4));
             }
+            return ActionResult.CONSUME;
         }
         return super.interactMob(player, hand);
     }

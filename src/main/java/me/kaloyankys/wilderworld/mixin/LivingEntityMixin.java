@@ -17,7 +17,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-
     @Shadow public float bodyYaw;
 
     public LivingEntityMixin(EntityType<?> entityType, World world) {
@@ -33,11 +32,12 @@ public abstract class LivingEntityMixin extends Entity {
             } else {
                 player.setNoGravity(false);
             }
+        } else {
+            cir.setReturnValue(cir.getReturnValue());
         }
     }
 
-
-   /* @Inject(at = @At("HEAD"), method = "tick")
+    /* @Inject(at = @At("HEAD"), method = "tick")
     private void tick(CallbackInfo ci) {
         Random random = new Random();
         if (((LivingEntity) (Entity) this) instanceof PlayerEntity player) {

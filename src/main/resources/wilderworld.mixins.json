@@ -10,6 +10,7 @@
     "ItemMixin",
     "LeveledCauldronBlockMixin",
     "LivingEntityMixin",
+    "OreBlockMixin",
     "TreeDecoratorTypeInvoker"
   ],
   "client": [
