@@ -28,7 +28,7 @@ public class MusicalItem extends Item {
             int third = root + 4;
             int fifth = third + 3;
             if (!sneaking) {
-                world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 8.0f,
+                world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 16.0f,
                         (float) Math.pow(2.0, (root - 12) / 12.0));
             } else {
                 if (playerPitch == 90) {
@@ -36,15 +36,15 @@ public class MusicalItem extends Item {
                 } else if (playerPitch == -90) {
                     fifth += 1;
                 }
-                world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 8.0f,
+                world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 16.0f,
                         (float) Math.pow(2.0, (root - 12) / 12.0));
-                world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 8.0f,
+                world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 16.0f,
                         (float) Math.pow(2.0, (third - 12) / 12.0));
-                world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 8.0f,
+                world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 16.0f,
                         (float) Math.pow(2.0, (fifth - 12) / 12.0));
             }
         } else {
-            world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 4.0f, 1.0f);
+            world.playSound(user, user.getBlockPos(), instrument, SoundCategory.PLAYERS, 16.0f, 1.0f);
         }
         return super.use(world, user, hand);
     }

@@ -17,4 +17,9 @@ public class MembraneBlockEntity extends ChestBlockEntity {
     protected Text getContainerName() {
         return new TranslatableText("container.membrane");
     }
+
+    @Override
+    public int size() {
+        return 1;
+    }
 }
