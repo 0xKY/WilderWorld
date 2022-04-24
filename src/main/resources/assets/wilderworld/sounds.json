@@ -1,0 +1,50 @@
+{
+  "butterfly_ambient": {
+    "sounds": [
+      {
+        "name": "wilderworld:flap",
+        "stream": true
+      }
+    ]
+  },
+  "butterfly_hurt": {
+    "sounds": [
+      {
+        "name": "wilderworld:crunch_short",
+        "stream": true
+      }
+    ]
+  },
+  "butterfly_death": {
+    "sounds": [
+      {
+        "name": "wilderworld:crunch",
+        "stream": true
+      }
+    ]
+  },
+  "tambura_ebony": {
+    "sounds": [
+      {
+        "name": "wilderworld:ebony",
+        "stream": true
+      }
+    ]
+  },
+  "tambura_spruce": {
+    "sounds": [
+      {
+        "name": "wilderworld:spruce",
+        "stream": true
+      }
+    ]
+  },
+  "tambura_wisteria": {
+    "sounds": [
+      {
+        "name": "wilderworld:wisteria",
+        "stream": true
+      }
+    ]
+  }
+}

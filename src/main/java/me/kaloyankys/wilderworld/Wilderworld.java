@@ -31,6 +31,7 @@ public class Wilderworld implements ModInitializer {
         new WWTags();
         new WWItems();
         new WWPotions();
+        new WWSounds();
 
         LOGGER.info("Things are gettin' wild!");
     }

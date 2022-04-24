@@ -8,7 +8,6 @@ import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -27,6 +26,21 @@ public class WWItems {
 
     public static final Item BUTTERFLY_WING = register("butterfly_wing", new Item(new Item.Settings().group(Wilderworld.FF_ADDITIONS)));
 
+    public static final Item EBONY = register("ebony", new Item(new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
+
+    public static final Item TAMBURA = register("tambura", new MusicalItem(new Item.Settings().group(Wilderworld.ICY_ADDITIONS),
+            0, WWSounds.TAMBURA_SPRUCE));
+
+    public static final Item TAMBURA_EBONY = register("tambura_ebony", new MusicalItem(new Item.Settings().group(Wilderworld.ICY_ADDITIONS),
+            0, WWSounds.TAMBURA_EBONY));
+
+    public static final Item TAMBURA_WISTERIA = register("tambura_wisteria", new MusicalItem(new Item.Settings().group(Wilderworld.ICY_ADDITIONS),
+            0, WWSounds.TAMBURA_WISTERIA));
+
+    public static final Item ICE_CUBE = register("ice_cube", new Item(new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
+
+    public static final Item MINT = register("mint", new Item(new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
+
     public static final Item CHOCOLATE_ICECREAM = register("chocolate_icecream", new IceCreamItem(Flavours.CHOCOLATE, WWBlocks.COCOA_ICECREAM,
             new Item.Settings().group(Wilderworld.ICY_ADDITIONS).food(
                     new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
@@ -39,15 +53,6 @@ public class WWItems {
             new Item.Settings().group(Wilderworld.ICY_ADDITIONS).food(
                     new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
 
-    public static final Item ICE_CUBE = register("ice_cube", new Item(new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
-
-    public static final Item MINT = register("mint", new Item(new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
-
-    public static final Item TAMBURA = register("tambura", new MusicalItem(new Item.Settings().group(Wilderworld.ICY_ADDITIONS),
-            0, SoundEvents.BLOCK_NOTE_BLOCK_GUITAR));
-
-    public static final Item TAMBURA_EBONY = register("tambura_ebony", new MusicalItem(new Item.Settings().group(Wilderworld.ICY_ADDITIONS),
-            0, SoundEvents.BLOCK_NOTE_BLOCK_BASS));
 
     private static Item register(String id, Item item) {
         return Registry.register(Registry.ITEM, new Identifier("wilderworld", id), item);

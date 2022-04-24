@@ -3,6 +3,7 @@ package me.kaloyankys.wilderworld.entity;
 import me.kaloyankys.wilderworld.init.WWBlocks;
 import me.kaloyankys.wilderworld.init.WWEntities;
 import me.kaloyankys.wilderworld.init.WWItems;
+import me.kaloyankys.wilderworld.init.WWSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.entity.EntityData;
@@ -29,7 +30,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
@@ -136,7 +136,7 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
 
     @Override
     protected float getSoundVolume() {
-        return 0.4F;
+        return 1.0F;
     }
 
     @Override
@@ -162,17 +162,17 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS;
+        return WWSounds.BUTTERFLY_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS;
+        return WWSounds.BUTTERFLY_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS;
+        return WWSounds.BUTTERFLY_DEATH;
     }
 
     static class FlyRandomlyGoal extends Goal {

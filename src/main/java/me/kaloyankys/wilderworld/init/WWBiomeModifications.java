@@ -66,10 +66,6 @@ public class WWBiomeModifications {
             .forceDirt()
             .build()));
 
-    public static final ConfiguredFeature<?, ?> HOT_SPRING = registerIcy("hotspring",
-            Feature.DELTA_FEATURE.configure(new DeltaFeatureConfig(
-                    Blocks.WATER.getDefaultState(), Blocks.MAGMA_BLOCK.getDefaultState(), UniformIntProvider.create(3, 7), UniformIntProvider.create(0, 2))));
-
     public static final ConfiguredFeature<SimpleRandomFeatureConfig, ?> EBONY_BUSHES = registerIcy("ebony_bushes", Feature.SIMPLE_RANDOM_SELECTOR.configure(
             new SimpleRandomFeatureConfig(List.of(() ->
                     Feature.RANDOM_PATCH.configure(ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK.configure(

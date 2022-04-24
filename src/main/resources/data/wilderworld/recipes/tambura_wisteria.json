@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #/",
+    "SW#",
+    "SS "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "wilderworld:wisteria_planks"
+    },
+    "S": {
+      "item": "minecraft:spruce_planks"
+    }
+  },
+  "result": {
+    "item": "wilderworld:tambura_wisteria",
+    "count": 9
+  }
+}

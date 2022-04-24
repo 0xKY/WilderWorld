@@ -12,7 +12,7 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
 
     private static final Identifier[] TEXTURE = {
             new Identifier("wilderworld", "textures/entity/butterfly/flame.png"),
-            new Identifier("wilderworld", "textures/entity/butterfly/honey.png"),
+            new Identifier("wilderworld", "textures/entity/butterfly/sap.png"),
             new Identifier("wilderworld", "textures/entity/butterfly/aqua.png"),
             new Identifier("wilderworld", "textures/entity/butterfly/pixie.png")
     };
