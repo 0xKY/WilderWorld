@@ -5,6 +5,8 @@ import me.kaloyankys.wilderworld.client.particle.CustomGlowParticle;
 import me.kaloyankys.wilderworld.client.particle.SteamParticle;
 import me.kaloyankys.wilderworld.entity.render.ButterflyEntityRenderer;
 import me.kaloyankys.wilderworld.entity.render.ButterflyModel;
+import me.kaloyankys.wilderworld.entity.render.DoodEntityRenderer;
+import me.kaloyankys.wilderworld.entity.render.DoodModel;
 import me.kaloyankys.wilderworld.init.WWBlocks;
 import me.kaloyankys.wilderworld.init.WWEntities;
 import me.kaloyankys.wilderworld.init.WWParticles;
@@ -26,6 +28,8 @@ import net.minecraft.util.Identifier;
 public class WilderworldClient implements ClientModInitializer {
     public static final EntityModelLayer BUTTERFLY_RENDER_LAYER = new EntityModelLayer(
             new Identifier("wilderworld", "butterfly"), "butterfly_render_layer");
+    public static final EntityModelLayer DOOD_RENDER_LAYER = new EntityModelLayer(
+            new Identifier("wilderworld", "dood"), "dood_render_layer");
 
     @Override
     public void onInitializeClient() {
@@ -47,7 +51,9 @@ public class WilderworldClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(WWParticles.SPELUNKING_GLOW, CustomGlowParticle.SpelunkingGlowFactory::new);
 
         EntityRendererRegistry.register(WWEntities.BUTTERFLY, ButterflyEntityRenderer::new);
+        EntityRendererRegistry.register(WWEntities.DOOD, DoodEntityRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(BUTTERFLY_RENDER_LAYER, ButterflyModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(DOOD_RENDER_LAYER, DoodModel::getTexturedModelData);
 
         EntityRendererRegistry.register(WWBlocks.WISTERIA.BOAT_ENTITY, BoatEntityRenderer::new);
 

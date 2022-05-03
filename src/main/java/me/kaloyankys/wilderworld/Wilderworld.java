@@ -1,6 +1,7 @@
 package me.kaloyankys.wilderworld;
 
 import me.kaloyankys.wilderworld.init.*;
+import me.kaloyankys.wilderworld.recipe.ChewingRecipe;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -32,6 +33,7 @@ public class Wilderworld implements ModInitializer {
         new WWItems();
         new WWPotions();
         new WWSounds();
+        new ChewingRecipe();
 
         LOGGER.info("Things are gettin' wild!");
     }

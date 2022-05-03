@@ -21,7 +21,7 @@ public class WWItems {
             new StatusEffectInstance(WWPotions.COFFEE_EFFECT, 2400, 0))); */
 
     public static final Item SPAWN_BUTTERFLY = register("butterfly_spawn_egg", new SpawnEggItem(WWEntities.BUTTERFLY,
-            0xedaa00, 0x381a20, new Item.Settings()
+            0x381a20, 0xedaa00, new Item.Settings()
             .group(ItemGroup.MISC)));
 
     public static final Item BUTTERFLY_WING = register("butterfly_wing", new Item(new Item.Settings().group(Wilderworld.FF_ADDITIONS)));

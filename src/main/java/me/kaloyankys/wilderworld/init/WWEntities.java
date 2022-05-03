@@ -2,6 +2,7 @@ package me.kaloyankys.wilderworld.init;
 
 import me.kaloyankys.wilderworld.block.MembraneBlockEntity;
 import me.kaloyankys.wilderworld.entity.ButterflyEntity;
+import me.kaloyankys.wilderworld.entity.DoodEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -21,6 +22,10 @@ public class WWEntities {
             SpawnGroup.AMBIENT, (type, world) ->
                     new ButterflyEntity(world)).dimensions(EntityDimensions.fixed(0.6F, 0.6F)).trackRangeBlocks(12).build());
 
+    public static final EntityType<DoodEntity> DOOD = register("dood", FabricEntityTypeBuilder.<DoodEntity>create(
+            SpawnGroup.AMBIENT, (type, world) ->
+                    new DoodEntity(world)).dimensions(EntityDimensions.fixed(1.0F, 1.0F)).trackRangeBlocks(24).build());
+
     private static <BT extends BlockEntity> BlockEntityType<BT> register(String id, BlockEntityType<BT> type) {
         return Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("wilderworld", id), type);
     }
@@ -31,15 +36,17 @@ public class WWEntities {
 
     public WWEntities() {
         FabricDefaultAttributeRegistry.register(BUTTERFLY, ButterflyEntity.createMobAttributes()
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 5.0D)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0D)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 0.0D)
+                .add(EntityAttributes.GENERIC_FLYING_SPEED, 2.0D));
+        FabricDefaultAttributeRegistry.register(DOOD, DoodEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0D)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 1.0D)
-                .add(EntityAttributes.GENERIC_FLYING_SPEED, 2.0D));
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 0.0D));
     }
 
     private static <T extends Entity> EntityType<T> register(String id, EntityType<T> type) {
         return Registry.register(Registry.ENTITY_TYPE, new Identifier("wilderworld", id), type);
     }
-
-
 }

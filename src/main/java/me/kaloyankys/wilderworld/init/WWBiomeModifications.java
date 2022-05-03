@@ -1,6 +1,7 @@
 package me.kaloyankys.wilderworld.init;
 
 import com.google.common.collect.ImmutableList;
+import me.kaloyankys.wilderworld.world.LargeForkingTrunkPlacer;
 import me.kaloyankys.wilderworld.world.ShelfshroomTreeDecorator;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -20,13 +21,12 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
+import net.minecraft.world.gen.foliage.JungleFoliagePlacer;
 import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
-import net.minecraft.world.gen.trunk.MegaJungleTrunkPlacer;
 
 import java.util.List;
 import java.util.Random;
@@ -48,18 +48,15 @@ public class WWBiomeModifications {
                             new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.PHOSPHOSHOOTS))))).withPlacement()))));
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> ASPEN_BIRCH_TREE = registerFFTree("aspen_birch_tree", Feature.TREE.configure(new TreeFeatureConfig.Builder(
-            BlockStateProvider.of(Blocks.BIRCH_LOG), new MegaJungleTrunkPlacer(11, 3, 12), BlockStateProvider.of(WWBlocks.ASPEN_LEAVES),
-            new BlobFoliagePlacer(
-                    UniformIntProvider.create(3, 4),
-                    UniformIntProvider.create(3, 4),
-                    6),
+            BlockStateProvider.of(Blocks.BIRCH_LOG), new LargeForkingTrunkPlacer(11, 6, 12), BlockStateProvider.of(WWBlocks.ASPEN_LEAVES),
+            new JungleFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 2),
             new TwoLayersFeatureSize(1, 1, 2))
             .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.5f), new ShelfshroomTreeDecorator()))
             .ignoreVines()
             .build()));
 
     public static final ConfiguredFeature<TreeFeatureConfig, ?> WISTERIA_TREE = registerFFTree("wisteria_tree", Feature.TREE.configure(new TreeFeatureConfig.Builder(
-            BlockStateProvider.of(WWBlocks.WISTERIA.LOG), new LargeOakTrunkPlacer(4, 14, 0), BlockStateProvider.of(WWBlocks.WISTERIA.LEAVES),
+            BlockStateProvider.of(WWBlocks.WISTERIA.LOG), new LargeOakTrunkPlacer(4, 14, 2), BlockStateProvider.of(WWBlocks.WISTERIA.LEAVES),
             new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), RANDOM.nextInt(50) + 30),
             new TwoLayersFeatureSize(1, 1, 2))
             .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.5f), new TrunkVineTreeDecorator()))
