@@ -1,18 +1,21 @@
 package me.kaloyankys.wilderworld.init;
 
-import net.fabricmc.fabric.api.tag.TagFactory;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.tag.Tag;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class WWTags {
 
-    public static final Tag<Item> WISTERIA_LOGS = register("wisteria_logs", TagFactory.ITEM);
-    public static final Tag<Block> ICECREAM_BLOCKS = register("icecream_blocks", TagFactory.BLOCK);
+    public static final TagKey<Block> WISTERIA_LOGS = block("wisteria_logs");
+    public static final TagKey<Block> ICECREAM_BLOCKS = item("icecream_blocks");
 
 
-    private static <E> Tag<E> register(String path, TagFactory<E> factory) {
-        return factory.create(new Identifier("wilderworld", path));
+    private static TagKey<Block> block(String id) {
+        return TagKey.of(Registry.BLOCK_KEY, new Identifier("wilderworld", id));
+    }
+
+    private static TagKey<Block> item(String id) {
+        return TagKey.of(Registry.BLOCK_KEY, new Identifier("wilderworld", id));
     }
 }

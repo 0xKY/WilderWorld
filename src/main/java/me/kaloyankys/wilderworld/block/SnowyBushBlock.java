@@ -2,11 +2,12 @@ package me.kaloyankys.wilderworld.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.TallPlantBlock;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.world.biome.Biome;
+import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
 public class SnowyBushBlock extends TallPlantBlock {
@@ -26,11 +27,13 @@ public class SnowyBushBlock extends TallPlantBlock {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         super.getPlacementState(ctx);
-        if (ctx.getWorld().getBiome(ctx.getBlockPos()).getCategory().equals(Biome.Category.ICY)) {
-            return this.getDefaultState().with(SNOWY, true);
-        } else {
-            return this.getDefaultState().with(SNOWY, false);
-        }
+
+        final BlockState[] state = new BlockState[1];
+        BlockPos.iterateOutwards(ctx.getBlockPos(), 1, 0, 1).forEach((blockPos -> state[0] =
+                ctx.getWorld().getBlockState(blockPos).isOf(Blocks.SNOW) ? this.getDefaultState().with(SNOWY, true) :
+                        this.getDefaultState().with(SNOWY, false)));
+
+        return state[0];
     }
 
     @Override

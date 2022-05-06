@@ -25,9 +25,9 @@ public class SteamParticle extends SpriteBillboardParticle {
         this.velocityY += h;
         this.velocityZ += i;
         float k = 1.0F - (float) (Math.random() * 0.30000001192092896D);
-        this.colorRed = k;
-        this.colorGreen = k;
-        this.colorBlue = k;
+        this.red = k;
+        this.green = k;
+        this.blue = k;
         this.scale *= 1.875F;
         int l = (int) (8.0D / (Math.random() * 0.8D + 0.3D));
         this.maxAge = (int) Math.max((float) l * 2.5F, 1.0F);
@@ -35,9 +35,10 @@ public class SteamParticle extends SpriteBillboardParticle {
         this.setSpriteForAge(spriteProvider);
     }
 
+
     @Override
-    public void setColorAlpha(float alpha) {
-        super.setColorAlpha(alpha);
+    public void setAlpha(float alpha) {
+        super.setAlpha(alpha);
     }
 
     public ParticleTextureSheet getType() {
@@ -75,7 +76,7 @@ public class SteamParticle extends SpriteBillboardParticle {
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
             Random random = new Random();
             SteamParticle particle = new SteamParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
-            particle.setColorAlpha(random.nextFloat() - 0.8F);
+            particle.setAlpha(random.nextFloat() - 0.8F);
             particle.setColor(0.72F, 0.782F, 0.92F);
             return particle;
         }

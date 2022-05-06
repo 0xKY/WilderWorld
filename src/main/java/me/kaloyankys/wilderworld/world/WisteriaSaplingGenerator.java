@@ -2,16 +2,15 @@ package me.kaloyankys.wilderworld.world;
 
 import me.kaloyankys.wilderworld.init.WWBiomeModifications;
 import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.gen.feature.Feature;
 
 import java.util.Random;
 
 public class WisteriaSaplingGenerator extends SaplingGenerator {
-
     @Override
-    @Nullable
-    protected ConfiguredFeature<?, ?> getTreeFeature(Random random, boolean bees) {
-        return WWBiomeModifications.WISTERIA_TREE;
+    protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bees) {
+        return RegistryEntry.of(new ConfiguredFeature<>(Feature.TREE, WWBiomeModifications.WISTERIA_TREE));
     }
 }

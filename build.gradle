@@ -19,13 +19,13 @@ repositories {
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:1.18"
-    mappings "net.fabricmc:yarn:1.18+build.1:v2"
-    modImplementation "net.fabricmc:fabric-loader:0.12.8"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:0.43.1+1.18"
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation 'com.github.0xKalKYS:chord:1.8.0-fabric.1.18-fix'
-    include ('com.github.0xKalKYS:chord:1.8.0-fabric.1.18-fix')
+    modImplementation 'com.github.0xKalKYS:chord:1.8.0-fabric.1.18.2-Fix'
+    include ('com.github.0xKalKYS:chord:1.8.0-fabric.1.18.2-Fix')
     modImplementation ("com.terraformersmc:modmenu:${project.mod_menu_version}") { exclude group: "net.fabricmc.fabric-api" }
 }
 
