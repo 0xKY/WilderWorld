@@ -2,12 +2,12 @@ package me.kaloyankys.wilderworld.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.PlantBlock;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class SnowyPlantBlock extends PlantBlock {
@@ -27,12 +27,10 @@ public class SnowyPlantBlock extends PlantBlock {
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         super.getPlacementState(ctx);
 
-        final BlockState[] state = new BlockState[1];
-        BlockPos.iterateOutwards(ctx.getBlockPos(), 1, 0, 1).forEach((blockPos -> state[0] =
-                ctx.getWorld().getBlockState(blockPos).isOf(Blocks.SNOW) ? this.getDefaultState().with(SNOWY, true) :
-                        this.getDefaultState().with(SNOWY, false)));
+        World world = ctx.getWorld();
+        BlockPos pos = ctx.getBlockPos();
 
-        return state[0];
+        return this.getDefaultState().with(SNOWY, world.getBiome(pos).comp_349().isCold(pos));
     }
 
     @Override

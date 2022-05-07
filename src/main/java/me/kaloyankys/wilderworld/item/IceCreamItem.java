@@ -12,12 +12,12 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 public class IceCreamItem extends BlockItem {
-    public static FlavourSet flavour;
+    private final FlavourSet flavour;
     private final Block block;
 
     public IceCreamItem(FlavourSet flavour, Block block, Settings settings) {
         super(block, settings);
-        IceCreamItem.flavour = flavour;
+        this.flavour = flavour;
         this.block = block;
     }
 

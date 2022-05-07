@@ -46,15 +46,15 @@ public class WWBiomeModifications {
                             List.of(WWBlocks.PHOSPHOSHOOTS.getDefaultState(), WWBlocks.RAGING_VIOLET.getDefaultState(), WWBlocks.BIRD_OF_PARADISE.getDefaultState(),
                                     WWBlocks.CHAMOMILE.getDefaultState()))))));
 
-    public static final RandomPatchFeatureConfig EBONY_BUSHES_SMALL = registerFFVegetation("ebony_bushes_small", Feature.FLOWER,
+    public static final RandomPatchFeatureConfig EBONY_BUSHES_SMALL = registerIcyVegetation("ebony_bushes_small", Feature.FLOWER,
             new RandomPatchFeatureConfig(96, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                     new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L,
                             new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D), 0.020833334F,
                             List.of(WWBlocks.EBONY_BUSH.getDefaultState()))))));
 
-    public static final RandomPatchFeatureConfig EBONY_BUSHES = registerFFVegetation("ebony_bushes", Feature.FLOWER,
+    public static final RandomPatchFeatureConfig EBONY_BUSHES = registerIcyVegetation("ebony_bushes", Feature.FLOWER,
             new RandomPatchFeatureConfig(96, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                    new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.TALL_GRASS)))));
+                    new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.EBONY_BUSH_TALL)))));
 
     public static final TreeFeatureConfig ASPEN_BIRCH_TREE = registerFFTree("aspen_birch_tree", Feature.TREE, new TreeFeatureConfig.Builder(
             BlockStateProvider.of(Blocks.BIRCH_LOG), new LargeForkingTrunkPlacer(11, 6, 12), BlockStateProvider.of(WWBlocks.ASPEN_LEAVES),
