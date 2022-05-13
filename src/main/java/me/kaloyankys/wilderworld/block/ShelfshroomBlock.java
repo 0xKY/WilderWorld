@@ -1,12 +1,9 @@
 package me.kaloyankys.wilderworld.block;
 
 import net.minecraft.block.*;
-import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -16,10 +13,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 public class ShelfshroomBlock extends RodBlock {
-
-    public static final EnumProperty<WallMountLocation> FACE = Properties.WALL_MOUNT_LOCATION;
     public static final DirectionProperty FACING = DirectionProperty.of("facing");
-    public Direction facing = getFacing(this.getDefaultState());
 
     public ShelfshroomBlock(Settings settings) {
         super(settings);
@@ -39,7 +33,7 @@ public class ShelfshroomBlock extends RodBlock {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        Direction direction = (Direction) state.get(FACING);
+        Direction direction = state.get(FACING);
         return this.canPlaceOn(world, pos.offset(direction.getOpposite()), direction);
     }
 
@@ -65,6 +59,6 @@ public class ShelfshroomBlock extends RodBlock {
     }
 
     public static Direction getFacing(BlockState state) {
-        return (Direction) state.get(FACING);
+        return state.get(FACING);
     }
 }

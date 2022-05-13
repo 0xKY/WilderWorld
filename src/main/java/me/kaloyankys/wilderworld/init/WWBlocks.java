@@ -17,6 +17,8 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.List;
+
 public class WWBlocks {
     public static final Block BIRD_OF_PARADISE = registerFF("bird_of_paradise", new TallPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE)
             .nonOpaque()
@@ -88,6 +90,13 @@ public class WWBlocks {
     public static final Block SLUSH_CAULDRON = registerNoItem("slush_cauldron", new SlushCauldronBlock(
             FabricBlockSettings.copy(Blocks.CAULDRON), LeveledCauldronBlock.RAIN_PREDICATE, CauldronBehavior.WATER_CAULDRON_BEHAVIOR));
 
+    public static final Block TRAVERTINE = registerIcy("travertine", new Block(FabricBlockSettings.copy(Blocks.QUARTZ_BLOCK)));
+    public static final Block TRAVERTINE_PEACH = registerIcy("travertine_peach", new Block(FabricBlockSettings.copy(Blocks.TERRACOTTA)));
+    public static final Block PEARL_STONE = registerIcy("pearl_stone", new Block(FabricBlockSettings.copy(Blocks.QUARTZ_BLOCK)));
+    public static final Block PEARL_CHISELED = registerIcy("pearl_chiseled", new Block(FabricBlockSettings.copy(Blocks.QUARTZ_BLOCK)));
+    public static final Block PEARL_TILES = registerIcy("pearl_tiles", new Block(FabricBlockSettings.copy(Blocks.QUARTZ_BLOCK)));
+
+    public static final Block GLOWGI = registerIcy("glowgi", new LilyPadBlock(FabricBlockSettings.copy(Blocks.LILY_PAD).luminance((state) -> 12)));
 
     public static Block registerFF(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.FF_ADDITIONS)));

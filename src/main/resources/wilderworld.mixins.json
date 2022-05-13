@@ -6,6 +6,7 @@
   "mixins": [
     "AbstractBlockMixin",
     "BrewingRecipeRegistryInvoker",
+    "FreezeTopLayerFeatureMixin",
     "HopperBlockEntityMixin",
     "IceBlockMixin",
     "ItemMixin",
@@ -15,6 +16,7 @@
     "TreeDecoratorTypeInvoker"
   ],
   "client": [
+    "WaterFluidMixin"
   ],
   "injectors": {
     "defaultRequire": 1

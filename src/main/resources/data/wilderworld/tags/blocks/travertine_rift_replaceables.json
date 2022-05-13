@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "wilderworld:travertine",
+    "minecraft:grass_block",
+    "minecraft:dirt"
+  ]
+}
