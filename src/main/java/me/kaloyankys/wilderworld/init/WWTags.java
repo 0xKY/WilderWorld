@@ -9,7 +9,6 @@ public class WWTags {
 
     public static final TagKey<Block> WISTERIA_LOGS = block("wisteria_logs");
     public static final TagKey<Block> ICECREAM_BLOCKS = item("icecream_blocks");
-    public static final TagKey<Block> TRAVERTINE_RIFT_REPLACEABLES = block("travertine_rift_replaceables");
 
 
     private static TagKey<Block> block(String id) {
