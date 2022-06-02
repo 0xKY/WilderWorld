@@ -65,7 +65,7 @@ public class WWBiomeModifications {
                     new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.EBONY_BUSH_TALL)))));
 
     public static final RandomPatchFeatureConfig GLOWGI_PATCH = registerVegetationNoBiome("glowgi_patch", Feature.FLOWER,
-            new RandomPatchFeatureConfig(36, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+            new RandomPatchFeatureConfig(60, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                     new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L,
                             new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D), 0.020833334F,
                             List.of(WWBlocks.GLOWGI.getDefaultState()))))));
@@ -86,7 +86,7 @@ public class WWBiomeModifications {
             .forceDirt()
             .build());
 
-    public static final VegetationPatchFeatureConfig TRAVERTINE_SPRING = registerIcySpring("travertine_spring", Feature.WATERLOGGED_VEGETATION_PATCH,
+    /* public static final VegetationPatchFeatureConfig TRAVERTINE_SPRING = registerIcySpring("travertine_spring", Feature.WATERLOGGED_VEGETATION_PATCH,
             new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.of(WWBlocks.TRAVERTINE),
                     PlacedFeatures.createEntry(RegistryEntry.of(new ConfiguredFeature<>(Feature.RANDOM_PATCH, GLOWGI_PATCH))), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3),
                     0.8f, 5, 0.1f, UniformIntProvider.create(6, 9), 0.8f));
@@ -95,8 +95,8 @@ public class WWBiomeModifications {
     public static final VegetationPatchFeatureConfig TRAVERTINE_PEACH_SPRING = registerIcySpring("travertine_peach_spring", Feature.WATERLOGGED_VEGETATION_PATCH,
             new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.of(WWBlocks.TRAVERTINE_PEACH),
                     PlacedFeatures.createEntry(RegistryEntry.of(new ConfiguredFeature<>(Feature.RANDOM_PATCH, GLOWGI_PATCH))), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3),
-                    0.8f, 5, 0.1f, UniformIntProvider.create(3, 6), 0.6f));
-
+                    0.6f, 3, 0.1f, UniformIntProvider.create(5, 8), 0.7f));
+*/
     public WWBiomeModifications() {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST), SpawnGroup.AMBIENT, WWEntities.BUTTERFLY,
                 30, 3, 6);

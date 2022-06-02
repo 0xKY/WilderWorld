@@ -41,7 +41,7 @@ public class DoodModel extends SinglePartEntityModel<DoodEntity> {
                 ModelPartBuilder.create()
                         .uv(0, 0) // 12, 7
                         .mirrored(false)
-                        .cuboid(6.5F, 5.0F, -1.0F, 0.0F, 3.0F, 2.0F, new Dilation(0.0F)),
+                        .cuboid(5.0F, 3.0F, -1.0F, 0.0F, 3.0F, 2.0F, new Dilation(0.0F)),
                 ModelTransform.of(-2.0F, 19.0F, -2.0F, 0.0F, 0.0F, 0.2182F)
         );
 
@@ -50,7 +50,7 @@ public class DoodModel extends SinglePartEntityModel<DoodEntity> {
                 ModelPartBuilder.create()
                         .uv(0, 0)
                         .mirrored(false)
-                        .cuboid(-4.5F, 5.0F, 0.0F, 0.0F, 3.0F, 2.0F, new Dilation(0.0F)),
+                        .cuboid(-5.0F, 3.0F, 0.0F, 0.0F, 3.0F, 2.0F, new Dilation(0.0F)),
                 ModelTransform.of(2.0F, 19.0F, -2.0F, 0.0F, 0.0F, -0.2182F)
         );
 

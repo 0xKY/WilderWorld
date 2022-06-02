@@ -22,10 +22,10 @@ public class WaterFluidMixin {
     @Inject(at = @At("HEAD"), method = "randomDisplayTick")
     private void randomDisplayTick(World world, BlockPos blockPos, FluidState fluidState, Random random, CallbackInfo ci) {
         if (world.getBlockState(blockPos.down()).isOf(WWBlocks.TRAVERTINE) || world.getBlockState(blockPos.down()).isOf(WWBlocks.TRAVERTINE_PEACH)) {
-            if (random.nextInt(2) == 1) {
-                ParticleUtil.spawnParticle(world, blockPos, Direction.UP, ParticleTypes.CAMPFIRE_COSY_SMOKE);
-            } else
-                ParticleUtil.spawnParticle(world, blockPos, Direction.UP, ParticleTypes.CAMPFIRE_SIGNAL_SMOKE);
+            if (random.nextInt(4) == 1) {
+                CustomParticleUtil.spawnParticle(world, blockPos, Direction.UP, ParticleTypes.CAMPFIRE_COSY_SMOKE, 0.7);
+            } else if (random.nextInt(4) == 2)
+                CustomParticleUtil.spawnParticle(world, blockPos, Direction.UP, ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, 0.7);
         }
     }
 }

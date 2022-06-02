@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wilderworld:butterfly_wing"
+    }
+  },
+  "result": {
+    "item": "wilderworld:butterfly_wing_membrane_block",
+    "count": 1
+  }
+}

@@ -61,11 +61,10 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
         this.dataTracker.startTracking(VARIANT, random.nextInt(4));
     }
 
-
     @Override
-    public void tick() {
-        super.tick();
-        if (random.nextInt(200) == 0 && this.age > 2000) {
+    public void growUp(int i, boolean bl) {
+        super.growUp(i, bl);
+        for (int wingCount = 0; wingCount < random.nextInt(3); i++) {
             ItemScatterer.spawn(world, this.getX(), this.getY(), this.getZ(), new ItemStack(WWItems.BUTTERFLY_WING));
         }
     }
@@ -136,7 +135,7 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
 
     @Override
     protected float getSoundVolume() {
-        return 1.0F;
+        return 0.7F;
     }
 
     @Override
