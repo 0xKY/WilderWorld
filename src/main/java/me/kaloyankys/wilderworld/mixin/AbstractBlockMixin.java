@@ -19,6 +19,5 @@ public abstract class AbstractBlockMixin {
             world.setBlockState(pos, WWBlocks.ASPEN_SAPLING.getDefaultState());
         }
     }
-
 }
 

@@ -1,9 +1,7 @@
 package me.kaloyankys.wilderworld.mixin;
 
 import me.kaloyankys.wilderworld.init.WWBlocks;
-import me.kaloyankys.wilderworld.init.WWTags;
 import me.kaloyankys.wilderworld.util.classes.CustomParticleUtil;
-import net.minecraft.client.util.ParticleUtil;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.WaterFluid;
 import net.minecraft.particle.ParticleTypes;

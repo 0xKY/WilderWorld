@@ -6,7 +6,6 @@
   "mixins": [
     "AbstractBlockMixin",
     "BrewingRecipeRegistryInvoker",
-    "FreezeTopLayerFeatureMixin",
     "HopperBlockEntityMixin",
     "IceBlockMixin",
     "ItemMixin",
