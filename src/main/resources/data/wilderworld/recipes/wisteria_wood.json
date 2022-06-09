@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wood",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "wilderworld:wisteria_log"
+    }
+  },
+  "result": {
+    "item": "wilderworld:wisteria_wood",
+    "count": 3
+  }
+}
