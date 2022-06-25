@@ -26,9 +26,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation 'com.github.0xKalKYS:chord:1.8.0-fabric.1.18.2-Fix2'
-    include('com.github.0xKalKYS:chord:1.8.0-fabric.1.18.2-Fix2')
-    modImplementation("com.terraformersmc:modmenu:${project.mod_menu_version}") { exclude group: "net.fabricmc.fabric-api" }
+    modImplementation 'com.github.0xKalKYS:chord:1.8.0-fabric.1.19'
+    include('com.github.0xKalKYS:chord:1.8.0-fabric.1.19')
 }
 
 processResources {
