@@ -8,6 +8,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.ChunkRegion;
 import net.minecraft.world.TestableWorld;
@@ -16,7 +17,6 @@ import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 import java.util.List;
-import java.util.Random;
 import java.util.function.BiConsumer;
 
 public class ShelfshroomTreeDecorator extends TreeDecorator {
@@ -31,7 +31,10 @@ public class ShelfshroomTreeDecorator extends TreeDecorator {
     }
 
     @Override
-    public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
+    public void generate(Generator generator) {
+        List<BlockPos> logPositions = generator.getLogPositions();
+        Random random = Random.create();
+        TestableWorld world = generator.getWorld();
         if (world instanceof ChunkRegion world1) {
             for (BlockPos pos : logPositions) {
                 Direction dir = Direction.fromHorizontal(random.nextInt(4));

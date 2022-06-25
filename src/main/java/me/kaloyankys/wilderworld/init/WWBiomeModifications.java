@@ -160,7 +160,7 @@ public class WWBiomeModifications {
                 new Identifier("wilderworld", id)).getValue(), new PlacedFeature(RegistryEntry.of(configuredFeature), List.of(
                         CountPlacementModifier.of(62), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE,
                 EnvironmentScanPlacementModifier.of(Direction.DOWN,
-                        BlockPredicate.matchingBlocks(baseBlocks, new Vec3i(2, 2, 2)), BlockPredicate.IS_AIR, 32),
+                        BlockPredicate.matchingBlocks(new Vec3i(2, 2, 2), baseBlocks), BlockPredicate.IS_AIR, 32),
                 RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of())));
     }
 

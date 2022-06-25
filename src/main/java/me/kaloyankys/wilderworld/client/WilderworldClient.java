@@ -55,7 +55,7 @@ public class WilderworldClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(BUTTERFLY_RENDER_LAYER, ButterflyModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DOOD_RENDER_LAYER, DoodModel::getTexturedModelData);
 
-        EntityRendererRegistry.register(WWBlocks.WISTERIA.BOAT_ENTITY, BoatEntityRenderer::new);
+        EntityRendererRegistry.register(WWBlocks.WISTERIA.BOAT_ENTITY, (context -> new BoatEntityRenderer(context, true)));
 
         TexturedRenderLayers.addDefaultTextures((spriteIdentifier -> new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE,
                 new Identifier("wilderworld", "wisteria_sign"))));

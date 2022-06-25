@@ -58,7 +58,7 @@ public class DoodEntity extends AnimalEntity implements InventoryOwner {
     }
 
     @Override
-    public Inventory getInventory() {
+    public SimpleInventory getInventory() {
         return this.inventory;
     }
 

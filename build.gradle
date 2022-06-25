@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.10-SNAPSHOT'
+    id 'fabric-loom' version '0.12-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -10,12 +10,7 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
-    maven { url "https://maven.terraformersmc.com/releases/" }
     maven { url 'https://jitpack.io' }
-    maven {
-        name = 'TerraformersMC'
-        url = 'https://maven.terraformersmc.com/'
-    }
     mavenCentral()
 }
 

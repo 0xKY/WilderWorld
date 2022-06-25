@@ -28,9 +28,4 @@ public class SnowyBushBlock extends TallPlantBlock implements Snowy {
         super.getPlacementState(ctx);
         return this.getPlacementState(ctx, this.getDefaultState(), SNOWY, ctx.getWorld(), ctx.getBlockPos());
     }
-
-    @Override
-    public OffsetType getOffsetType() {
-        return OffsetType.NONE;
-    }
 }

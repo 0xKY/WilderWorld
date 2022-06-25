@@ -25,7 +25,7 @@ public class ButterflyEntityRenderer extends MobEntityRenderer<ButterflyEntity, 
 
     @Override
     public Identifier getTexture(ButterflyEntity entity) {
-        if (entity.getCustomName() != null && entity.getCustomName().asString().equals("Roxanne")) {
+        if (entity.getCustomName() != null && entity.getCustomName().getString().equals("Roxanne")) {
             return ROXANNE;
         } else if (!entity.isBaby()) {
             return TEXTURE[entity.getVariant() % TEXTURE.length];
