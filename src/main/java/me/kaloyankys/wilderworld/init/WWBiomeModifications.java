@@ -9,14 +9,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.structure.rule.BlockMatchRuleTest;
-import net.minecraft.structure.rule.TagMatchRuleTest;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
-import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ClampedIntProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -29,7 +25,6 @@ import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.JungleFoliagePlacer;
-import net.minecraft.world.gen.foliage.PineFoliagePlacer;
 import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
 import net.minecraft.world.gen.placementmodifier.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
@@ -37,7 +32,6 @@ import net.minecraft.world.gen.stateprovider.NoiseBlockStateProvider;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
 import java.util.Random;
@@ -152,7 +146,7 @@ public class WWBiomeModifications {
     private static <FC extends FeatureConfig> void registerTree(String id, ConfiguredFeature<FC, ?> configuredFeature) {
         Registry.register(BuiltinRegistries.PLACED_FEATURE, RegistryKey.of(Registry.PLACED_FEATURE_KEY,
                 new Identifier("wilderworld", id)).getValue(), new PlacedFeature(RegistryEntry.of(configuredFeature), VegetationPlacedFeatures
-                .modifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(0, 0.1f, 3), Blocks.STONE)));
+                .modifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(0, 0.1f, 3), Blocks.OAK_SAPLING)));
     }
 
     private static <FC extends FeatureConfig> void registerSpring(String id, ConfiguredFeature<FC, ?> configuredFeature, List<Block> baseBlocks) {
