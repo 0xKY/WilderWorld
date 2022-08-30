@@ -5,6 +5,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 @FunctionalInterface
-public interface MaximumPredicate {
+public interface Fulfilling {
     boolean onlyWhen(World world, LivingEntity entity, ItemStack stack);
 }

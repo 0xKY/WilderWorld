@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public interface Snowy {
-    default BlockState getPlacementState(ItemPlacementContext ctx, BlockState defaultState, BooleanProperty snowy, World world, BlockPos pos) {
-        return defaultState.with(snowy, world.getBiome(pos).comp_349().isCold(pos));
+    default BlockState getPlacementState(BlockState defaultState, BooleanProperty snowy, World world, BlockPos pos) {
+        return defaultState.with(snowy, !world.getBiome(pos).comp_349().doesNotSnow(pos));
     }
 }

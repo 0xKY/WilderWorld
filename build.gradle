@@ -12,6 +12,21 @@ targetCompatibility = JavaVersion.VERSION_17
 repositories {
     maven { url 'https://jitpack.io' }
     mavenCentral()
+
+    maven {
+        name = "Modding Playground"
+        url  = 'https://raw.githubusercontent.com/moddingplayground/maven/main/'
+    }
+
+    maven {
+        name = 'Shedaniel'
+        url  = 'https://maven.shedaniel.me/'
+    }
+
+    maven {
+        name = 'Terraformers'
+        url  = 'https://maven.terraformersmc.com/releases/'
+    }
 }
 
 dependencies {
@@ -21,8 +36,8 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation 'com.github.0xKalKYS:chord:1.8.0-fabric.1.19'
-    include('com.github.0xKalKYS:chord:1.8.0-fabric.1.19')
+    modImplementation ("com.github.0xKalKYS:chord:${project.chord_version}")
+    include ("com.github.0xKalKYS:chord:${project.chord_version}")
 }
 
 processResources {
