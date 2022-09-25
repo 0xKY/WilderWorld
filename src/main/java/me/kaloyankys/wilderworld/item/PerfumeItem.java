@@ -11,27 +11,27 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class MugItem extends HoneyBottleItem {
+public class PerfumeItem extends HoneyBottleItem {
 
     @Nullable
     private final StatusEffectInstance sei;
 
-    public MugItem(Item.Settings settings, @Nullable StatusEffectInstance statusEffectInstance) {
+    public PerfumeItem(Item.Settings settings, @Nullable StatusEffectInstance statusEffectInstance) {
         super(settings);
         sei = statusEffectInstance;
     }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        //if (!this.getDefaultStack().isOf(WWItems.EMPTY_MUG)) {
+        //if (!this.getDefaultStack().isOf(WWItems.TICK_PERFUME)) {
             if (user instanceof PlayerEntity player) {
                 if (!player.isCreative()) {
                     stack.decrement(1);
                     player.addStatusEffect(sei);
                     if (player.getInventory().contains(ItemStack.EMPTY)) {
-                        //player.giveItemStack(WWItems.EMPTY_MUG.getDefaultStack());
+                        //player.giveItemStack(Items.GLASS_BOTTLE.getDefaultStack());
                     } else {
-                        //player.dropItem(WWItems.EMPTY_MUG.getDefaultStack(), true, true);
+                        //player.dropItem(Items.GLASS_BOTTLE.getDefaultStack(), true, true);
                     }
                 }
             }

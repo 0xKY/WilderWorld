@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "wilderworld:block/scented_candle"
+    },
+    "lit=true": {
+      "model": "wilderworld:block/scented_candle_lit"
+    }
+  }
+}

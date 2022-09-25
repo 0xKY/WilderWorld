@@ -1,6 +1,7 @@
 package me.kaloyankys.wilderworld.mixin;
 
 import me.kaloyankys.wilderworld.init.WWBlocks;
+import me.kaloyankys.wilderworld.init.WWParticles;
 import me.kaloyankys.wilderworld.util.classes.CustomParticleUtil;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.WaterFluid;
@@ -20,9 +21,9 @@ public class WaterFluidMixin {
     private void randomDisplayTick(World world, BlockPos blockPos, FluidState fluidState, Random random, CallbackInfo ci) {
         if (world.getBlockState(blockPos.down()).isOf(WWBlocks.TRAVERTINE) || world.getBlockState(blockPos.down()).isOf(WWBlocks.TRAVERTINE_PEACH)) {
             if (random.nextInt(4) == 1) {
-                CustomParticleUtil.spawnParticle(world, blockPos, Direction.UP, ParticleTypes.CAMPFIRE_COSY_SMOKE, 0.7);
+                CustomParticleUtil.spawnParticle(world, blockPos, Direction.UP, WWParticles.SPLASH, 0.7);
             } else if (random.nextInt(4) == 2)
-                CustomParticleUtil.spawnParticle(world, blockPos, Direction.UP, ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, 0.7);
+                CustomParticleUtil.spawnParticle(world, blockPos, Direction.UP, WWParticles.SPLASH, 0.7);
         }
     }
 }

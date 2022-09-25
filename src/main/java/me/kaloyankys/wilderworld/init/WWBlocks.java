@@ -3,6 +3,7 @@ package me.kaloyankys.wilderworld.init;
 import me.andante.chord.block.helper.WoodBlocks;
 import me.kaloyankys.wilderworld.Wilderworld;
 import me.kaloyankys.wilderworld.block.*;
+import me.kaloyankys.wilderworld.item.ScentedCandleItem;
 import me.kaloyankys.wilderworld.util.enums.Flavours;
 import me.kaloyankys.wilderworld.world.AspenSaplingGenerator;
 import me.kaloyankys.wilderworld.world.WisteriaSaplingGenerator;
@@ -14,10 +15,17 @@ import net.minecraft.entity.vehicle.BoatEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionUtil;
+import net.minecraft.potion.Potions;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.DefaultedRegistry;
 import net.minecraft.util.registry.Registry;
+import org.apache.logging.log4j.Level;
 
-import java.util.List;
+import java.util.function.Function;
+import java.util.logging.Logger;
 
 public class WWBlocks {
     public static final Block BIRD_OF_PARADISE = registerFF("bird_of_paradise", new TallPlantBlock(FabricBlockSettings.of(Material.PLANT, MapColor.ORANGE)
@@ -37,11 +45,16 @@ public class WWBlocks {
             .breakInstantly()
             .collidable(false)));
 
-    public static final Block PHOSPHOSHOOTS = registerFF("phosphoshoots", new FlowerBlock(StatusEffects.GLOWING, 400, FabricBlockSettings
+    public static final Block GLOWBRUSH = registerFF("glowbrush", new GlowBrushBlock(FabricBlockSettings
             .of(Material.PLANT, MapColor.LIME)
             .nonOpaque()
             .breakInstantly()
-            .luminance(state -> 12)
+            .luminance(state -> {
+                if (state.get(SeedSpreaderBlock.STAGES) == 1) {
+                    return 12;
+                }
+                return 0;
+            })
             .collidable(false)));
 
     public static final Block SHELFSHROOM = registerFF("shelfshroom", new ShelfshroomBlock(FabricBlockSettings
@@ -74,8 +87,20 @@ public class WWBlocks {
             .of(Material.SOLID_ORGANIC)
             .collidable(false)));
 
-    public static final Block EBONY_BUSH_TALL = registerIcy("ebony_bush_tall", new SnowyBushBlock(FabricBlockSettings.copy(Blocks.GRASS)));
+    public static final Block WAX = registerFF("wax", new WaxBlock(FabricBlockSettings.copy(Blocks.HONEY_BLOCK)));
 
+    public static final Block SCENTED_CANDLE = registerFF("scented_candle", new ScentedCandleBlock(FabricBlockSettings
+            .of(Material.SOLID_ORGANIC)
+            .luminance((state) -> {
+                if (state.get(ScentedCandleBlock.LIT)) {
+                    return 15;
+                } else {
+                    return 0;
+                }
+            })
+            .ticksRandomly()));
+
+    public static final Block EBONY_BUSH_TALL = registerIcy("ebony_bush_tall", new SnowyBushBlock(FabricBlockSettings.copy(Blocks.GRASS)));
     public static final Block EBONY_BUSH = registerIcy("ebony_bush", new SnowyPlantBlock(FabricBlockSettings.copy(Blocks.GRASS)));
 
     public static final Block COCOA_ICECREAM = registerNoItem("cocoa_icecream_block", new IceCreamBlock(
@@ -105,11 +130,6 @@ public class WWBlocks {
 
     public static Block registerIcy(String id, Block block) {
         Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
-        return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
-    }
-
-    public static Block registerDeco(String id, Block block) {
-        Registry.register(Registry.ITEM, new Identifier("wilderworld", id), new BlockItem(block, new Item.Settings().group(ItemGroup.DECORATIONS)));
         return Registry.register(Registry.BLOCK, new Identifier("wilderworld", id), block);
     }
 

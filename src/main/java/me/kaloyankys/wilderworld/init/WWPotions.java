@@ -41,7 +41,7 @@ public class WWPotions {
             RAGE_EFFECT, 2400, 0)), new PotionRecipe(Potions.SWIFTNESS, WWBlocks.RAGING_VIOLET.asItem()));
 
     public static final Potion GLOWING = registerPotionWithExistingEffect("glowing", new Potion("glowing", new StatusEffectInstance(
-            StatusEffects.GLOWING, 2400, 0)), new PotionRecipe(Potions.AWKWARD, WWBlocks.PHOSPHOSHOOTS.asItem()));
+            StatusEffects.GLOWING, 2400, 0)), new PotionRecipe(Potions.AWKWARD, WWItems.DRUPES));
 
     private static Potion registerPotion(String id, StatusEffect statusEffect, Potion potion, PotionRecipe recipe) {
         Registry.register(Registry.STATUS_EFFECT, new Identifier("wilderworld", id), statusEffect);

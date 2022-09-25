@@ -16,7 +16,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SnowyPlantBlock extends PlantBlock implements Snowy, Fertilizable {
+public class SnowyPlantBlock extends PlantBlock implements Snowy {
     private static final BooleanProperty SNOWY = BooleanProperty.of("snowy");
 
     public SnowyPlantBlock(Settings settings) {
@@ -38,20 +38,5 @@ public class SnowyPlantBlock extends PlantBlock implements Snowy, Fertilizable {
     @Override
     public VoxelShape getOutlineShape(BlockState blockState, BlockView blockView, BlockPos blockPos, ShapeContext shapeContext) {
         return VoxelShapes.fullCube().offset(0, 0, 0);
-    }
-
-    @Override
-    public boolean isFertilizable(BlockView blockView, BlockPos blockPos, BlockState blockState, boolean bl) {
-        return true;
-    }
-
-    @Override
-    public boolean canGrow(World world, Random random, BlockPos blockPos, BlockState blockState) {
-        return true;
-    }
-
-    @Override
-    public void grow(ServerWorld serverWorld, Random random, BlockPos blockPos, BlockState blockState) {
-        ItemScatterer.spawn(serverWorld, blockPos.getX(), blockPos.getY(), blockPos.getZ(), WWBlocks.EBONY_BUSH_MASSIVE.asItem().getDefaultStack());
     }
 }

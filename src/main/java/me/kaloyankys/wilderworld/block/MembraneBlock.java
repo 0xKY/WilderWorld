@@ -20,7 +20,7 @@ public class MembraneBlock extends BlockWithEntity {
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof MembraneBlockEntity membrane) {
+        if (blockEntity instanceof SingleItemHolderBlockEntity membrane) {
             if (entity instanceof ItemEntity itemEntity) {
                 ItemStack stack = itemEntity.getStack();
                 ItemStack filter = membrane.getStack(0);
@@ -36,7 +36,7 @@ public class MembraneBlock extends BlockWithEntity {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new MembraneBlockEntity(pos, state);
+        return new SingleItemHolderBlockEntity(pos, state);
     }
 
     @Override

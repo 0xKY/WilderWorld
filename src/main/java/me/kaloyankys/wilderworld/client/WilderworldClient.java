@@ -1,12 +1,7 @@
 package me.kaloyankys.wilderworld.client;
 
-import me.kaloyankys.wilderworld.client.particle.CustomBlockLeakParticle;
-import me.kaloyankys.wilderworld.client.particle.CustomGlowParticle;
-import me.kaloyankys.wilderworld.client.particle.SteamParticle;
-import me.kaloyankys.wilderworld.entity.render.ButterflyEntityRenderer;
-import me.kaloyankys.wilderworld.entity.render.ButterflyModel;
-import me.kaloyankys.wilderworld.entity.render.DoodEntityRenderer;
-import me.kaloyankys.wilderworld.entity.render.DoodModel;
+import me.kaloyankys.wilderworld.client.particle.*;
+import me.kaloyankys.wilderworld.entity.render.*;
 import me.kaloyankys.wilderworld.init.WWBlocks;
 import me.kaloyankys.wilderworld.init.WWEntities;
 import me.kaloyankys.wilderworld.init.WWParticles;
@@ -30,13 +25,15 @@ public class WilderworldClient implements ClientModInitializer {
             new Identifier("wilderworld", "butterfly"), "butterfly_render_layer");
     public static final EntityModelLayer DOOD_RENDER_LAYER = new EntityModelLayer(
             new Identifier("wilderworld", "dood"), "dood_render_layer");
+    public static final EntityModelLayer GEYSER_STREAM_RENDER_LAYER = new EntityModelLayer(
+            new Identifier("wilderworld", "geyser_stream"), "geyser_stream_render_layer");
 
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
-                WWBlocks.BIRD_OF_PARADISE, WWBlocks.CHAMOMILE, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM, WWBlocks.PHOSPHOSHOOTS,
+                WWBlocks.BIRD_OF_PARADISE, WWBlocks.CHAMOMILE, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM, WWBlocks.GLOWBRUSH,
                 WWBlocks.WISTERIA.POTTED_SAPLING, WWBlocks.WISTERIA.SAPLING, WWBlocks.ASPEN_SAPLING, WWBlocks.BUTTERFLY_SPAWN,
-                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL, WWBlocks.GLOWGI);
+                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL, WWBlocks.GLOWGI, WWBlocks.SCENTED_CANDLE);
 
         ParticleFactoryRegistry.getInstance().register(WWParticles.STEAM, SteamParticle.SteamFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_DRIP, CustomBlockLeakParticle.ChocolateDripFactory::new);
@@ -49,11 +46,16 @@ public class WilderworldClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(WWParticles.MINT_FALL, CustomBlockLeakParticle.MintFallFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.MINT_LAND, CustomBlockLeakParticle.MintLandFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.SPELUNKING_GLOW, CustomGlowParticle.SpelunkingGlowFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.SPLASH, SplashParticle.DefaultFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.GLOW_SEEDS, GlowSeedParticle.GlowbrushSeedFactory::new);
+        ParticleFactoryRegistry.getInstance().register(WWParticles.AMBIENT_GLOW_SEEDS, GlowSeedParticle.AmbientGlowbrushSeedFactory::new);
 
         EntityRendererRegistry.register(WWEntities.BUTTERFLY, ButterflyEntityRenderer::new);
         EntityRendererRegistry.register(WWEntities.DOOD, DoodEntityRenderer::new);
+        EntityRendererRegistry.register(WWEntities.GEYSER_STREAM, GeyserStreamRenderer::new);
         EntityModelLayerRegistry.registerModelLayer(BUTTERFLY_RENDER_LAYER, ButterflyModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(DOOD_RENDER_LAYER, DoodModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(GEYSER_STREAM_RENDER_LAYER, GeyserStreamModel::getTexturedModelData);
 
         EntityRendererRegistry.register(WWBlocks.WISTERIA.BOAT_ENTITY, (context -> new BoatEntityRenderer(context, true)));
 

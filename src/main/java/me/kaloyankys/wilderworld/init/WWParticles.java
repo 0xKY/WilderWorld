@@ -18,6 +18,9 @@ public class WWParticles {
     public static final DefaultParticleType MINT_FALL = register("mint_fall", new PublicDefaultParticleType(true));
     public static final DefaultParticleType MINT_LAND = register("mint_land", new PublicDefaultParticleType(true));
     public static final DefaultParticleType SPELUNKING_GLOW = register("spelunking_glow", new PublicDefaultParticleType(true));
+    public static final DefaultParticleType SPLASH = register("splash", new PublicDefaultParticleType(true));
+    public static final DefaultParticleType GLOW_SEEDS = register("glow_seeds", new PublicDefaultParticleType(true));
+    public static final DefaultParticleType AMBIENT_GLOW_SEEDS = register("ambient_glow_seeds", new PublicDefaultParticleType(true));
 
     private static DefaultParticleType register(String id, DefaultParticleType particle) {
         Registry.register(Registry.PARTICLE_TYPE, new Identifier("wilderworld", id), particle);

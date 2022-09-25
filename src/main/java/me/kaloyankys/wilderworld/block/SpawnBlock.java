@@ -12,6 +12,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class SpawnBlock extends FallingBlock {
+
     public SpawnBlock(Settings settings) {
         super(settings);
     }

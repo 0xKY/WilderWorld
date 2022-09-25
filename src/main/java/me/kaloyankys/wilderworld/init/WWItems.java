@@ -4,6 +4,8 @@ import me.kaloyankys.wilderworld.Wilderworld;
 import me.kaloyankys.wilderworld.item.IceCreamItem;
 import me.kaloyankys.wilderworld.item.MusicalItem;
 import me.kaloyankys.wilderworld.util.enums.Flavours;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -19,12 +21,18 @@ public class WWItems {
     public static final Item COFFEE_MUG = register("coffee_mug", new MugItem(new Item.Settings().group(Wilderworld.ICY_ADDITIONS)
             .food(new FoodComponent.Builder().hunger(1).saturationModifier(0.3f).alwaysEdible().build()).maxCount(1),
             new StatusEffectInstance(WWPotions.COFFEE_EFFECT, 2400, 0))); */
+    public static final Item BUTTERFLY_WING = register("butterfly_wing", new Item(new Item.Settings().group(Wilderworld.FF_ADDITIONS)));
 
     public static final Item SPAWN_BUTTERFLY = register("butterfly_spawn_egg", new SpawnEggItem(WWEntities.BUTTERFLY,
             0x381a20, 0xedaa00, new Item.Settings()
             .group(ItemGroup.MISC)));
 
-    public static final Item BUTTERFLY_WING = register("butterfly_wing", new Item(new Item.Settings().group(Wilderworld.FF_ADDITIONS)));
+    public static final Item DRUPES = register("drupes", new Item(new Item.Settings().group(Wilderworld.FF_ADDITIONS)
+            .food(new FoodComponent.Builder().
+                    hunger(1).saturationModifier(0.1f).alwaysEdible().snack().statusEffect(new StatusEffectInstance(
+                            StatusEffects.GLOWING, 100, 0), 1.0f)
+                    .build())));
+
 
     public static final Item EBONY = register("ebony", new Item(new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
 
@@ -41,7 +49,7 @@ public class WWItems {
 
     public static final Item MINT = register("mint", new Item(new Item.Settings().group(Wilderworld.ICY_ADDITIONS)));
 
-    public static final Item CHOCOLATE_ICECREAM = register("chocolate_icecream", new IceCreamItem(Flavours.CHOCOLATE, WWBlocks.COCOA_ICECREAM,
+    /* public static final Item CHOCOLATE_ICECREAM = register("chocolate_icecream", new IceCreamItem(Flavours.CHOCOLATE, WWBlocks.COCOA_ICECREAM,
             new Item.Settings().group(Wilderworld.ICY_ADDITIONS).food(
                     new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
 
@@ -51,7 +59,7 @@ public class WWItems {
 
     public static final Item MINT_ICECREAM = register("mint_icecream", new IceCreamItem(Flavours.MINT, WWBlocks.MINT_ICECREAM,
             new Item.Settings().group(Wilderworld.ICY_ADDITIONS).food(
-                    new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build())));
+                    new FoodComponent.Builder().hunger(1).saturationModifier(0.2f).build()))); */
 
 
     private static Item register(String id, Item item) {

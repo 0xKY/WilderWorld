@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=1": {
+      "model": "wilderworld:block/glowbrush"
+    },
+    "stage=2": {
+      "model": "wilderworld:block/glowbrush_popped"
+    }
+  }
+}

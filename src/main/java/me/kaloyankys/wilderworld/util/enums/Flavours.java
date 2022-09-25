@@ -9,7 +9,7 @@ import net.minecraft.particle.DefaultParticleType;
 
 public enum Flavours implements FlavourSet {
     /**
-     * Custom enums for flavours must also implement {@link me.kaloyankys.wilderworld.util.interfaces.FlavourSet}
+     * Other enums for flavours must also implement {@link me.kaloyankys.wilderworld.util.interfaces.FlavourSet}
      */
     CHOCOLATE(WWPotions.CHOCOLATE_EFFECT, WWParticles.CHOCOLATE_DRIP),
     SWEET_BERRY(StatusEffects.INSTANT_HEALTH, WWParticles.SWEETBERRY_DRIP),

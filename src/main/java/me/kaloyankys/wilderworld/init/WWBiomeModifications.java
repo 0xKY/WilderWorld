@@ -9,10 +9,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3i;
+import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ClampedIntProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -45,7 +47,7 @@ public class WWBiomeModifications {
             new RandomPatchFeatureConfig(96, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                     new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L,
                             new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D), 0.020833334F,
-                            List.of(WWBlocks.PHOSPHOSHOOTS.getDefaultState(), WWBlocks.RAGING_VIOLET.getDefaultState(), WWBlocks.BIRD_OF_PARADISE.getDefaultState(),
+                            List.of(WWBlocks.GLOWBRUSH.getDefaultState(), WWBlocks.RAGING_VIOLET.getDefaultState(), WWBlocks.BIRD_OF_PARADISE.getDefaultState(),
                                     WWBlocks.CHAMOMILE.getDefaultState()))))));
 
     public static final RandomPatchFeatureConfig EBONY_BUSHES_SMALL = registerIcyVegetation("ebony_bushes_small", Feature.FLOWER,
@@ -54,12 +56,12 @@ public class WWBiomeModifications {
                             new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D), 0.020833334F,
                             List.of(WWBlocks.EBONY_BUSH.getDefaultState()))))));
 
-    public static final RandomPatchFeatureConfig EBONY_BUSHES = registerIcyVegetation("ebony_bushes", Feature.FLOWER,
+    public static final RandomPatchFeatureConfig EBONY_BUSHES = registerIcyVegetation("ebony_bushes_tall", Feature.FLOWER,
             new RandomPatchFeatureConfig(96, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                     new SimpleBlockFeatureConfig(BlockStateProvider.of(WWBlocks.EBONY_BUSH_TALL)))));
 
     public static final RandomPatchFeatureConfig GLOWGI_PATCH = registerVegetationNoBiome("glowgi_patch", Feature.FLOWER,
-            new RandomPatchFeatureConfig(60, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+            new RandomPatchFeatureConfig(30, 7, 3, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                     new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L,
                             new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0D), 0.020833334F,
                             List.of(WWBlocks.GLOWGI.getDefaultState()))))));
@@ -80,7 +82,7 @@ public class WWBiomeModifications {
             .forceDirt()
             .build());
 
-    /* public static final VegetationPatchFeatureConfig TRAVERTINE_SPRING = registerIcySpring("travertine_spring", Feature.WATERLOGGED_VEGETATION_PATCH,
+    public static final VegetationPatchFeatureConfig TRAVERTINE_SPRING = registerIcySpring("travertine_spring", Feature.WATERLOGGED_VEGETATION_PATCH,
             new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.of(WWBlocks.TRAVERTINE),
                     PlacedFeatures.createEntry(RegistryEntry.of(new ConfiguredFeature<>(Feature.RANDOM_PATCH, GLOWGI_PATCH))), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3),
                     0.8f, 5, 0.1f, UniformIntProvider.create(6, 9), 0.8f));
@@ -90,10 +92,12 @@ public class WWBiomeModifications {
             new VegetationPatchFeatureConfig(BlockTags.LUSH_GROUND_REPLACEABLE, BlockStateProvider.of(WWBlocks.TRAVERTINE_PEACH),
                     PlacedFeatures.createEntry(RegistryEntry.of(new ConfiguredFeature<>(Feature.RANDOM_PATCH, GLOWGI_PATCH))), VerticalSurfaceType.FLOOR, ConstantIntProvider.create(3),
                     0.6f, 3, 0.1f, UniformIntProvider.create(5, 8), 0.7f));
-*/
+
     public WWBiomeModifications() {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST), SpawnGroup.AMBIENT, WWEntities.BUTTERFLY,
                 30, 3, 6);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.SNOWY_PLAINS), SpawnGroup.WATER_CREATURE, WWEntities.GEYSER_STREAM,
+                10, 10, 20);
     }
 
     private static <FC extends FeatureConfig> FC registerFFVegetation(String id, Feature<FC> feature, FC config) {
