@@ -21,7 +21,7 @@ public abstract class HopperBlockEntityMixin extends LootableContainerBlockEntit
 
     @Inject(at = @At("HEAD"), method = "serverTick", cancellable = true)
     private static void serverTick(World world, BlockPos pos, BlockState state, HopperBlockEntity blockEntity, CallbackInfo ci) {
-        if (world.getBlockState(pos.up()).isOf(WWBlocks.BUTTERFLY_WING_MEMBRANE_BLOCK)) {
+        if (world.getBlockState(pos.up()).isOf(WWBlocks.BUTTERFLY_WING_MEMBRANE_BLOCK) || world.getBlockState(pos.up()).isOf(WWBlocks.SCENTED_CANDLE)) {
             ci.cancel();
         }
     }

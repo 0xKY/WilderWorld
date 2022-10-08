@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "size=1": {
+      "model": "wilderworld:block/droopbloom"
+    },
+    "size=2": {
+      "model": "wilderworld:block/droopbloom_mid"
+    },
+    "size=3": {
+      "model": "wilderworld:block/droopbloom_top"
+    }
+  }
+}

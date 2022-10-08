@@ -33,7 +33,7 @@ public class WilderworldClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
                 WWBlocks.BIRD_OF_PARADISE, WWBlocks.CHAMOMILE, WWBlocks.RAGING_VIOLET, WWBlocks.SHELFSHROOM, WWBlocks.GLOWBRUSH,
                 WWBlocks.WISTERIA.POTTED_SAPLING, WWBlocks.WISTERIA.SAPLING, WWBlocks.ASPEN_SAPLING, WWBlocks.BUTTERFLY_SPAWN,
-                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL, WWBlocks.GLOWGI, WWBlocks.SCENTED_CANDLE);
+                WWBlocks.EBONY_BUSH, WWBlocks.EBONY_BUSH_TALL, WWBlocks.GLOWGI, WWBlocks.SCENTED_CANDLE, WWBlocks.DROOPBLOOM, WWBlocks.WISTERIA_BLOSSOM_LEAVES);
 
         ParticleFactoryRegistry.getInstance().register(WWParticles.STEAM, SteamParticle.SteamFactory::new);
         ParticleFactoryRegistry.getInstance().register(WWParticles.CHOCOLATE_DRIP, CustomBlockLeakParticle.ChocolateDripFactory::new);

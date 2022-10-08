@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/leaves",
   "textures": {
-    "all": "wilderworld:block/wisteria_leaves"
+    "all": "wilderworld:block/wisteria_blossom_leaves"
   }
 }

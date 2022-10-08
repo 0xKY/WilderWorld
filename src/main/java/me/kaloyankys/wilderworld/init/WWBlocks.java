@@ -73,6 +73,12 @@ public class WWBlocks {
             .itemGroup(Wilderworld.FF_ADDITIONS)
             .build("wilderworld", "wisteria");
 
+    public static final Block WISTERIA_BLOSSOM_LEAVES = registerFF("wisteria_blossom_leaves", new LeavesBlock(FabricBlockSettings
+            .copy(Blocks.OAK_LEAVES).mapColor(MapColor.MAGENTA)
+            .nonOpaque()));
+
+    public static final Block DROOPBLOOM = registerFF("droopbloom", new VerticalConnectorBlock(FabricBlockSettings.of(Material.PLANT)));
+
     public static final Block ASPEN_SAPLING = registerNoItem("aspen_sapling", new AspenBirchSaplingBlock(new AspenSaplingGenerator(), FabricBlockSettings
             .copy(Blocks.BIRCH_SAPLING)
             .nonOpaque()));

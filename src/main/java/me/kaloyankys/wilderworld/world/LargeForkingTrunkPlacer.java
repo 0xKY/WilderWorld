@@ -23,7 +23,7 @@ public class LargeForkingTrunkPlacer extends MegaJungleTrunkPlacer {
         List<FoliagePlacer.TreeNode> list = Lists.newArrayList();
         list.addAll(super.generate(world, replacer, random, height, startPos, config));
 
-        for (int i = height - 2 - random.nextInt(4); i > height / 4; i -= 1 + random.nextInt(4)) {
+        for (int i = height - 2 - random.nextInt(4); i > height / 10; i -= 1 + random.nextInt(4)) {
             float f = random.nextFloat() * 6.2831855F;
             int j = 0;
             int k = 0;

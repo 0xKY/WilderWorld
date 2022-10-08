@@ -1,8 +1,11 @@
 package me.kaloyankys.wilderworld.init;
 
 import com.google.common.collect.ImmutableList;
+import me.kaloyankys.wilderworld.block.VerticalConnectorBlock;
 import me.kaloyankys.wilderworld.world.LargeForkingTrunkPlacer;
 import me.kaloyankys.wilderworld.world.ShelfshroomTreeDecorator;
+import me.kaloyankys.wilderworld.world.WisteriaDroopleavesTreeDecorator;
+import me.kaloyankys.wilderworld.world.WisteriaFoliagePlacer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.block.Block;
@@ -31,11 +34,15 @@ import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
 import net.minecraft.world.gen.placementmodifier.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.NoiseBlockStateProvider;
+import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.treedecorator.AttachedToLeavesTreeDecorator;
 import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
 import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
+import net.minecraft.world.gen.trunk.UpwardsBranchingTrunkPlacer;
 
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.Random;
 
 @SuppressWarnings("unused")
@@ -75,10 +82,11 @@ public class WWBiomeModifications {
             .build());
 
     public static final TreeFeatureConfig WISTERIA_TREE = registerFFTree("wisteria_tree", Feature.TREE, new TreeFeatureConfig.Builder(
-            BlockStateProvider.of(WWBlocks.WISTERIA.LOG), new LargeOakTrunkPlacer(4, 14, 2), BlockStateProvider.of(WWBlocks.WISTERIA.LEAVES),
-            new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), RANDOM.nextInt(50) + 30),
-            new TwoLayersFeatureSize(1, 1, 2))
-            .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.5f), new TrunkVineTreeDecorator()))
+            BlockStateProvider.of(WWBlocks.WISTERIA.LOG), new LargeOakTrunkPlacer(3, 11, 0),
+            BlockStateProvider.of(WWBlocks.WISTERIA.LEAVES),
+            new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2), 50),
+            new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4)))
+            .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.5f), new TrunkVineTreeDecorator(), new WisteriaDroopleavesTreeDecorator()))
             .forceDirt()
             .build());
 
