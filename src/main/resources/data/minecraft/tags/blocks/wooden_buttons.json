@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "wilderworld:wisteria_button"
+    "wilderworld:wisteria_button",
+    "wilderworld:aspen_button"
   ]
 }

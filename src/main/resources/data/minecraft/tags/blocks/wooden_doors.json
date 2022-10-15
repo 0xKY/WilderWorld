@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "wilderworld:wisteria_door"
+    "wilderworld:wisteria_door",
+    "wilderworld:aspen_door"
   ]
 }

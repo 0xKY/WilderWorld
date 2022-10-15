@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wilderworld:aspen_planks"
+    }
+  },
+  "result": {
+    "item": "wilderworld:aspen_boat"
+  }
+}

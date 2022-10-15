@@ -102,12 +102,12 @@ public class ScentedCandleBlock extends BlockWithEntity {
 
     @Override
     public VoxelShape getCollisionShape(BlockState blockState, BlockView blockView, BlockPos blockPos, ShapeContext shapeContext) {
-        return VoxelShapes.cuboid(0.3, 0.0, 0.3, 0.6, 0.6, 0.6);
+        return VoxelShapes.cuboid(0.41, 0.0, 0.41, 0.61, 0.5, 0.61);
     }
 
     @Override
     public VoxelShape getOutlineShape(BlockState blockState, BlockView blockView, BlockPos blockPos, ShapeContext shapeContext) {
-        return VoxelShapes.cuboid(0.3, 0.0, 0.3, 0.6, 0.6, 0.6);
+        return VoxelShapes.cuboid(0.41, 0.0, 0.41, 0.61, 0.5, 0.61);
     }
 
     @Nullable
@@ -119,12 +119,12 @@ public class ScentedCandleBlock extends BlockWithEntity {
     private void spawnCandleParticles(World world, Vec3d vec3d, Random random) {
         float f = random.nextFloat();
         if (f < 0.3f) {
-            world.addParticle(ParticleTypes.SMOKE, vec3d.x, vec3d.y, vec3d.z, 0.0, 0.0, 0.0);
+            world.addParticle(ParticleTypes.SMOKE, vec3d.x + 0.48, vec3d.y + 0.5, vec3d.z + 0.48, 0.0, 0.0, 0.0);
             if (f < 0.17f) {
-                world.playSound(vec3d.x + 0.5, vec3d.y + 0.5, vec3d.z + 0.5, SoundEvents.BLOCK_CANDLE_AMBIENT, SoundCategory.BLOCKS, 1.0f + random.nextFloat(), random.nextFloat() * 0.7f + 0.3f, false);
+                world.playSound(vec3d.x + 0.48, vec3d.y + 0.5, vec3d.z + 0.48, SoundEvents.BLOCK_CANDLE_AMBIENT, SoundCategory.BLOCKS, 1.0f + random.nextFloat(), random.nextFloat() * 0.7f + 0.3f, false);
             }
         }
-        world.addParticle(ParticleTypes.SMALL_FLAME, vec3d.x + 0.4, vec3d.y + 0.6, vec3d.z + 0.4, 0.0, 0.0, 0.0);
+        world.addParticle(ParticleTypes.SMALL_FLAME, vec3d.x + 0.48, vec3d.y + 0.5, vec3d.z + 0.48, 0.0, 0.0, 0.0);
     }
     
     private void light(WorldAccess worldAccess, BlockState blockState, BlockPos blockPos, PlayerEntity playerEntity, SingleItemHolderBlockEntity potion, ItemStack stack) {
@@ -137,7 +137,7 @@ public class ScentedCandleBlock extends BlockWithEntity {
     private void extinguish(@Nullable PlayerEntity playerEntity, BlockState blockState, WorldAccess worldAccess, BlockPos blockPos) {
         this.setLit(worldAccess, blockState, blockPos, false);
         if (blockState.getBlock() instanceof AbstractCandleBlock) {
-            worldAccess.addParticle(ParticleTypes.SMALL_FLAME, blockPos.getX() + 0.4, blockPos.getY() + 0.6, blockPos.getZ() + 0.4, 0.0, 0.0, 0.0);
+            worldAccess.addParticle(ParticleTypes.SMALL_FLAME, blockPos.getX() + 0.48, blockPos.getY() + 0.5, blockPos.getZ() + 0.48, 0.0, 0.0, 0.0);
         }
         worldAccess.playSound(null, blockPos, SoundEvents.BLOCK_CANDLE_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f);
         worldAccess.emitGameEvent(playerEntity, GameEvent.BLOCK_CHANGE, blockPos);
@@ -149,11 +149,11 @@ public class ScentedCandleBlock extends BlockWithEntity {
 
     private void createIncense(SingleItemHolderBlockEntity be, World serverWorld, BlockPos blockPos) {
         Potion potion = PotionUtil.getPotion(be.getStack(0).getNbt());
-        AreaEffectCloudEntity scent = new AreaEffectCloudEntity(serverWorld, blockPos.getX(), blockPos.getY(), blockPos.getZ());
+        AreaEffectCloudEntity scent = new AreaEffectCloudEntity(serverWorld, blockPos.getX() + 0.48, blockPos.getY() + 0.5, blockPos.getZ() + 0.48);
         scent.setRadius(3.0f);
         scent.setRadiusOnUse(-0.5f);
-        scent.setDuration(1200);
-        scent.setRadiusGrowth(-scent.getRadius() / (float) scent.getDuration());
+        scent.setDuration(2400);
+        scent.setRadiusGrowth(0.2f * (-scent.getRadius() / (float) scent.getDuration()));
         scent.setPotion(potion);
         for (StatusEffectInstance statusEffectInstance : potion.getEffects()) {
             scent.addEffect(new StatusEffectInstance(statusEffectInstance));

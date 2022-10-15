@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "wilderworld:aspen_log"
+    }
+  ],
+  "result": {
+    "item": "wilderworld:aspen_planks",
+    "count": 4
+  }
+}

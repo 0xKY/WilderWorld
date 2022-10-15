@@ -1,5 +1,7 @@
 package me.kaloyankys.wilderworld.item;
 
+import me.kaloyankys.wilderworld.block.IceCreamBlock;
+import me.kaloyankys.wilderworld.init.WWBlocks;
 import me.kaloyankys.wilderworld.util.interfaces.FlavourSet;
 import net.minecraft.block.Block;
 import net.minecraft.entity.LivingEntity;
@@ -13,12 +15,12 @@ import net.minecraft.world.World;
 
 public class IceCreamItem extends BlockItem {
     private final FlavourSet flavour;
-    private final Block block;
+    private final IceCreamBlock block;
 
-    public IceCreamItem(FlavourSet flavour, Block block, Settings settings) {
+    public IceCreamItem(IceCreamBlock block, Settings settings) {
         super(block, settings);
-        this.flavour = flavour;
         this.block = block;
+        this.flavour = block.getFlavour();
     }
 
     @Override

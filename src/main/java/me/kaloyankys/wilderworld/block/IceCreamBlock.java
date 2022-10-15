@@ -68,4 +68,8 @@ public class IceCreamBlock extends SnowBlock {
         if (placer instanceof PlayerEntity player) player.giveItemStack(new ItemStack(Items.BOWL));
         super.onPlaced(world, pos, state, placer, itemStack);
     }
+
+    public FlavourSet getFlavour() {
+        return this.flavour;
+    }
 }

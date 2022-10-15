@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "wilderworld:wisteria_boat"
+    "wilderworld:wisteria_boat",
+    "wilderworld:aspen_boat"
   ]
 }

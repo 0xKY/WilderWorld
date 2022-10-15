@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "wilderworld:wisteria_sapling"
+    "wilderworld:wisteria_sapling",
+    "wilderworld:aspen_sapling"
   ]
 }

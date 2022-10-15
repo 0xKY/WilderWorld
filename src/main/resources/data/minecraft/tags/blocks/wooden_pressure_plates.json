@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "wilderworld:wisteria_pressure_plate"
+    "wilderworld:wisteria_pressure_plate",
+    "wilderworld:aspen_pressure_plate"
   ]
 }

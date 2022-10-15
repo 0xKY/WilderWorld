@@ -58,8 +58,11 @@ public class WilderworldClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(GEYSER_STREAM_RENDER_LAYER, GeyserStreamModel::getTexturedModelData);
 
         EntityRendererRegistry.register(WWBlocks.WISTERIA.BOAT_ENTITY, (context -> new BoatEntityRenderer(context, true)));
+        EntityRendererRegistry.register(WWBlocks.ASPEN.BOAT_ENTITY, (context -> new BoatEntityRenderer(context, true)));
 
         TexturedRenderLayers.addDefaultTextures((spriteIdentifier -> new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE,
                 new Identifier("wilderworld", "wisteria_sign"))));
+        TexturedRenderLayers.addDefaultTextures((spriteIdentifier -> new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE,
+                new Identifier("wilderworld", "aspen_sign"))));
     }
 }

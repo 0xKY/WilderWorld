@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "wilderworld:block/aspen_slab"
+    },
+    "type=double": {
+      "model": "wilderworld:block/aspen_planks"
+    },
+    "type=top": {
+      "model": "wilderworld:block/aspen_slab_top"
+    }
+  }
+}

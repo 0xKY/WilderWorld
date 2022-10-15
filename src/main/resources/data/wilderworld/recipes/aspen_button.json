@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "wilderworld:aspen_planks"
+    }
+  ],
+  "result": {
+    "item": "wilderworld:aspen_button"
+  }
+}

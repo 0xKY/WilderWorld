@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "wilderworld:aspen_planks"
+    }
+  },
+  "result": {
+    "item": "wilderworld:aspen_slab",
+    "count": 6
+  }
+}

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "wilderworld:wisteria_sign"
+    "wilderworld:wisteria_sign",
+    "wilderworld:aspen_sign"
   ]
 }

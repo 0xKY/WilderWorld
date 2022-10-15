@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "wilderworld:wisteria_log"
+    "wilderworld:wisteria_log",
+    "wilderworld:aspen_log"
   ]
 }

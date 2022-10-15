@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "wilderworld:block/aspen_planks",
+    "top": "wilderworld:block/aspen_planks",
+    "side": "wilderworld:block/aspen_planks"
+  }
+}

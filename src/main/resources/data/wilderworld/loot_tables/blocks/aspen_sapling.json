@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:birch_sapling"
+          "name": "wilderworld:aspen_sapling"
         }
       ],
       "conditions": [

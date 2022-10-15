@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_fence_gate",
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "wilderworld:aspen_planks"
+    }
+  },
+  "result": {
+    "item": "wilderworld:aspen_fence_gate"
+  }
+}

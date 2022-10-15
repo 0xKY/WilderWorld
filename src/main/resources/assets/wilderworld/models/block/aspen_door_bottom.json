@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "wilderworld:block/aspen_door_bottom"
+  }
+}
