@@ -12,8 +12,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class MembraneBlock extends BlockWithEntity {
-   public MembraneBlock(Settings settings) {
+public abstract class MembraneBlock extends BlockWithEntity {
+    protected MembraneBlock(Settings settings) {
+        super(settings);
+    }
+   /*public MembraneBlock(Settings settings) {
        super(settings);
    }
 
@@ -42,5 +45,5 @@ public class MembraneBlock extends BlockWithEntity {
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
-    }
+    }*/
 }

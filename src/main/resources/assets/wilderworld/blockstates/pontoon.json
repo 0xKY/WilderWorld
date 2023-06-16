@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "wilderworld:block/pontoon",
+      "x": 90
+    },
+    "facing=north": {
+      "model": "wilderworld:block/pontoon"
+    },
+    "facing=south": {
+      "model": "wilderworld:block/pontoon",
+      "x": 280
+    },
+    "facing=west": {
+      "model": "wilderworld:block/pontoon",
+      "x": 180
+    }
+  }
+}

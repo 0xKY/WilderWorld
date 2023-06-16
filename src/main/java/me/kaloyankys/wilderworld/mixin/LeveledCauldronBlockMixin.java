@@ -27,20 +27,22 @@ public class LeveledCauldronBlockMixin extends Block {
         IntProperty level = (IntProperty) WWBlocks.SLUSH_CAULDRON.getStateManager().getProperty("level_1_8");
         if (state.isOf(Blocks.WATER_CAULDRON)) {
             if (player.getStackInHand(hand).isOf(WWItems.ICE_CUBE)) {
-                return this.fillCauldron(true, world, player, pos, level, state, hand);
+                return this.fillCauldron(true, world, player, pos, level, state, hand, WWBlocks.SLUSH_CAULDRON);
             } else if (player.getStackInHand(hand).isOf(Blocks.ICE.asItem())) {
-                return this.fillCauldron(false, world, player, pos, level, state, hand);
+                return this.fillCauldron(false, world, player, pos, level, state, hand, WWBlocks.SLUSH_CAULDRON);
+            } else if (player.getStackInHand(hand).isOf(WWItems.WILD_HONEY_BOTTLE)) {
+                return this.fillCauldron(true, world, player, pos, level, state, hand, WWBlocks.HONEY_CAULDRON);
             }
         }
         return super.onUse(state, world, pos, player, hand, hit);
     }
 
-    private ActionResult fillCauldron(boolean isCube, World world, PlayerEntity player, BlockPos pos, IntProperty level, BlockState state, Hand hand) {
+    private ActionResult fillCauldron(boolean isCube, World world, PlayerEntity player, BlockPos pos, IntProperty level, BlockState state, Hand hand, Block cauldron) {
         int value = isCube ? state.get(Properties.LEVEL_3) * (8 / 3) : 8;
         if (!player.isCreative()) {
             player.getStackInHand(hand).decrement(1);
         }
-        world.setBlockState(pos, WWBlocks.SLUSH_CAULDRON.getDefaultState().with(level, value));
+        world.setBlockState(pos, cauldron.getDefaultState().with(level, value));
         player.swingHand(hand);
         return ActionResult.CONSUME;
     }

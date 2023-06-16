@@ -11,33 +11,29 @@ targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
     maven { url 'https://jitpack.io' }
-    mavenCentral()
-
+    maven { url "https://maven.shedaniel.me/" }
     maven {
-        name = "Modding Playground"
-        url  = 'https://raw.githubusercontent.com/moddingplayground/maven/main/'
+        name = 'TerraformersMC'
+        url = 'https://maven.terraformersmc.com/'
     }
-
     maven {
-        name = 'Shedaniel'
-        url  = 'https://maven.shedaniel.me/'
-    }
-
-    maven {
-        name = 'Terraformers'
-        url  = 'https://maven.terraformersmc.com/releases/'
+        url = uri "https://api.modrinth.com/maven"
+        content {
+            includeGroup "maven.modrinth"
+        }
     }
 }
 
 dependencies {
+
     implementation 'org.fabric3:fabric3-fabric:3.0.0'
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "maven.modrinth:creo-lib:${project.creolib_version}"
 
-    modImplementation ("com.github.0xKalKYS:chord:${project.chord_version}")
-    include ("com.github.0xKalKYS:chord:${project.chord_version}")
+
 }
 
 processResources {
@@ -95,4 +91,8 @@ publishing {
         // The repositories here will be used for publishing your artifact, not for
         // retrieving dependencies.
     }
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/wilderworld.accesswidener")
 }

@@ -2,17 +2,18 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
-      "bonus_rolls": 0.0,
+      "rolls": 1,
+      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:alternatives",
           "children": [
             {
               "type": "minecraft:item",
+              "name": "wilderworld:aspen_leaves",
               "conditions": [
                 {
-                  "condition": "minecraft:alternative",
+                  "condition": "minecraft:any_of",
                   "terms": [
                     {
                       "condition": "minecraft:match_tool",
@@ -37,11 +38,11 @@
                     }
                   ]
                 }
-              ],
-              "name": "wilderworld:aspen_leaves"
+              ]
             },
             {
               "type": "minecraft:item",
+              "name": "wilderworld:aspen_sapling",
               "conditions": [
                 {
                   "condition": "minecraft:survives_explosion"
@@ -56,19 +57,33 @@
                     0.1
                   ]
                 }
-              ],
-              "name": "wilderworld:aspen_sapling"
+              ]
             }
           ]
         }
       ]
     },
     {
-      "rolls": 1.0,
-      "bonus_rolls": 0.0,
+      "rolls": 1,
+      "bonus_rolls": 0,
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "minecraft:stick",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              },
+              "add": false
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
           "conditions": [
             {
               "condition": "minecraft:table_bonus",
@@ -81,29 +96,14 @@
                 0.1
               ]
             }
-          ],
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:uniform",
-                "min": 1.0,
-                "max": 2.0
-              },
-              "add": false
-            },
-            {
-              "function": "minecraft:explosion_decay"
-            }
-          ],
-          "name": "minecraft:stick"
+          ]
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:inverted",
           "term": {
-            "condition": "minecraft:alternative",
+            "condition": "minecraft:any_of",
             "terms": [
               {
                 "condition": "minecraft:match_tool",
@@ -131,5 +131,6 @@
         }
       ]
     }
-  ]
+  ],
+  "random_sequence": "wilderworld:aspen_leaves"
 }

@@ -9,7 +9,6 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 
 public class SingleItemHolderBlockEntity extends ChestBlockEntity {
-
     public SingleItemHolderBlockEntity(BlockPos pos, BlockState state) {
         super(WWEntities.SINGLE_ITEM_HOLDER, pos, state);
     }

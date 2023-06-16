@@ -1,0 +1,81 @@
+{
+  "credit": "Made with Blockbench",
+  "texture_size": [
+    20,
+    20
+  ],
+  "textures": {
+    "1": "wilderworld:block/coconut_fruit_2",
+    "particle": "wilderworld:block/coconut_fruit_2"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        6,
+        3
+      ],
+      "to": [
+        13,
+        16,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            15.2,
+            7.2,
+            8
+          ],
+          "texture": "#1"
+        },
+        "east": {
+          "uv": [
+            0,
+            8,
+            7.2,
+            15.2
+          ],
+          "texture": "#1"
+        },
+        "south": {
+          "uv": [
+            0,
+            8,
+            7.2,
+            15.2
+          ],
+          "texture": "#1"
+        },
+        "west": {
+          "uv": [
+            0,
+            8,
+            7.2,
+            15.2
+          ],
+          "texture": "#1"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            7.2,
+            7.2
+          ],
+          "texture": "#1"
+        },
+        "down": {
+          "uv": [
+            8,
+            0,
+            15.2,
+            7.2
+          ],
+          "texture": "#1"
+        }
+      }
+    }
+  ]
+}

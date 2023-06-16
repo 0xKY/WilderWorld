@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "wilderworld:item/template_egg_cluster",
+    "layer1": "wilderworld:item/template_egg_cluster_overlay"
+  }
+}

@@ -39,7 +39,7 @@ public class GlowSeedParticle extends SplashParticle {
         if (this.onGround) {
             if (!ambient) {
                 PacketByteBuf buf = PacketByteBufs.create();
-                buf.writeBlockPos(new BlockPos(this.getBoundingBox().getCenter()));
+                buf.writeBlockPos(new BlockPos((int) this.x, (int) this.y, (int) this.z));
                 ClientPlayNetworking.send(WWNetwork.GLOWBRUSH_SEED_PLANT_C2S, buf);
             }
             this.markDead();

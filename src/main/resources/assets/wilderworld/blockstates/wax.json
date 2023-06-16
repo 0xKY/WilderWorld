@@ -1,6 +1,29 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "wilderworld:block/wax",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "wilderworld:block/wax",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "wilderworld:block/wax",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "wilderworld:block/wax",
+      "x": 90,
+      "y": 270
+    },
+    "facing=down": {
+      "model": "wilderworld:block/wax",
+      "x": 180
+    },
+    "facing=up": {
       "model": "wilderworld:block/wax"
     }
   }

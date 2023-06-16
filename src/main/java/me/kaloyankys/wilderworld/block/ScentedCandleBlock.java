@@ -73,12 +73,17 @@ public class ScentedCandleBlock extends BlockWithEntity {
 
         if (be != null) {
             if (!blockState.get(LIT)) {
-                if (left.isOf(Items.POTION) && right.isOf(Items.FLINT_AND_STEEL)) {
-                    this.light(world, blockState, blockPos, playerEntity, be, left);
-                    this.createIncense(be, world, blockPos);
-                } else if (right.isOf(Items.POTION) && left.isOf(Items.FLINT_AND_STEEL)) {
-                    this.light(world, blockState, blockPos, playerEntity, be, right);
-                    this.createIncense(be, world, blockPos);
+                if (playerEntity.getStackInHand(hand).isOf(Items.FLINT_AND_STEEL)) {
+                    this.setLit(world, blockState, blockPos, true);
+                    world.playSound(null, blockPos, SoundEvents.BLOCK_CANDLE_EXTINGUISH, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                    world.emitGameEvent(playerEntity, GameEvent.BLOCK_CHANGE, blockPos);
+                    if (left.isOf(Items.POTION) && right.isOf(Items.FLINT_AND_STEEL)) {
+                        this.light(world, blockState, blockPos, playerEntity, be, left);
+                        this.createIncense(be, world, blockPos);
+                    } else if (right.isOf(Items.POTION) && left.isOf(Items.FLINT_AND_STEEL)) {
+                        this.light(world, blockState, blockPos, playerEntity, be, right);
+                        this.createIncense(be, world, blockPos);
+                    }
                 }
             } else if (left.isEmpty() || right.isEmpty()) {
                 this.extinguish(playerEntity, blockState, world, blockPos);

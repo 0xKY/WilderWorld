@@ -1,25 +1,21 @@
 package me.kaloyankys.wilderworld.world;
 
-import me.kaloyankys.wilderworld.init.WWBiomeModifications;
+import me.kaloyankys.wilderworld.init.WWFeatures;
 import net.minecraft.block.sapling.LargeTreeSaplingGenerator;
-import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Random;
 
 public class AspenSaplingGenerator extends LargeTreeSaplingGenerator {
-    @Nullable
     @Override
-    protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getLargeTreeFeature(net.minecraft.util.math.random.Random random) {
-        return TreeConfiguredFeatures.BIRCH;
+    protected RegistryKey<ConfiguredFeature<?, ?>> getLargeTreeFeature(Random random) {
+        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier("wilderworld", WWFeatures.ASPEN_TREE_LARGE.id()));
     }
 
-    @Nullable
     @Override
-    protected RegistryEntry<? extends ConfiguredFeature<?, ?>> getTreeFeature(net.minecraft.util.math.random.Random random, boolean bl) {
-        return RegistryEntry.of(new ConfiguredFeature<>(Feature.TREE, WWBiomeModifications.ASPEN_BIRCH_TREE));
+    protected RegistryKey<ConfiguredFeature<?, ?>> getTreeFeature(Random random, boolean bl) {
+        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier("wilderworld", WWFeatures.ASPEN_TREE.id()));
     }
 }

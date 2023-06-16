@@ -4,19 +4,25 @@
   "package": "me.kaloyankys.wilderworld.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AbstractBlockMixin",
     "BeehiveBlockMixin",
     "BrewingRecipeRegistryInvoker",
+    "CherryFoliagePlacerMixin",
+    "FallingBlockEntityMixin",
+    "FoliagePlacerTypeInvoker",
     "FreezeTopLayerFeatureMixin",
     "HopperBlockEntityMixin",
     "IceBlockMixin",
     "ItemMixin",
+    "LargeTrunkPlacerMixin",
+    "LeavesVineTreeDecoratorMixin",
     "LeveledCauldronBlockMixin",
     "LivingEntityMixin",
     "OreBlockMixin",
+    "RandomSpreadFoliagePlacerMixin",
     "TreeDecoratorTypeInvoker"
   ],
   "client": [
+    "BoatEntityRendererMixin",
     "WaterFluidMixin"
   ],
   "injectors": {

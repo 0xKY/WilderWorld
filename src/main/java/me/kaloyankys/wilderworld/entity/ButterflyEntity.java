@@ -65,7 +65,7 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
     public void growUp(int i, boolean bl) {
         super.growUp(i, bl);
         for (int wingCount = 0; wingCount < random.nextInt(3); i++) {
-            ItemScatterer.spawn(world, this.getX(), this.getY(), this.getZ(), new ItemStack(WWItems.BUTTERFLY_WING));
+            ItemScatterer.spawn(getWorld(), this.getX(), this.getY(), this.getZ(), new ItemStack(WWItems.BUTTERFLY_WING));
         }
     }
 
@@ -77,11 +77,11 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         if (player.getStackInHand(hand).isOf(Items.SUGAR) && player.getStackInHand(hand).getCount() >= 16) {
-            if (!this.world.isClient) {
-                world.setBlockState(this.getBlockPos(), WWBlocks.BUTTERFLY_SPAWN.getDefaultState());
+            if (!this.getWorld().isClient) {
+                getWorld().setBlockState(this.getBlockPos(), WWBlocks.BUTTERFLY_SPAWN.getDefaultState());
                 if (!player.isCreative()) player.getStackInHand(hand).decrement(16);
             } else {
-                ParticleUtil.spawnParticle(world, this.getBlockPos(), ParticleTypes.HEART, UniformIntProvider.create(1, 4));
+                ParticleUtil.spawnParticle(getWorld(), this.getBlockPos(), ParticleTypes.HEART, UniformIntProvider.create(1, 4));
             }
             return ActionResult.CONSUME;
         }
@@ -112,11 +112,6 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
     @Override
     protected void fall(double heightDifference, boolean onGround, BlockState landedState, BlockPos landedPosition) {
         this.fallDistance = 0.0F;
-    }
-
-    @Override
-    protected boolean hasWings() {
-        return true;
     }
 
     @Override
@@ -156,12 +151,10 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
         return !this.isOnGround();
     }
 
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState state) {}
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return WWSounds.BUTTERFLY_AMBIENT;
+        return WWSounds.BUTTERFLY_HURT;
     }
 
     @Override
@@ -173,6 +166,7 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
     protected SoundEvent getDeathSound() {
         return WWSounds.BUTTERFLY_DEATH;
     }
+
 
     static class FlyRandomlyGoal extends Goal {
         private final PathAwareEntity entity;
@@ -193,7 +187,7 @@ public class ButterflyEntity extends AnimalEntity implements Flutterer {
         public void start() {
             Vec3d vec3d = this.getRandomLocation();
             if (vec3d != null) {
-                entity.getNavigation().startMovingAlong(entity.getNavigation().findPathTo(new BlockPos(vec3d), 1), 1.0D);
+                entity.getNavigation().startMovingAlong(entity.getNavigation().findPathTo(new BlockPos((int) vec3d.x, (int) vec3d.y, (int) vec3d.z), 1), 1.0D);
             }
 
         }

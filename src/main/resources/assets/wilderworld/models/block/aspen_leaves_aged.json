@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "wilderworld:block/aspen_leaves_aged"
+  }
+}

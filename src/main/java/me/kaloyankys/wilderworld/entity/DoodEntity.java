@@ -8,8 +8,13 @@ import net.minecraft.entity.InventoryOwner;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MovementType;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
+import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandler;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,38 +22,41 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.particle.ItemStackParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class DoodEntity extends AnimalEntity implements InventoryOwner {
     private final SimpleInventory inventory = new SimpleInventory(1);
-    public int chewingTicks = 0;
-    public boolean chewing = false;
-    public boolean spitting = false;
-    public Identifier currentTexture = DoodEntityRenderer.TEXTURES[0];
+    public static final TrackedData<Integer> CHEWING_TICKS = DataTracker.registerData(DoodEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     public DoodEntity(World world) {
         super(WWEntities.DOOD, world);
-        this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02f, 0.1f, true);
-        this.lookControl = new YawAdjustingLookControl(this, 10);
+        this.moveControl = new MoveControl(this);
+        this.lookControl = new YawAdjustingLookControl(this, 6);
     }
 
     @Override
     protected void initGoals() {
         super.initGoals();
-        this.goalSelector.add(0, new EscapeDangerGoal(this, 1.2));
+        this.goalSelector.add(0, new EscapeDangerGoal(this, 0.8));
         this.goalSelector.add(2, new AnimalMateGoal(this, 1.0));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0));
         this.goalSelector.add(1, new TemptGoal(this, 1.1, Ingredient.ofItems(WWItems.MINT), false));
         this.goalSelector.add(3, new WanderAroundGoal(this, 2.0));
         this.goalSelector.add(1, new LookAtEntityGoal(this, LivingEntity.class, 8.0f));
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(CHEWING_TICKS, 0);
     }
 
     @Override
@@ -108,33 +116,14 @@ public class DoodEntity extends AnimalEntity implements InventoryOwner {
     @Override
     protected void mobTick() {
         super.mobTick();
-        System.out.println(this.currentTexture);
-        System.out.println(this.chewingTicks);
-        System.out.println(this.chewing);
-        System.out.println(this.spitting);
 
         ItemStack stack = this.getInventory().getStack(0);
 
-        if (this.chewingTicks > 0) {
-            this.chewingTicks--;
+        if (this.getChewTicks() > 0) {
+            this.decrementChewTicks();
         } else {
-            ItemScatterer.spawn(world, this, inventory);
+            ItemScatterer.spawn(getWorld(), this, inventory);
             stack.decrement(stack.getCount());
-        }
-
-        if (this.chewingTicks > 15) {
-            chewing = true;
-        } else if (this.chewingTicks > 0) {
-            spitting = true;
-        } else {
-            chewing = false;
-            spitting = false;
-        }
-
-        if (this.spitting) {
-            this.currentTexture = DoodEntityRenderer.TEXTURES[2];
-        } else if (!this.chewing) {
-            this.currentTexture = DoodEntityRenderer.TEXTURES[0];
         }
     }
 
@@ -147,12 +136,18 @@ public class DoodEntity extends AnimalEntity implements InventoryOwner {
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ChewingRecipe.RECIPES.forEach((input, output) -> {
             if (player.getStackInHand(hand).getItem() == input) {
-                player.getStackInHand(hand).decrement(1);
                 if (this.canInsertIntoInventory(output.getDefaultStack())) this.addItem(output.getDefaultStack());
-                this.chewingTicks = 100 + random.nextInt(10);
-                this.currentTexture = DoodEntityRenderer.TEXTURES[1];
+                this.dataTracker.set(CHEWING_TICKS, 80 + random.nextInt(20));
             }
         });
         return super.interactMob(player, hand);
+    }
+
+    public int getChewTicks() {
+        return this.dataTracker.get(CHEWING_TICKS);
+    }
+
+    private void decrementChewTicks() {
+        this.dataTracker.set(CHEWING_TICKS, this.getChewTicks() - 1);
     }
 }

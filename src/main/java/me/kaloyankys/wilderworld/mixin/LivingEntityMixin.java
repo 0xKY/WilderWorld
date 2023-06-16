@@ -59,7 +59,7 @@ public abstract class LivingEntityMixin extends Entity {
     } */
 
     private void freezeParticles() {
-        world.addParticle(WWParticles.STEAM, true,
+        getWorld().addParticle(WWParticles.STEAM, true,
                 this.getX() - (double) (this.getWidth() + 0.5F) * 0.5D * (double) MathHelper.sin(this.bodyYaw * 0.017453292F),
                 this.getEyeY() - 0.10000000149011612D,
                 this.getZ() + (double) (this.getWidth() + 0.5F) * 0.5D * (double) MathHelper.cos(

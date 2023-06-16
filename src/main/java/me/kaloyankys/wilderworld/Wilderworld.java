@@ -3,26 +3,17 @@ package me.kaloyankys.wilderworld;
 import me.kaloyankys.wilderworld.init.*;
 import me.kaloyankys.wilderworld.recipe.ChewingRecipe;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.minecraft.block.Block;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.HashMap;
 
 public class Wilderworld implements ModInitializer {
 
     public static final Logger LOGGER = LogManager.getLogger("wilderworld");
-
-    public static final ItemGroup FF_ADDITIONS = FabricItemGroupBuilder.create(
-                    new Identifier("wilderworld", "ff_additions"))
-            .icon(() -> new ItemStack(WWBlocks.WISTERIA.SAPLING))
-            .build();
-
-    public static final ItemGroup ICY_ADDITIONS = FabricItemGroupBuilder.create(
-                    new Identifier("wilderworld", "icy_additions"))
-            .icon(() -> new ItemStack(WWItems.ICE_CUBE))
-            .build();
+    public static final HashMap<Block, Block> STRIPPABLE = new HashMap<>();
 
     @Override
     public void onInitialize() {
@@ -35,6 +26,15 @@ public class Wilderworld implements ModInitializer {
         new WWSounds();
         new WWNetwork();
         new ChewingRecipe();
+        new WWFeatures();
+        WWFeatures.addFeatures();
+        new WWFeatures();
+        new WWFoliagePlacers();
+        new WWTabs();
+        WWBlocks.registerWood();
+
+        STRIPPABLE.forEach(StrippableBlockRegistry::register);
+
 
         LOGGER.info("Things are gettin' wild!");
     }

@@ -1,5 +1,6 @@
 package me.kaloyankys.wilderworld.mixin;
 
+import me.kaloyankys.wilderworld.init.WWItems;
 import net.minecraft.block.BeehiveBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
@@ -36,7 +37,7 @@ public abstract class BeehiveBlockMixin extends BlockWithEntity {
     @Override
     public ActionResult onUse(BlockState blockState, World world, BlockPos blockPos, PlayerEntity playerEntity2, Hand hand, BlockHitResult blockHitResult) {
         ItemStack itemStack = playerEntity2.getStackInHand(hand);
-        ItemStack honeyBottle = world.getBiome(blockPos).getKey().get() == BiomeKeys.FLOWER_FOREST ? new ItemStack(Items.EXPERIENCE_BOTTLE) : new ItemStack(Items.HONEY_BOTTLE);
+        ItemStack honeyBottle = world.getBiome(blockPos).getKey().get() == BiomeKeys.FLOWER_FOREST ? new ItemStack(WWItems.WILD_HONEY_BOTTLE) : new ItemStack(Items.HONEY_BOTTLE);
         int i = blockState.get(BeehiveBlock.HONEY_LEVEL);
         boolean bl = false;
         if (i >= 5) {
@@ -109,7 +110,7 @@ public abstract class BeehiveBlockMixin extends BlockWithEntity {
     }
 
     private void drop(World world, BlockPos blockPos) {
-        ItemStack drop = world.getBiome(blockPos).getKey().get() == BiomeKeys.FLOWER_FOREST ? new ItemStack(Items.EXPERIENCE_BOTTLE, 3) : new ItemStack(Items.HONEYCOMB, 3);
+        ItemStack drop = world.getBiome(blockPos).getKey().get() == BiomeKeys.FLOWER_FOREST ? new ItemStack(WWItems.WILD_WAX, 3) : new ItemStack(Items.HONEYCOMB, 3);
         BeehiveBlock.dropStack(world, blockPos, drop);
     }
 }

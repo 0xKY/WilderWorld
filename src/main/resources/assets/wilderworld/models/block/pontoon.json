@@ -1,0 +1,54 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "wilderworld:block/pontoon_side",
+		"1": "wilderworld:block/pontoon",
+		"2": "wilderworld:block/pontoon_bottom",
+		"3": "wilderworld:block/pontoon_front",
+		"particle": "wilderworld:block/pontoon_side"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 6],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "rotation": 180, "texture": "#2"},
+				"east": {"uv": [0, 0, 16, 10], "rotation": 270, "texture": "#0"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 10], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 10], "rotation": 180, "texture": "#3"},
+				"down": {"uv": [0, 0, 16, 10], "texture": "#3"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"scale": [0.3, 0.3, 0.3]
+		},
+		"gui": {
+			"rotation": [20, -44, 0],
+			"translation": [0.25, 0, 0],
+			"scale": [0.6, 0.6, 0.6]
+		},
+		"head": {
+			"translation": [0, 7.75, 0],
+			"scale": [1, 0.65, 1]
+		},
+		"fixed": {
+			"rotation": [-11, -42, 0],
+			"translation": [-0.25, 0, 0]
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "stage=1": {
+      "model": "wilderworld:block/coconut_fruit_1"
+    },
+    "stage=2": {
+      "model": "wilderworld:block/coconut_fruit_2"
+    },
+    "stage=3": {
+      "model": "wilderworld:block/coconut_fruit_3"
+    }
+  }
+}

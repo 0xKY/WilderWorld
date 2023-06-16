@@ -1,21 +1,29 @@
 package me.kaloyankys.wilderworld.init;
 
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.constant.EmptyPart;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.serialization.Codec;
 import me.kaloyankys.wilderworld.block.SingleItemHolderBlockEntity;
-import me.kaloyankys.wilderworld.entity.ButterflyEntity;
-import me.kaloyankys.wilderworld.entity.DoodEntity;
-import me.kaloyankys.wilderworld.entity.GeyserStreamEntity;
+import me.kaloyankys.wilderworld.entity.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.SignBlockEntity;
+import net.minecraft.client.render.block.entity.SignBlockEntityRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.vehicle.BoatEntity;
+import net.minecraft.entity.vehicle.ChestBoatEntity;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class WWEntities {
 
@@ -31,12 +39,28 @@ public class WWEntities {
             SpawnGroup.AMBIENT, (type, world) ->
                     new GeyserStreamEntity(world)).dimensions(EntityDimensions.changing(1.0F, 1.0F)).trackRangeBlocks(24).fireImmune().build());
 
+    public static final EntityType<BoatEntity> ASPEN_BOAT = register("aspen_boat", FabricEntityTypeBuilder.<BoatEntity>create(
+            SpawnGroup.AMBIENT, BoatEntity::new).dimensions(EntityDimensions.changing(1.375F, 0.5625F)).trackRangeBlocks(128).trackedUpdateRate(3).build());
+
+    public static final EntityType<BoatEntity> WISTERIA_BOAT = register("wisteria_boat", FabricEntityTypeBuilder.<BoatEntity>create(
+            SpawnGroup.AMBIENT, BoatEntity::new).dimensions(EntityDimensions.changing(1.375F, 0.5625F)).trackRangeBlocks(128).trackedUpdateRate(3).build());
+    public static final EntityType<ChestBoatEntity> ASPEN_CHEST_BOAT = register("aspen_chest_boat", FabricEntityTypeBuilder.<ChestBoatEntity>create(
+            SpawnGroup.AMBIENT, ChestBoatEntity::new).dimensions(EntityDimensions.changing(1.375F, 0.5625F)).trackRangeBlocks(128).trackedUpdateRate(3).build());
+
+    public static final EntityType<ChestBoatEntity> WISTERIA_CHEST_BOAT = register("wisteria_chest_boat", FabricEntityTypeBuilder.<ChestBoatEntity>create(
+            SpawnGroup.AMBIENT, ChestBoatEntity::new).dimensions(EntityDimensions.changing(1.375F, 0.5625F)).trackRangeBlocks(128).trackedUpdateRate(3).build());
+
+
+
+
     private static <BT extends BlockEntity> BlockEntityType<BT> register(String id, BlockEntityType<BT> type) {
-        return Registry.register(Registry.BLOCK_ENTITY_TYPE, new Identifier("wilderworld", id), type);
+        return Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier("wilderworld", id), type);
     }
+
 
     public static BlockEntityType<SingleItemHolderBlockEntity> SINGLE_ITEM_HOLDER = register("membrane_block",
             FabricBlockEntityTypeBuilder.create(SingleItemHolderBlockEntity::new, WWBlocks.BUTTERFLY_WING_MEMBRANE_BLOCK).build(null));
+
 
     public WWEntities() {
         FabricDefaultAttributeRegistry.register(BUTTERFLY, ButterflyEntity.createMobAttributes()
@@ -53,6 +77,6 @@ public class WWEntities {
     }
 
     private static <T extends Entity> EntityType<T> register(String id, EntityType<T> type) {
-        return Registry.register(Registry.ENTITY_TYPE, new Identifier("wilderworld", id), type);
+        return Registry.register(Registries.ENTITY_TYPE, new Identifier("wilderworld", id), type);
     }
 }
