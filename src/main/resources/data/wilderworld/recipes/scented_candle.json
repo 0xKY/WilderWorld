@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "H"
+  ],
+  "key": {
+    "H": {
+      "item": "wilderworld:wild_wax"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "wilderworld:scented_candle"
+  }
+}

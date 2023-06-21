@@ -1,19 +1,23 @@
 {
-  "feature": "wilderworld:ebony_bushes",
+  "feature": "wilderworld:travertine_spring",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 2
+      "count": 1
     },
     {
       "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE_WG"
+      "heightmap": "MOTION_BLOCKING"
     },
     {
       "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 5
     }
   ]
 }

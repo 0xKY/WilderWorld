@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "wilderworld:butterfly_wing"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "tag": "minecraft:flowers"
+    }
+  ],
+  "result": {
+    "item": "wilderworld:flower_feed",
+    "count": 8
+  }
+}

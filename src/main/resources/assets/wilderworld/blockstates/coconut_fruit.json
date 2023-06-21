@@ -1,13 +1,49 @@
 {
   "variants": {
-    "stage=1": {
+    "facing=east,stage=1": {
+      "model": "wilderworld:block/coconut_fruit_1",
+      "y": 90
+    },
+    "facing=north,stage=1": {
       "model": "wilderworld:block/coconut_fruit_1"
     },
-    "stage=2": {
+    "facing=south,stage=1": {
+      "model": "wilderworld:block/coconut_fruit_1",
+      "y": 180
+    },
+    "facing=west,stage=1": {
+      "model": "wilderworld:block/coconut_fruit_1",
+      "y": 270
+    },
+    "facing=east,stage=2": {
+      "model": "wilderworld:block/coconut_fruit_2",
+      "y": 90
+    },
+    "facing=north,stage=2": {
       "model": "wilderworld:block/coconut_fruit_2"
     },
-    "stage=3": {
+    "facing=south,stage=2": {
+      "model": "wilderworld:block/coconut_fruit_2",
+      "y": 180
+    },
+    "facing=west,stage=2": {
+      "model": "wilderworld:block/coconut_fruit_2",
+      "y": 270
+    },
+    "facing=east,stage=3": {
+      "model": "wilderworld:block/coconut_fruit_3",
+      "y": 90
+    },
+    "facing=north,stage=3": {
       "model": "wilderworld:block/coconut_fruit_3"
+    },
+    "facing=south,stage=3": {
+      "model": "wilderworld:block/coconut_fruit_3",
+      "y": 180
+    },
+    "facing=west,stage=3": {
+      "model": "wilderworld:block/coconut_fruit_3",
+      "y": 270
     }
   }
 }

@@ -1,0 +1,70 @@
+{
+  "variants": {
+    "facing=east,size=1": {
+      "model": "wilderworld:block/frond_block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,size=1": {
+      "model": "wilderworld:block/frond_block",
+      "x": 90
+    },
+    "facing=south,size=1": {
+      "model": "wilderworld:block/frond_block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,size=1": {
+      "model": "wilderworld:block/frond_block",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east,size=2": {
+      "model": "wilderworld:block/frond_block_2",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,size=2": {
+      "model": "wilderworld:block/frond_block_2",
+      "x": 90
+    },
+    "facing=south,size=2": {
+      "model": "wilderworld:block/frond_block_2",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,size=2": {
+      "model": "wilderworld:block/frond_block_2",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east,size=3": {
+      "model": "wilderworld:block/frond_block_3",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,size=3": {
+      "model": "wilderworld:block/frond_block_3",
+      "x": 90
+    },
+    "facing=south,size=3": {
+      "model": "wilderworld:block/frond_block_3",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west,size=3": {
+      "model": "wilderworld:block/frond_block_3",
+      "x": 90,
+      "y": 270
+    },
+    "facing=up,size=3": {
+      "model": "wilderworld:block/frond_block_top"
+    },
+    "facing=up,size=2": {
+      "model": "wilderworld:block/frond_block_top_2"
+    },
+    "facing=up,size=1": {
+      "model": "wilderworld:block/frond_block_top_1"
+    }
+  }
+}

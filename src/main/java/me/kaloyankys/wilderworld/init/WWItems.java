@@ -1,9 +1,7 @@
 package me.kaloyankys.wilderworld.init;
 
 import me.kaloyankys.wilderworld.block.IceCreamBlock;
-import me.kaloyankys.wilderworld.item.IceCreamItem;
-import me.kaloyankys.wilderworld.item.MusicalItem;
-import me.kaloyankys.wilderworld.item.WildHoneyBottleItem;
+import me.kaloyankys.wilderworld.item.*;
 import me.kaloyankys.wilderworld.util.enums.Flavours;
 import me.kaloyankys.wilderworld.util.interfaces.FlavourSet;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -36,8 +34,8 @@ public class WWItems {
     public static final Item TAMBURA = register("tambura", new MusicalItem(new Item.Settings(),
             0, WWSounds.TAMBURA_SPRUCE));
 
-    public static final Item TAMBURA_EBONY = register("tambura_ebony", new MusicalItem(new Item.Settings(),
-            0, WWSounds.TAMBURA_EBONY));
+    public static final Item TAMBURA_EBONY = register("tambura_ebony", new InstrumentItem(new Item.Settings(),
+            0, WWSounds.CHORD, null));
 
     public static final Item TAMBURA_WISTERIA = register("tambura_wisteria", new MusicalItem(new Item.Settings(),
             0, WWSounds.TAMBURA_WISTERIA));
@@ -48,6 +46,8 @@ public class WWItems {
 
     public static final Item WILD_WAX = register("wild_wax", new Item(new Item.Settings()));
     public static final Item WILD_HONEY_BOTTLE = register("wild_honey_bottle", new WildHoneyBottleItem(new Item.Settings()));
+
+    public static final Item FLOWER_FEED = register("flower_feed", new FlowerFeedItem(new Item.Settings()));
 
     public static Item register(String id, Item item) {
         return Registry.register(Registries.ITEM, new Identifier("wilderworld", id), item);

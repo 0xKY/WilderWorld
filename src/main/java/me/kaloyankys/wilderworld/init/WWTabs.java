@@ -32,6 +32,7 @@ public class WWTabs {
                 entries.add(new ItemStack(WWItems.SPAWN_BUTTERFLY));
                 entries.add(new ItemStack(WWBlocks.BUTTERFLY_WING_MEMBRANE_BLOCK));
                 entries.add(new ItemStack(WWItems.BUTTERFLY_WING));
+                entries.add(new ItemStack(WWItems.FLOWER_FEED));
                 WWBlocks.WOOD_BLOCKS.forEach(((id, block) -> {
                     if (!id.contains("sign")) {
                         entries.add(block.asItem());
@@ -60,6 +61,15 @@ public class WWTabs {
                 entries.add(new ItemStack(WWBlocks.PEARL_STONE));
                 entries.add(new ItemStack(WWBlocks.PEARL_CHISELED));
                 entries.add(new ItemStack(WWBlocks.PEARL_TILES));
+            })).build());
+
+    public static final ItemGroup TROPICAL = register("tropical_additions", FabricItemGroup.builder().displayName(Text.of("Icy Additions"))
+            .icon(() -> new ItemStack(WWBlocks.COCONUT.asItem()))
+            .entries(((a, entries) -> {
+                entries.add(new ItemStack(WWBlocks.PALM_TRUNK));
+                entries.add(new ItemStack(WWBlocks.FROND));
+                entries.add(new ItemStack(WWBlocks.COCONUT));
+                entries.add(new ItemStack(WWBlocks.COCONUT_FRUIT));
             })).build());
 
     public static ItemGroup register(String id, ItemGroup group) {

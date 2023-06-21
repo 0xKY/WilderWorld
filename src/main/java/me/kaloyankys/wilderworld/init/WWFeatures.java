@@ -74,7 +74,41 @@ public class WWFeatures {
                     PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
                     BiomePlacementModifier.of()));
 
+    public static final WWFeature EBONY_BUSHES = createFeature("ebony_bushes",
+            new ProbabilityConfig(0.1f),
+            GenerationStep.Feature.VEGETAL_DECORATION,
+            BiomeSelectors.includeByKey(BiomeKeys.SNOWY_PLAINS),
+            Feature.BAMBOO,
+            List.of(
+                    NoiseBasedCountPlacementModifier.of(40, 1, 0.1),
+                    HeightRangePlacementModifier.trapezoid(YOffset.aboveBottom(90), YOffset.aboveBottom(180)),
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
+                    BiomePlacementModifier.of()));
 
+    public static final WWFeature EBONY_BUSHES_TALL = createFeature("tall_ebony_bushes",
+            new ProbabilityConfig(0.1f),
+            GenerationStep.Feature.VEGETAL_DECORATION,
+            BiomeSelectors.includeByKey(BiomeKeys.SNOWY_PLAINS),
+            Feature.BAMBOO,
+            List.of(
+                    NoiseBasedCountPlacementModifier.of(40, 1, 0.1),
+                    HeightRangePlacementModifier.trapezoid(YOffset.aboveBottom(90), YOffset.aboveBottom(180)),
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
+                    BiomePlacementModifier.of()));
+
+    public static final WWFeature TRAVERTINE_SPRING = createFeature("travertine_spring",
+            new ProbabilityConfig(0.1f),
+            GenerationStep.Feature.VEGETAL_DECORATION,
+            BiomeSelectors.includeByKey(BiomeKeys.SNOWY_PLAINS),
+            Feature.BAMBOO,
+            List.of(
+                    NoiseBasedCountPlacementModifier.of(40, 1, 0.1),
+                    HeightRangePlacementModifier.trapezoid(YOffset.aboveBottom(90), YOffset.aboveBottom(180)),
+                    SquarePlacementModifier.of(),
+                    PlacedFeatures.wouldSurvive(Blocks.OAK_SAPLING),
+                    BiomePlacementModifier.of()));
 
     public static void addFeatures() {
         BiomeModification biomeModification = BiomeModifications.create(new Identifier("wilderworld", "biome_additions"));

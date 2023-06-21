@@ -149,10 +149,14 @@ public class WWBlocks {
     public static final Block PEARL_CHISELED = registerIcy("pearl_chiseled", new Block(FabricBlockSettings.copy(Blocks.QUARTZ_BLOCK)));
     public static final Block PEARL_TILES = registerIcy("pearl_tiles", new Block(FabricBlockSettings.copy(Blocks.QUARTZ_BLOCK)));
 
-    public static final Block COCONUT_FRUIT = registerNoItem("coconut_fruit", new CoconutFruitBlock(FabricBlockSettings.copy(Blocks.COCOA).ticksRandomly()));
-    public static final Block COCONUT = registerNoItem("coconut", new CoconutBlock(FabricBlockSettings.copy(Blocks.COCOA)));
+    public static final Block COCONUT_FRUIT = registerFF("coconut_fruit", new CoconutFruitBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS).ticksRandomly()));
+    public static final Block COCONUT = registerFF("coconut", new CoconutBlock(FabricBlockSettings.copy(Blocks.OAK_PLANKS)));
 
-    public static final Block PONTOON = registerPontoon("pontoon", new PontoonBlock(FabricBlockSettings.copy(Blocks.DARK_OAK_PLANKS)));
+    public static final Block PALM_TRUNK = registerFF("palm_trunk", new CoconutBlock(FabricBlockSettings.copy(Blocks.COCOA)));
+
+    public static final Block FROND = registerFF("frond_block", new FrondBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES)));
+
+    //public static final Block PONTOON = registerPontoon("pontoon", new PontoonBlock(FabricBlockSettings.copy(Blocks.DARK_OAK_PLANKS)));
 
 
 
