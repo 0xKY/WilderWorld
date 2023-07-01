@@ -41,7 +41,7 @@ public class SlushCauldronBlock extends LeveledCauldronBlock {
     public static void incrementFluidLevel(BlockState state, World world, BlockPos pos) {
         int i = state.get(SlushCauldronBlock.LEVEL) + 1;
         world.setBlockState(pos, i == 9 ? state.with(SlushCauldronBlock.LEVEL, 8) : state.with(SlushCauldronBlock.LEVEL, i));
-        world.addBlockBreakParticles(new BlockPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5), Blocks.ICE.getDefaultState());
+        world.addBlockBreakParticles(new BlockPos((int) (pos.getX() + 0.5), pos.getY(), (int) (pos.getZ() + 0.5)), Blocks.ICE.getDefaultState());
     }
 
     public static boolean canFillWithPrecipitation(World world, Biome.Precipitation precipitation) {
@@ -62,12 +62,14 @@ public class SlushCauldronBlock extends LeveledCauldronBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (player.getStackInHand(hand).isEmpty()) {
+        ItemStack stack = player.getStackInHand(hand);
+        if (stack.isEmpty()) {
             SlushCauldronBlock.decrementFluidLevel(state, world, pos);
             ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(WWItems.ICE_CUBE));
             return ActionResult.SUCCESS;
-        } else if (player.getStackInHand(hand).isOf(WWItems.ICE_CUBE)) {
+        } else if (stack.isOf(WWItems.ICE_CUBE)) {
             SlushCauldronBlock.incrementFluidLevel(state, world, pos);
+            stack.decrement(1);
             return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;

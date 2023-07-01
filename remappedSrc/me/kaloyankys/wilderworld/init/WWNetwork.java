@@ -12,7 +12,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class WWNetwork {
-    public static final Identifier SPAWN_BOAT_PACKET_ID = new Identifier("wilderworld", "spawn_boat");
     public static final Identifier GLOWBRUSH_SEED_PLANT_C2S = c2s("glowbrush_seed_plant", GlowBrushSeedPlantC2S::receive);
 
     private static Identifier c2s(String name, ServerPlayNetworking.PlayChannelHandler channelHandler) {

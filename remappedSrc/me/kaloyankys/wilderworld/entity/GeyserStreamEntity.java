@@ -13,8 +13,6 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
-import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -55,9 +53,9 @@ public class GeyserStreamEntity extends MobEntity {
         if (random.nextInt(10) == 0) {
             Direction.stream().forEach((direction -> {
                 BlockPos pos = this.getBlockPos().offset(direction);
-                if (world.getBlockState(pos).isOf(Blocks.WATER)) {
-                    GeyserStreamEntity newGeyser = new GeyserStreamEntity(world);
-                    world.spawnEntity(newGeyser);
+                if (method_48926().getBlockState(pos).isOf(Blocks.WATER)) {
+                    GeyserStreamEntity newGeyser = new GeyserStreamEntity(method_48926());
+                    method_48926().spawnEntity(newGeyser);
                     newGeyser.setPersistent();
                 }
             }));
@@ -77,7 +75,7 @@ public class GeyserStreamEntity extends MobEntity {
         if (this.getSprayTicks() > 0 && this.getSprayTicks() < INFLATION_TICKS && this.getWaitTicks() == 0) {
             this.increment(HEIGHT, 0.01f + (0.1f - this.getSprayTicks() / 800.0f));
             if (random.nextInt(3) == 0 && this.getExtent() > 0) {
-                ParticleUtil.spawnParticle(world, new BlockPos(this.getX(), (this.getY() + (this.getExtent() * this.getSize() * 3)) - 1, this.getZ()), WWParticles.SPLASH, UniformIntProvider.create(0, 2));
+                ParticleUtil.spawnParticle(method_48926(), new BlockPos((int) this.getX(), (int) ((this.getY() + (this.getExtent() * this.getSize() * 3)) - 1), (int) this.getZ()), WWParticles.SPLASH, UniformIntProvider.create(0, 2));
             }
         }
         if (this.getWaitTicks() > 0 && this.getExtent() > 0) {
@@ -88,7 +86,7 @@ public class GeyserStreamEntity extends MobEntity {
             this.set(HEIGHT, 0.0f);
         }
 
-        if (!world.getBlockState(this.getBlockPos().down()).isOf(WWBlocks.TRAVERTINE) && !world.getBlockState(this.getBlockPos().down()).isOf(WWBlocks.TRAVERTINE)) {
+        if (!method_48926().getBlockState(this.getBlockPos().down()).isOf(WWBlocks.TRAVERTINE) && !method_48926().getBlockState(this.getBlockPos().down()).isOf(WWBlocks.TRAVERTINE)) {
             this.kill();
         }
 
@@ -112,7 +110,7 @@ public class GeyserStreamEntity extends MobEntity {
     }
 
     @Override
-    public Packet<ClientPlayPacketListener> createSpawnPacket() {
+    public EntitySpawnS2CPacket createSpawnPacket() {
         return new EntitySpawnS2CPacket(this);
     }
 

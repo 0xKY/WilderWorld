@@ -1,24 +1,14 @@
 package me.kaloyankys.wilderworld.init;
 
-import com.google.common.collect.ImmutableList;
 import me.kaloyankys.wilderworld.util.records.WWFeature;
-import me.kaloyankys.wilderworld.world.*;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.registry.*;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.placementmodifier.*;
-import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.treedecorator.BeehiveTreeDecorator;
-import net.minecraft.world.gen.trunk.UpwardsBranchingTrunkPlacer;
 
 import java.util.List;
 import java.util.Random;
@@ -100,20 +90,15 @@ public class WWBiomeModifications {
             .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.5f), new ShelfshroomTreeDecorator()))
             .ignoreVines()
             .build(), GenerationStep.Feature.VEGETAL_DECORATION, BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST), Feature.TREE, VegetationPlacedFeatures
-            .modifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(0, 0.1f, 3), Blocks.OAK_SAPLING)); */
+            .modifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(0, 0.1f, 3), Blocks.OAK_SAPLING));*/
 
-    public WWBiomeModifications() {
+    /*public WWBiomeModifications() {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST), SpawnGroup.AMBIENT, WWEntities.BUTTERFLY,
                 30, 3, 6);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.SNOWY_PLAINS), SpawnGroup.WATER_CREATURE, WWEntities.GEYSER_STREAM,
                 10, 1, 10);
-    }
+    }*/
 
-    private static WWFeature createFeature(String id, FeatureConfig featureConfig, GenerationStep.Feature step, Predicate<BiomeSelectionContext> biomes, Feature<? extends FeatureConfig> feature, List<PlacementModifier> placementModifiers) {
-        WWFeature wwfeature = new WWFeature(id, featureConfig, step, biomes, WWFeatures.Configured.add(id, (Feature<FeatureConfig>) feature, featureConfig), WWFeatures.Placed.add(id, (Feature<FeatureConfig>) feature, featureConfig, placementModifiers));
-        WWFeatures.FEATURES.add(wwfeature);
-        return wwfeature;
-    }
 
     /*
     private static <FC extends FeatureConfig> FC registerFFVegetation(String id, Feature<FC> feature, FC config) {

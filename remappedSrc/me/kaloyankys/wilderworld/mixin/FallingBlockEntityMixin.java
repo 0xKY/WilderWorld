@@ -26,7 +26,7 @@ public abstract class FallingBlockEntityMixin extends Entity {
 
         if (this.getBlockState().isOf(WWBlocks.COCONUT)) {
             this.kill();
-            ItemScatterer.spawn(world, this.getX(), this.getY(), this.getZ(), new ItemStack(WWBlocks.COCONUT.asItem()));
+            ItemScatterer.spawn(method_48926(), this.getX(), this.getY(), this.getZ(), new ItemStack(WWBlocks.COCONUT.asItem()));
         }
     }
 }

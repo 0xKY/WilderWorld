@@ -42,7 +42,7 @@ public class PontoonItem extends BlockItem {
            if (!playerEntity.isCreative()) {
                itemStack.decrement(1);
            }
-           world.setBlockState(pos, WWBlocks.PONTOON.getDefaultState().with(PontoonBlock.FACING, facing).with(PontoonBlock.WATERLOGGED, true));
+           //world.setBlockState(pos, WWBlocks.PONTOON.getDefaultState().with(PontoonBlock.FACING, facing).with(PontoonBlock.WATERLOGGED, true));
            return TypedActionResult.success(itemStack);
        }
 
@@ -81,7 +81,7 @@ public class PontoonItem extends BlockItem {
                     world.setBlockState(frontPos, Blocks.BONE_BLOCK.getDefaultState());
                 }
             } */
-       world.setBlockState(pos, WWBlocks.PONTOON.getDefaultState().with(PontoonBlock.FACING, facing).with(PontoonBlock.WATERLOGGED, false));
+       //world.setBlockState(pos, WWBlocks.PONTOON.getDefaultState().with(PontoonBlock.FACING, facing).with(PontoonBlock.WATERLOGGED, false));
        return super.place(itemPlacementContext);
     }
 }

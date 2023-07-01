@@ -9,7 +9,7 @@ import net.minecraft.world.WorldView;
 
 public class ConnectorUtil {
     public static BlockPos findTop(BlockPos start, World world, WisteriaChainAffector affector) {
-        Iterable<BlockPos> chain = BlockPos.iterate(start, start.up(14));
+        Iterable<BlockPos> chain = BlockPos.iterate(start, start.up(6));
         for (BlockPos pos : chain) {
             if (world.getBlockState(pos).isOf(WWBlocks.DROOPBLOOM)) {
                 affector.affect(world, pos, world.getBlockState(pos));
@@ -22,7 +22,7 @@ public class ConnectorUtil {
     }
 
     public static BlockPos findBottom(BlockPos start, World world, WisteriaChainAffector affector) {
-        Iterable<BlockPos> chain = BlockPos.iterate(start, start.down(14));
+        Iterable<BlockPos> chain = BlockPos.iterate(start, start.down(6));
         for (BlockPos pos : chain) {
             if (world.getBlockState(pos).isOf(WWBlocks.DROOPBLOOM)) {
                 affector.affect(world, pos, world.getBlockState(pos));

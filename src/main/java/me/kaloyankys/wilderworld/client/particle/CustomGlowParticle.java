@@ -13,7 +13,6 @@ public class CustomGlowParticle extends SpriteBillboardParticle {
     public CustomGlowParticle(ClientWorld world, double x, double y, double z, SpriteProvider spriteProvider) {
         super(world, x, y, z);
         this.velocityMultiplier = 0.96f;
-        this.field_28787 = true;
         this.spriteProvider = spriteProvider;
         this.scale *= 0.75f;
         this.collidesWithWorld = false;

@@ -2,6 +2,7 @@ package me.kaloyankys.wilderworld.item;
 
 import me.kaloyankys.wilderworld.block.IceCreamBlock;
 import me.kaloyankys.wilderworld.init.WWBlocks;
+import me.kaloyankys.wilderworld.util.enums.Flavours;
 import me.kaloyankys.wilderworld.util.interfaces.FlavourSet;
 import net.minecraft.block.Block;
 import net.minecraft.entity.LivingEntity;
@@ -12,6 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
+
+import java.util.Map;
 
 public class IceCreamItem extends BlockItem {
     private final FlavourSet flavour;

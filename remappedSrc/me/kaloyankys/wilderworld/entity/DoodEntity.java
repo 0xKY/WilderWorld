@@ -39,13 +39,13 @@ public class DoodEntity extends AnimalEntity implements InventoryOwner {
     public DoodEntity(World world) {
         super(WWEntities.DOOD, world);
         this.moveControl = new MoveControl(this);
-        this.lookControl = new YawAdjustingLookControl(this, 10);
+        this.lookControl = new YawAdjustingLookControl(this, 6);
     }
 
     @Override
     protected void initGoals() {
         super.initGoals();
-        this.goalSelector.add(0, new EscapeDangerGoal(this, 1.2));
+        this.goalSelector.add(0, new EscapeDangerGoal(this, 0.8));
         this.goalSelector.add(2, new AnimalMateGoal(this, 1.0));
         this.goalSelector.add(4, new WanderAroundFarGoal(this, 1.0));
         this.goalSelector.add(1, new TemptGoal(this, 1.1, Ingredient.ofItems(WWItems.MINT), false));
@@ -122,7 +122,7 @@ public class DoodEntity extends AnimalEntity implements InventoryOwner {
         if (this.getChewTicks() > 0) {
             this.decrementChewTicks();
         } else {
-            ItemScatterer.spawn(world, this, inventory);
+            ItemScatterer.spawn(method_48926(), this, inventory);
             stack.decrement(stack.getCount());
         }
     }

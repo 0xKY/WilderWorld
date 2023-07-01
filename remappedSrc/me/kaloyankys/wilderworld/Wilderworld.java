@@ -5,10 +5,6 @@ import me.kaloyankys.wilderworld.recipe.ChewingRecipe;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.entry.RegistryEntryList;
-import net.minecraft.world.gen.feature.PlacedFeatures;
-import org.apache.commons.compress.compressors.lz77support.LZ77Compressor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -30,9 +26,12 @@ public class Wilderworld implements ModInitializer {
         new WWSounds();
         new WWNetwork();
         new ChewingRecipe();
-        WWFeatures.registerFeatures();
+        new WWFeatures();
+        WWFeatures.addFeatures();
         new WWFeatures();
         new WWFoliagePlacers();
+        new WWTabs();
+        WWBlocks.registerWood();
 
         STRIPPABLE.forEach(StrippableBlockRegistry::register);
 

@@ -45,7 +45,7 @@ public class IceCreamBlock extends SnowBlock {
     }
 
 
-    @Override
+   /* @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         int i = world.getBlockState(pos).get(IceCreamBlock.LAYERS);
         if (random.nextInt(2) == 0) {
@@ -61,8 +61,7 @@ public class IceCreamBlock extends SnowBlock {
                 }
             }
         }
-    }
-
+    }*/
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
         if (placer instanceof PlayerEntity player) player.giveItemStack(new ItemStack(Items.BOWL));

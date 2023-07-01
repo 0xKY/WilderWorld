@@ -71,12 +71,12 @@ public class WaxBlock extends Block {
     }
 
     private static void addParticles(Entity entity, int i) {
-        if (!entity.world.isClient) {
+        if (!entity.method_48926().isClient) {
             return;
         }
         BlockState blockState = Blocks.HONEY_BLOCK.getDefaultState();
         for (int j = 0; j < i; ++j) {
-            entity.world.addParticle(new BlockStateParticleEffect(ParticleTypes.BLOCK, blockState), entity.getX(), entity.getEyeY(), entity.getZ(), 0.0, 0.0, 0.0);
+            entity.method_48926().addParticle(new BlockStateParticleEffect(ParticleTypes.BLOCK, blockState), entity.getX(), entity.getEyeY(), entity.getZ(), 0.0, 0.0, 0.0);
         }
     }
 }

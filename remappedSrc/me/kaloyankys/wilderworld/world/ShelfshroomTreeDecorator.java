@@ -24,11 +24,12 @@ public class ShelfshroomTreeDecorator extends TreeDecorator {
 
     public static final ShelfshroomTreeDecorator DECORATOR = new ShelfshroomTreeDecorator();
     public static final Codec<ShelfshroomTreeDecorator> CODEC = Codec.unit(() -> DECORATOR);
-    public static TreeDecoratorType<ShelfshroomTreeDecorator> SHELFSHROOM = register();
+    //public static TreeDecoratorType<ShelfshroomTreeDecorator> SHELFSHROOM = register();
 
     @Override
     protected TreeDecoratorType<?> getType() {
-        return SHELFSHROOM;
+        //return SHELFSHROOM;
+        return TreeDecoratorType.TRUNK_VINE;
     }
 
     @Override
@@ -42,23 +43,23 @@ public class ShelfshroomTreeDecorator extends TreeDecorator {
         if (world instanceof ChunkRegion world1) {
             for (BlockPos pos : logPositions) {
                 Direction dir = Direction.fromHorizontal(random.nextInt(4));
-                if (world1.getBlockState(pos.offset(dir)).isAir() && minY > pos.getY()) {
+                if (world1.getBlockState(pos.offset(dir)).isAir() && minY > pos.getY() && random.nextInt(5) == 0) {
                     world1.setBlockState(pos.offset(dir), WWBlocks.SHELFSHROOM.getDefaultState().with(ShelfshroomBlock.FACING, dir), 3);
                 }
             }
         } else if (world instanceof World world1) {
             for (BlockPos pos : logPositions) {
                 Direction dir = Direction.fromHorizontal(random.nextInt(4));
-                if (world1.getBlockState(pos.offset(dir)).isAir() && minY > pos.getY()) {
+                if (world1.getBlockState(pos.offset(dir)).isAir() && minY > pos.getY() && random.nextInt(5) == 0) {
                     world1.setBlockState(pos.offset(dir), WWBlocks.SHELFSHROOM.getDefaultState().with(ShelfshroomBlock.FACING, dir), 3);
                 }
             }
         }
     }
 
-    private static TreeDecoratorType<ShelfshroomTreeDecorator> register() {
-        SHELFSHROOM = TreeDecoratorTypeInvoker.createType(CODEC);
-        Registry.register(Registries.TREE_DECORATOR_TYPE, new Identifier("wilderworld", "shelfshroom_decorator"), SHELFSHROOM);
-        return SHELFSHROOM;
-    }
+    //private static TreeDecoratorType<ShelfshroomTreeDecorator> register() {
+        //SHELFSHROOM = TreeDecoratorTypeInvoker.createType(CODEC);
+        //Registry.register(Registries.TREE_DECORATOR_TYPE, new Identifier("wilderworld", "shelfshroom"), SHELFSHROOM);
+        //return SHELFSHROOM;
+    //}
 }

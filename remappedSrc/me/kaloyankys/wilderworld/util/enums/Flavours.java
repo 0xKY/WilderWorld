@@ -15,8 +15,8 @@ public enum Flavours implements FlavourSet {
     SWEET_BERRY(StatusEffects.INSTANT_HEALTH, WWParticles.SWEETBERRY_DRIP),
     MINT(WWPotions.MINT_EFFECT, WWParticles.MINT_DRIP);
 
-    public StatusEffect statusEffect;
-    public DefaultParticleType particleType;
+    public final StatusEffect statusEffect;
+    public final DefaultParticleType particleType;
 
     Flavours(StatusEffect effect, DefaultParticleType particleType) {
         this.statusEffect = effect;

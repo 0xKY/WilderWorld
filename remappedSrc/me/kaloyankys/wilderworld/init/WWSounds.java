@@ -13,6 +13,8 @@ public class WWSounds {
     public static final SoundEvent TAMBURA_WISTERIA = register("tambura_wisteria");
     public static final SoundEvent TAMBURA_EBONY = register("tambura_ebony");
 
+    public static final SoundEvent CHORD = register("chord");
+
 
     private static SoundEvent register(String id) {
         SoundEvent soundEvent = SoundEvent.of(new Identifier("wilderworld", id));

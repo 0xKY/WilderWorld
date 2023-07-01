@@ -31,14 +31,14 @@ public class AspenFoliagePlacer extends SpruceFoliagePlacer {
     }
 
     @Override
-    protected void generate(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, TreeFeatureConfig treeFeatureConfig, int i, FoliagePlacer.TreeNode treeNode, int j, int k, int l) {
+    protected void generate(TestableWorld testableWorld, BlockPlacer blockPlacer, Random random, TreeFeatureConfig treeFeatureConfig, int i, TreeNode treeNode, int j, int k, int l) {
         BlockPos blockPos = treeNode.getCenter();
         int m = random.nextInt(2);
         int n = 1;
         int o = 0;
 
         for(int p = l; p >= -j + i - 1; --p) {
-            this.generateSquare(testableWorld, biConsumer, random, treeFeatureConfig, blockPos, m, p, treeNode.isGiantTrunk());
+            this.generateSquare(testableWorld, blockPlacer, random, treeFeatureConfig, blockPos, m, p, treeNode.isGiantTrunk());
             if (m >= n) {
                 m = o;
                 o = 1;
@@ -51,9 +51,9 @@ public class AspenFoliagePlacer extends SpruceFoliagePlacer {
     }
 
     @Override
-    protected void generateSquare(TestableWorld testableWorld, BiConsumer<BlockPos, BlockState> biConsumer, Random random, TreeFeatureConfig treeFeatureConfig, BlockPos blockPos, int i, int j, boolean bl) {
+    protected void generateSquare(TestableWorld testableWorld, BlockPlacer blockPlacer, Random random, TreeFeatureConfig treeFeatureConfig, BlockPos blockPos, int i, int j, boolean bl) {
         if (testableWorld.testBlockState(blockPos.down(1), Predicate.isEqual(Blocks.AIR.getDefaultState()))) {
-            super.generateSquare(testableWorld, biConsumer, random, treeFeatureConfig, blockPos, i, j, bl);
+            super.generateSquare(testableWorld, blockPlacer, random, treeFeatureConfig, blockPos, i, j, bl);
         }
     }
 }
