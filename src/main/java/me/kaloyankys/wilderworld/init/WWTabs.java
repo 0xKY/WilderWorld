@@ -63,14 +63,14 @@ public class WWTabs {
                 entries.add(new ItemStack(WWBlocks.PEARL_TILES));
             })).build());
 
-    public static final ItemGroup TROPICAL = register("tropical_additions", FabricItemGroup.builder().displayName(Text.of("Icy Additions"))
+    /*public static final ItemGroup TROPICAL = register("tropical_additions", FabricItemGroup.builder().displayName(Text.of("Icy Additions"))
             .icon(() -> new ItemStack(WWBlocks.COCONUT.asItem()))
             .entries(((a, entries) -> {
                 entries.add(new ItemStack(WWBlocks.PALM_TRUNK));
                 entries.add(new ItemStack(WWBlocks.FROND));
                 entries.add(new ItemStack(WWBlocks.COCONUT));
                 entries.add(new ItemStack(WWBlocks.COCONUT_FRUIT));
-            })).build());
+            })).build());*/
 
     public static ItemGroup register(String id, ItemGroup group) {
         Registry.register(Registries.ITEM_GROUP, new Identifier("wilderworld", id), group);
