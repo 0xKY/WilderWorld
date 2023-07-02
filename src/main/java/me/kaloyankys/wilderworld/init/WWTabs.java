@@ -28,6 +28,7 @@ public class WWTabs {
                 entries.add(new ItemStack(WWItems.WILD_WAX));
                 entries.add(new ItemStack(WWItems.WILD_HONEY_BOTTLE));
                 entries.add(new ItemStack(WWBlocks.WAX));
+                entries.add(new ItemStack(WWBlocks.MOSAIC));
                 entries.add(new ItemStack(WWBlocks.SCENTED_CANDLE));
                 entries.add(new ItemStack(WWItems.SPAWN_BUTTERFLY));
                 entries.add(new ItemStack(WWBlocks.BUTTERFLY_WING_MEMBRANE_BLOCK));

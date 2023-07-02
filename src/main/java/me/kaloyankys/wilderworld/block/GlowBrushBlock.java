@@ -8,6 +8,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.PlantBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -86,7 +87,7 @@ public class GlowBrushBlock extends SeedSpreaderBlock {
     public void onEntityCollision(BlockState blockState, World world, BlockPos blockPos, Entity entity) {
         super.onEntityCollision(blockState, world, blockPos, entity);
 
-        if (blockState.get(STAGES) == 1) {
+        if (blockState.get(STAGES) == 1 && !(entity instanceof ItemEntity)) {
         this.collectFruits(new Random(), world, blockPos, blockState);
         }
     }
